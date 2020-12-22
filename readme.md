@@ -13,14 +13,14 @@ Cette collection Postman permet de se familiariser avec les différents types d'
   * Consultation des utilisateurs
   * Multi-horaires
 
-- Single Sign On (SSO)
-- APIs d'écriture
+- **Single Sign On (SSO)
+- **APIs d'écriture
   * Création
   * Modification
   * Suppression
 
-- APIs de métadonnées
-- Appel de notifications
+- **APIs de métadonnées
+- **Appel de notifications
 
 ##### <span style="color:red"> ATTENTION BUG : </span>
 
@@ -70,5 +70,5 @@ Il existe deux environnements : la **Production** et la **Pré-production**. Pou
 
 Enfin il peut y avoir des problèmes avec les identifiants des objets déjà présents car vos projets ne les possèdent pas forcément en cas de problème il vous suffit de remplacer cet id par un des votre.
 
-**Toutes les requêtes sont documentées sur leur utilité ou encore comment les construire avec des paramètres remplaçables en cas de d'incompréhension ou si vous cherchez des informations complémentaires vous pouvez vous rendre sur le site d'aide aux développeurs de la plateforme : http://dev.apidae-tourisme.com/fr/documentation-technique/v2 **
+**Toutes les requêtes sont documentées sur leur utilité ou encore comment les construire avec des paramètres remplaçables en cas de d'incompréhension ou si vous cherchez des informations complémentaires vous pouvez vous rendre sur le site d'aide aux développeurs de la plateforme : http://dev.apidae-tourisme.com/fr/documentation-technique/v2
 
