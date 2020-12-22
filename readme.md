@@ -36,7 +36,7 @@ Avant toute utilisation de la collection, il est important de renseigner les var
 
 2. Rendez vous dans l'onglet `Variables` (1) puis dans un second temps vous n'aurez plus qu'à remplacer les `XXX` par vos valeurs (2)
 
-   <img src="variables_2.PNG" style="zoom: 33%;" />
+   <img src="variables_2.png" style="zoom: 33%;" />
 
 **apiKey**: La clé d'API
 
