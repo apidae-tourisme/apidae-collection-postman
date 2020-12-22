@@ -1,0 +1,3809 @@
+{
+	"info": {
+		"_postman_id": "ba59078a-c13d-4bfd-aa27-1efa0630ce2c",
+		"name": "Production.postman_collection",
+		"description": "Cette collection regroupe les différentes requête disponnible sur la plateforme apidae",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "API de consultation",
+			"item": [
+				{
+					"name": "Recherche d'un objet touristique",
+					"item": [
+						{
+							"name": "Récupération par Id",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/v002/objet-touristique/get-by-id/5148473?responseFields=id,nom,identifier&locales=fr,en&apiKey={{apiKey}}&projetId={{projetId}}",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"v002",
+										"objet-touristique",
+										"get-by-id",
+										"5148473"
+									],
+									"query": [
+										{
+											"key": "responseFields",
+											"value": "id,nom,identifier"
+										},
+										{
+											"key": "locales",
+											"value": "fr,en"
+										},
+										{
+											"key": "apiKey",
+											"value": "{{apiKey}}"
+										},
+										{
+											"key": "projetId",
+											"value": "{{projetId}}"
+										}
+									]
+								},
+								"description": "Cette requête permet de récupérer les informations d’un seul objet touristique de manière simple en passant son ID.\r\n\r\n/v002/objet-touristique/get-by-id/{id}?&apiKey={apiKey}&projetId={projetId}\r\n\r\nATTENTION a bien changer l'id de l'exemple car les filtres de votre projet ne contiennent pas forcéement l'objet touristique associé."
+							},
+							"response": []
+						},
+						{
+							"name": "Récupération par identifier",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/v002/objet-touristique/get-by-identifier/SITRA2_EVE_5148473?responseFields=id,nom&locales=fr,en&apiKey={{apiKey}}&projetId={{projetId}}",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"v002",
+										"objet-touristique",
+										"get-by-identifier",
+										"SITRA2_EVE_5148473"
+									],
+									"query": [
+										{
+											"key": "responseFields",
+											"value": "id,nom"
+										},
+										{
+											"key": "locales",
+											"value": "fr,en"
+										},
+										{
+											"key": "apiKey",
+											"value": "{{apiKey}}"
+										},
+										{
+											"key": "projetId",
+											"value": "{{projetId}}"
+										}
+									]
+								},
+								"description": "Cette requête permet de récupérer un objet touristique à partir de son identifier.\r\n\r\n/v002/objet-touristique/get-by-identifier/{identifier}?&apiKey={apiKey}&projetId={projetId}\r\n\r\nATTENTION a bien changer l'identifier (disponnible avec la requête ci-avant) de l'exemple car les filtres de votre projet ne contiennent pas forcéement l'objet touristique associé."
+							},
+							"response": []
+						}
+					],
+					"description": "Ces services permettent de récupérer les informations d’un seul objet touristique de manière simple.",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Recherche d'objets touristiques",
+					"item": [
+						{
+							"name": "Dans une zone géographique",
+							"item": [
+								{
+									"name": "Récupération dans un rayon (ids)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"center\":{\"type\":\"Point\",\"coordinates\":[4.833,45.767]},\"radius\":\"3000\"}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"recherche",
+												"list-identifiants",
+												""
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"center\":{\"type\":\"Point\",\"coordinates\":[4.833,45.767]},\"radius\":\"3000\"}"
+												}
+											]
+										},
+										"description": "Cette requête permet d'effectuer une recherche restreinte à une zone géographique, il faut déterminer le centre du cercle à utiliser ainsi que le rayon du cercle(en mètre).\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"center\":{\"type\":\"Point\",\"coordinates\":[{longitude},{latitude}]},\"radius\":\"{rayon}\"}"
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération dans un rayon (objets)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"center\":{\"type\":\"Point\",\"coordinates\":[4.833,45.767]},\"radius\":\"3000\"}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"recherche",
+												"list-objets-touristiques"
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"center\":{\"type\":\"Point\",\"coordinates\":[4.833,45.767]},\"radius\":\"3000\"}"
+												}
+											]
+										},
+										"description": "Cette requête permet d'effectuer une recherche restreinte à une zone géographique, il faut déterminer le centre du cercle à utiliser ainsi que le rayon du cercle(en mètre).\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"responseFields\":{responseFields},\"center\":{\"type\":\"Point\",\"coordinates\":[{longitude},{latitude}]},\"radius\":\"{rayon}\"}"
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération sur un territoire (ids)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"territoireIds\":[95938,156922]}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"recherche",
+												"list-identifiants",
+												""
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"territoireIds\":[95938,156922]}"
+												}
+											]
+										},
+										"description": "Cette requête permet d'effectuer une recherche à partir d'un ou plusieur identifiants des territoires sur lesquels se trouvent les objets à retourner.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"territoireIds\":[\"XXX\", ..., \"XXX\"]}"
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération sur un territoire (objets)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"territoireIds\":[95938,156922]}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"recherche",
+												"list-objets-touristiques"
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"territoireIds\":[95938,156922]}"
+												}
+											]
+										},
+										"description": "Cette requête permet d'effectuer une recherche à partir d'un ou plusieur identifiants des territoires sur lesquels se trouvent les objets à retourner.\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"responseFields\":{responseFields},\"territoireIds\":[\"XXX\", ..., \"XXX\"]}"
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération à partir d'une commune (ids)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"communeCodesInsee\":[\"69275\",\"69388\"]}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"recherche",
+												"list-identifiants",
+												""
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"communeCodesInsee\":[\"69275\",\"69388\"]}"
+												}
+											]
+										},
+										"description": "Cette requête permet d'effectuer une recherche à partir d'un ou plusieur code INSEE des communes sur lesquels se trouvent les objets à retourner.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"communeCodesInsee\":[\"XXX\", ..., \"XXX\"]}"
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération à partir d'une commune (objets)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"communeCodesInsee\":[\"69275\",\"69388\"]}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"recherche",
+												"list-objets-touristiques"
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"communeCodesInsee\":[\"69275\",\"69388\"]}"
+												}
+											]
+										},
+										"description": "Cette requête permet d'effectuer une recherche à partir d'un ou plusieur code INSEE des communes sur lesquels se trouvent les objets à retourner.\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"responseFields\":{responseFields},\"communeCodesInsee\":[\"XXX\", ..., \"XXX\"]}"
+									},
+									"response": []
+								}
+							],
+							"description": "Recherche s'effectue à partir d'une sélection et dans une zone géographique précise",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Avec ces termes",
+							"item": [
+								{
+									"name": "Récupération en fonction de termes (ids)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"searchQuery\":\"festival\",\"searchFields\":\"NOM\"}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"recherche",
+												"list-identifiants",
+												""
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"searchQuery\":\"festival\",\"searchFields\":\"NOM\"}"
+												}
+											]
+										},
+										"description": "Récupérez une liste d’ids d'objets touristiques à partir d’une ou plusieurs chaîne de caractères séparées par un espace.\r\n\r\nSearchFields :\r\n- NOM pour une recherche sur le nom des objets,\r\n- NOM_DESCRIPTION pour une recherche sur le nom et les descriptions des objets,\r\n- NOM_DESCRIPTION_CRITERES pour une recherche sur le nom, les descriptions et les critères associés aux objets.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id1, ..., idn}],\"searchQuery\":\"{chaine_de_caracteres}\",\"searchFields\":\"{searchFields}\"}"
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération en fonction de termes (objets)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"searchQuery\":\"festival\",\"searchFields\":\"NOM\"}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"recherche",
+												"list-objets-touristiques"
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"searchQuery\":\"festival\",\"searchFields\":\"NOM\"}"
+												}
+											]
+										},
+										"description": "Récupérez une liste d’objets touristiques à partir d’une ou plusieurs chaîne de caractères séparées par un espace.\r\n\r\nSearchFields :\r\n- NOM pour une recherche sur le nom des objets,\r\n- NOM_DESCRIPTION pour une recherche sur le nom et les descriptions des objets,\r\n- NOM_DESCRIPTION_CRITERES pour une recherche sur le nom, les descriptions et les critères associés aux objets.\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id1, ..., idn}],\"responseFields\":{responseFields},\"searchQuery\":\"{chaine_de_caracteres}\",\"searchFields\":\"{searchFields}\"}"
+									},
+									"response": []
+								}
+							],
+							"description": "Recherche s'effectue à partir d'une sélection et qui renvoit les objets qui continnent certains caractères",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "En fonction de critères",
+							"item": [
+								{
+									"name": "Récupération en fonction de critères (ids)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"criteresQuery\":\"type:EQUIPEMENT\"}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"recherche",
+												"list-identifiants",
+												""
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"criteresQuery\":\"type:EQUIPEMENT\"}"
+												}
+											]
+										},
+										"description": "Cette requête permet de récupérer une liste d’identifiants d’objets touristiques à partir d’une recherche.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}]}"
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération en fonction de critères (objets)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"criteresQuery\":\"type:EQUIPEMENT\"}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"recherche",
+												"list-objets-touristiques"
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"criteresQuery\":\"type:EQUIPEMENT\"}"
+												}
+											]
+										},
+										"description": "Récupérez une liste d’objets touristiques à partir d’une recherche.\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id1, ..., idn}],\"responseFields\":{responseFields}}"
+									},
+									"response": []
+								}
+							],
+							"description": "Recherche s'effectue à partir d'une sélection et qui renvoit les objets qui correspondent aux critères",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "À partir d'une date",
+							"item": [
+								{
+									"name": "Récupération à partir d'un jour (ids)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateDebut\":\"2021-01-15\"}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"recherche",
+												"list-identifiants",
+												""
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateDebut\":\"2021-01-15\"}"
+												}
+											]
+										},
+										"description": "Cette requête permet de récupérer une liste d’identifiants d’objets touristiques à partir d’une date de début.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"dateDebut\":\"{YYYY-MM-DD}\"}"
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération à partir d'un jour (objets)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\",\"ouverture\"],\"dateDebut\":\"2021-01-29\",\"dateFin\":\"2021-01-29\"}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"recherche",
+												"list-objets-touristiques"
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\",\"ouverture\"],\"dateDebut\":\"2021-01-29\",\"dateFin\":\"2021-01-29\"}"
+												}
+											]
+										},
+										"description": "Récupérez une liste d’objets touristiques à partir d’une date de début.\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id1, ..., idn}],\"responseFields\":{responseFields},\"dateDebut\":\"{YYYY-MM-DD}\"}"
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération avant un jour (ids) ",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateFin\":\"2021-01-15\"}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"recherche",
+												"list-identifiants",
+												""
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateFin\":\"2021-01-15\"}"
+												}
+											]
+										},
+										"description": "Cette requête permet de récupérer une liste d’identifiants d’objets touristiques à partir d’une date de fin.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"dateFin\":\"{YYYY-MM-DD}\"}"
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération avant un jour (objets)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"2021-01-15\"}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"recherche",
+												"list-objets-touristiques"
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"2021-01-15\"}"
+												}
+											]
+										},
+										"description": "Récupérez une liste d’objets touristiques à partir d’une date de fin.\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id1, ..., idn}],\"responseFields\":{responseFields},\"dateFin\":\"{YYYY-MM-DD}\"}"
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération à une date (ids)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateDebut\":\"2021-01-29\",\"dateFin\":\"2021-01-29\"}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"recherche",
+												"list-identifiants",
+												""
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateDebut\":\"2021-01-29\",\"dateFin\":\"2021-01-29\"}"
+												}
+											]
+										},
+										"description": "Cette requête permet de récupérer une liste d’identifiants d’objets touristiques pour une date donnée.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"dateDebut\":\"{YYYY-MM-DD}\",\"dateFin\":\"{YYYY-MM-DD}\"}"
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération à une date (objets)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"2021-01-15\",\"dateFin\":\"2021-01-15\"}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"recherche",
+												"list-objets-touristiques"
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"2021-01-15\",\"dateFin\":\"2021-01-15\"}"
+												}
+											]
+										},
+										"description": "Récupérez une liste d’objets touristiques à une date donnée.\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id1, ..., idn}],\"responseFields\":{responseFields},\"dateDebut\":\"{YYYY-MM-DD}\",\"dateFin\":\"{YYYY-MM-DD}\"}"
+									},
+									"response": []
+								}
+							],
+							"description": "Recherche s'effectue à partir d'une sélection et qui renvoit les objets qui correspondent aux dates specifiées",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							]
+						},
+						{
+							"name": "Utile",
+							"item": [
+								{
+									"name": "Récupération de certains champs (objets)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\",\"presentation.descriptifCourt\",\"identifier\"]}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"recherche",
+												"list-objets-touristiques"
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\",\"presentation.descriptifCourt\",\"identifier\"]}"
+												}
+											]
+										},
+										"description": "Récupérez une liste d’objets touristiques à partir d’une recherche en specifiant les champs que l'on veut dans les objets (responseFields).\r\n\r\nLes différent responseFields sont disponnibles de manière graphique ici : http://apidae.sbcd.fr/wordpress/\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id1, ..., idn}],\"responseFields\":{responseFields}}"
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération d'une nombre d'objets (ids)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"count\":\"10\"}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"recherche",
+												"list-identifiants",
+												""
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"count\":\"10\"}"
+												}
+											]
+										},
+										"description": "Cette requête permet de récupérer une liste de n identifiants d’objets touristiques à partir d’une recherche.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"count\":\"{N}\"}"
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération d'une nombre d'objets (objets)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"count\":\"10\"}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"recherche",
+												"list-objets-touristiques"
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"count\":\"10\"}"
+												}
+											]
+										},
+										"description": "Cette requête permet de récupérer une liste de n objets touristiques à partir d’une recherche.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"count\":\"{N}\"}"
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération triée (ids)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"order\":\"NOM\",\"asc\":\"true\"}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"recherche",
+												"list-identifiants",
+												""
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"order\":\"NOM\",\"asc\":\"true\"}"
+												}
+											]
+										},
+										"description": "Cette requête permet de récupérer une liste d'identifiants d’objets touristiques triés à partir d’une recherche.\r\n\r\nValeurs possibles :\r\n- NOM pour trier sur le nom des objets.\r\n- IDENTIFIANT pour trier sur les identifiants des objets.\r\n- PERTINENCE pour trier sur la pertinence de la recherche plein texte. Ce n’est appliqué que si le champ searchQuery est rempli. Non disponible sur l’agenda.\r\n- DISTANCE pour trier sur la distance par rapport au centre de la recherche géolocalisée. Ce n’est appliqué que si les champs centre et rayon sont correctement remplis.\r\n- RANDOM pour trier les résultats de manière pseudo-aléatoire. Voir le champ randomSeed.\r\n- DATE_OUVERTURE pour trier les objets par date d’ouverture. Seuls les résultats FETE_ET_MANIFESTATION et ACTIVITE sont fournis dans le résultat. Il n’est pas possible de faire de tri descendant sur cet élément. Il faut utiliser les services /agenda/simple/* pour obtenir des résultats triés par date (sans répartition par jour)\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"order\":\"{order}\",\"asc\":\"{true OR false}\"}"
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération triée (objets)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"order\":\"NOM\",\"asc\":\"true\"}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"recherche",
+												"list-objets-touristiques"
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"order\":\"NOM\",\"asc\":\"true\"}"
+												}
+											]
+										},
+										"description": "Cette requête permet de récupérer une liste d'objets touristiques triés à partir d’une recherche.\r\n\r\nValeurs possibles :\r\n- NOM pour trier sur le nom des objets.\r\n- IDENTIFIANT pour trier sur les identifiants des objets.\r\n- PERTINENCE pour trier sur la pertinence de la recherche plein texte. Ce n’est appliqué que si le champ searchQuery est rempli. Non disponible sur l’agenda.\r\n- DISTANCE pour trier sur la distance par rapport au centre de la recherche géolocalisée. Ce n’est appliqué que si les champs centre et rayon sont correctement remplis.\r\n- RANDOM pour trier les résultats de manière pseudo-aléatoire. Voir le champ randomSeed.\r\n- DATE_OUVERTURE pour trier les objets par date d’ouverture. Seuls les résultats FETE_ET_MANIFESTATION et ACTIVITE sont fournis dans le résultat. Il n’est pas possible de faire de tri descendant sur cet élément. Il faut utiliser les services /agenda/simple/* pour obtenir des résultats triés par date (sans répartition par jour)\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"order\":\"{order}\",\"asc\":\"{true OR false}\"}"
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération en fonction de la langue (ids)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"locales\":[\"en\"]}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"recherche",
+												"list-identifiants",
+												""
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"locales\":[\"en\"]}"
+												}
+											]
+										},
+										"description": "Cette requête permet de récupérer une liste d'identifiants d’objets touristiques dans une langue à partir d’une recherche.\r\n\r\nLocales disponnibles ici : http://dev.apidae-tourisme.com/fr/documentation-technique/v2/api-de-diffusion/filtrage-des-langues\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"locales\":[{\"locale\", ..., \"localeN\"}]}"
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération en fonction de la langue (objets)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"locales\":[\"en\"]}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"recherche",
+												"list-objets-touristiques"
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"locales\":[\"en\"]}"
+												}
+											]
+										},
+										"description": "Cette requête permet de récupérer une liste d'objets touristiques dans une langue à partir d’une recherche.\r\n\r\nLocales disponnibles ici : http://dev.apidae-tourisme.com/fr/documentation-technique/v2/api-de-diffusion/filtrage-des-langues\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"locales\":[{\"locale\", ..., \"localeN\"}]}"
+									},
+									"response": []
+								}
+							],
+							"description": "Requêtes avec des attributs utiles"
+						},
+						{
+							"name": "Récupération d'une liste d'identifiants",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}]}",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"v002",
+										"recherche",
+										"list-identifiants",
+										""
+									],
+									"query": [
+										{
+											"key": "query",
+											"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}]}"
+										}
+									]
+								},
+								"description": "Cette requête permet de récupérer une liste d’identifiants d’objets touristiques à partir d’une recherche.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}]}"
+							},
+							"response": []
+						},
+						{
+							"name": "Récupération d'une liste d'objets",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"]}",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"v002",
+										"recherche",
+										"list-objets-touristiques"
+									],
+									"query": [
+										{
+											"key": "query",
+											"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"]}"
+										}
+									]
+								},
+								"description": "Récupérez une liste d’objets touristiques à partir d’une recherche.\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id1, ..., idn}],\"responseFields\":{responseFields}}"
+							},
+							"response": []
+						}
+					],
+					"description": "Ces services permettent de récupérer les objets touristiques respectant une requête de recherche. Les deux services utilisent le même format de requête. La sortie propose soit une liste d’identifiants, soit une liste d’objets."
+				},
+				{
+					"name": "Agenda",
+					"item": [
+						{
+							"name": "Mode Simple",
+							"item": [
+								{
+									"name": "Récupération d'une liste d'ids",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/agenda/simple/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateDebut\":\"2021-03-15\",\"dateFin\":\"2021-03-20\"}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"agenda",
+												"simple",
+												"list-identifiants",
+												""
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateDebut\":\"2021-03-15\",\"dateFin\":\"2021-03-20\"}"
+												}
+											]
+										},
+										"description": "Cette requête permet de récupérer une liste d’identifiants d’objets touristiques à partir d’une recherche, trié par date d’ouverture.\r\n\r\n/v002/agenda/simple/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"dateDebut\":\"{YYYY-MM-DD}\",\"dateFin\":\"{YYYY-MM-DD}\"}"
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération d'une liste d'objets",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/agenda/simple/list-objets-touristiques/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"2021-03-15\",\"dateFin\":\"2021-03-20\"}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"agenda",
+												"simple",
+												"list-objets-touristiques",
+												""
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"2021-03-15\",\"dateFin\":\"2021-03-20\"}"
+												}
+											]
+										},
+										"description": "Cette requête permet de récupérer une liste d’objets touristiques à partir d’une recherche, trié par date d’ouverture.\r\n\r\n/v002/agenda/simple/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"{YYYY-MM-DD}\",\"dateFin\":\"{YYYY-MM-DD}\"}"
+									},
+									"response": []
+								}
+							],
+							"description": "En mode simple, les objets touristiques retournés sont automatiquement triés par date de début de l’évènement."
+						},
+						{
+							"name": "Mode Avancé",
+							"item": [
+								{
+									"name": "Récupération d'une liste d'ids",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/agenda/detaille/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateDebut\":\"2021-03-15\",\"dateFin\":\"2021-03-20\"}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"agenda",
+												"detaille",
+												"list-identifiants",
+												""
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateDebut\":\"2021-03-15\",\"dateFin\":\"2021-03-20\"}"
+												}
+											]
+										},
+										"description": "Cette requête permet de récupérer des listes d’identifiants par jour d’ouverture à partir d’une recherche.\r\n\r\n/v002/agenda/detaille/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"dateDebut\":\"{YYYY-MM-DD}\",\"dateFin\":\"{YYYY-MM-DD}\"}"
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération d'une liste d'objets",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/agenda/detaille/list-objets-touristiques/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"2021-03-15\",\"dateFin\":\"2021-03-20\"}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"agenda",
+												"detaille",
+												"list-objets-touristiques",
+												""
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"2021-03-15\",\"dateFin\":\"2021-03-20\"}"
+												}
+											]
+										},
+										"description": "Cette requête permet de récupérer des listes d’objets touristiques par jour d’ouverture à partir d’une recherche.\r\n\r\n/v002/agenda/detaille/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"{YYYY-MM-DD}\",\"dateFin\":\"{YYYY-MM-DD}\"}"
+									},
+									"response": []
+								}
+							],
+							"description": "Les objets sont regroupés par date d’évènement. Un objet touristique qui se déroule sur plusieurs journées est listé plusieurs fois dans le résultat (une fois pour chaque jour d’ouverture)"
+						}
+					],
+					"description": "Ces services fonctionnent de manière similaire aux services de recherche d’objets touristiques précédents. Seuls les objets de type « Fête et manifestation » et « Activité » sont pris en compte par ce type de recherche."
+				},
+				{
+					"name": "Consultation du référentiel",
+					"item": [
+						{
+							"name": "Récupération de communes (avec ids)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/v002/referentiel/communes/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"communeIds\":[14762,28713]}",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"v002",
+										"referentiel",
+										"communes",
+										""
+									],
+									"query": [
+										{
+											"key": "query",
+											"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"communeIds\":[14762,28713]}"
+										}
+									]
+								},
+								"description": "Requête qui permet de récupérer des communes à partir d'identifiants \r\n\r\n/v002/referentiel/communes/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"communeIds\":[XXX, ..., YYY]}"
+							},
+							"response": []
+						},
+						{
+							"name": "Récupération de communes (avec codeINSEE)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/v002/referentiel/communes/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"codesInsee\":[\"69275\",\"69388\"]}",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"v002",
+										"referentiel",
+										"communes",
+										""
+									],
+									"query": [
+										{
+											"key": "query",
+											"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"codesInsee\":[\"69275\",\"69388\"]}"
+										}
+									]
+								},
+								"description": "Requête qui permet de récupérer des communes à partir de code INSEE (disponnible ici : http://www.insee.fr/fr/methodes/nomenclatures/cog/)\r\n\r\n/v002/referentiel/communes/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"codesInsee\":[{\"XXX\", ..., \"YYY\"}]}"
+							},
+							"response": []
+						},
+						{
+							"name": "Récupération d'éléments de référence",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/v002/referentiel/elements-reference/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"elementReferenceIds\":[2,118,2338]}",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"v002",
+										"referentiel",
+										"elements-reference",
+										""
+									],
+									"query": [
+										{
+											"key": "query",
+											"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"elementReferenceIds\":[2,118,2338]}"
+										}
+									]
+								},
+								"description": "Cette requête permet de récupérer des éléments de référence en fonction de leur id.\r\n\r\n/v002/referentiel/elements-reference/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"elementReferenceIds\":[{X, ..., Y}]}"
+							},
+							"response": []
+						},
+						{
+							"name": "Récupération de critères internes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/v002/referentiel/criteres-internes/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"critereInterneIds\":[3401,5387]}",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"v002",
+										"referentiel",
+										"criteres-internes",
+										""
+									],
+									"query": [
+										{
+											"key": "query",
+											"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"critereInterneIds\":[3401,5387]}"
+										}
+									]
+								},
+								"description": "Cette requête permet de récupérer des critères internes en fonction de leur id.\r\n\r\nOù trouver l’information sur l'id : dans le menu Diffuser > Outils développeur > Référentiel > Critères internes ou dans les fichiers d’export.\r\n\r\n/v002/referentiel/criteres-internes/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"critereInterneIds\":[{X, ..., Y}]}"
+							},
+							"response": []
+						},
+						{
+							"name": "Récupération de sellections ",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/v002/referentiel/selections/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"selectionIds\":[{{selectionIds}}]}",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"v002",
+										"referentiel",
+										"selections",
+										""
+									],
+									"query": [
+										{
+											"key": "query",
+											"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"selectionIds\":[{{selectionIds}}]}"
+										}
+									]
+								},
+								"description": "Cette requête permet de récupérer des selections à partir de leur id\r\n\r\n/v002/referentiel/selections/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"selectionIds\":[{selectionIds}]}"
+							},
+							"response": []
+						},
+						{
+							"name": "Récupération de sélection par objet touristique",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/v002/referentiel/selections-par-objet/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"referenceIds\":[5148473]}",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"v002",
+										"referentiel",
+										"selections-par-objet",
+										""
+									],
+									"query": [
+										{
+											"key": "query",
+											"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"referenceIds\":[5148473]}"
+										}
+									]
+								},
+								"description": "Cette requête permet de récupérer des sélections en fonction des id des objets qu'elles contiennent.\r\n\r\n/v002/referentiel/selections-par-objet/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"referenceIds\":[{X, ..., Y}]}"
+							},
+							"response": []
+						}
+					],
+					"description": "Ces services sont à votre disposition pour récupérer les éléments du référentiel."
+				},
+				{
+					"name": "Consultation des membres",
+					"item": [
+						{
+							"name": "Récupération d'un membre à partir de son id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/v002/membre/get-by-id/1157?apiKey={{apiKey}}&projetId={{projetId}}",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"v002",
+										"membre",
+										"get-by-id",
+										"1157"
+									],
+									"query": [
+										{
+											"key": "apiKey",
+											"value": "{{apiKey}}"
+										},
+										{
+											"key": "projetId",
+											"value": "{{projetId}}"
+										}
+									]
+								},
+								"description": "Cette requête permet de récupérer un membre à partir de son id"
+							},
+							"response": []
+						},
+						{
+							"name": "Recherche d'un membre",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/v002/membre/get-membres?query={\"projetId\":{{projetId}},\"apiKey\":\"{{apiKey}}\",\"filter\":{\"idProjet\":\"{{projetId}}\"}}",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"v002",
+										"membre",
+										"get-membres"
+									],
+									"query": [
+										{
+											"key": "query",
+											"value": "{\"projetId\":{{projetId}},\"apiKey\":\"{{apiKey}}\",\"filter\":{\"idProjet\":\"{{projetId}}\"}}"
+										}
+									]
+								},
+								"description": "Cette requête permet de rechercher un membre en focntion de filtres."
+							},
+							"response": []
+						}
+					],
+					"description": "Ces services ne sont accessibles qu’avec des niveaux de droits élevés. Merci de nous consulter pour tout besoin.\r\nCes services sont à votre disposition pour récupérer les membres."
+				},
+				{
+					"name": "Consulatation des utilisateurs",
+					"item": [
+						{
+							"name": "Récupération d'un utilisateur (id)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/v002/utilisateur/get-by-id/123?projetId={{projetId}}&apiKey={{apiKey}}",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"v002",
+										"utilisateur",
+										"get-by-id",
+										"123"
+									],
+									"query": [
+										{
+											"key": "projetId",
+											"value": "{{projetId}}"
+										},
+										{
+											"key": "apiKey",
+											"value": "{{apiKey}}"
+										}
+									]
+								},
+								"description": "Cette requête permet de récupérer un utilisateur à partir de son id.\r\n\r\n/v002/utilisateur/get-by-id/{id}?&apiKey={apiKey}&projetId={projetId}"
+							},
+							"response": []
+						},
+						{
+							"name": "Récupération d'un utilisateur (adresse email)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/v002/utilisateur/get-by-mail/maxime.berger@apidae-tourisme.com?projetId={{projetId}}&apiKey={{apiKey}}",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"v002",
+										"utilisateur",
+										"get-by-mail",
+										"maxime.berger@apidae-tourisme.com"
+									],
+									"query": [
+										{
+											"key": "projetId",
+											"value": "{{projetId}}"
+										},
+										{
+											"key": "apiKey",
+											"value": "{{apiKey}}"
+										}
+									]
+								},
+								"description": "Cette requête permet de récupérer un utilisateur à partir de son adresse email.\r\n\r\n/v002/utilisateur/get-by-mail/{eMail}?&apiKey={apiKey}&projetId={projetId}"
+							},
+							"response": []
+						},
+						{
+							"name": "Récupération des utilisateurs d'un membre",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/v002/utilisateur/get-by-membre/1157?projetId={{projetId}}&apiKey={{apiKey}}",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"v002",
+										"utilisateur",
+										"get-by-membre",
+										"1157"
+									],
+									"query": [
+										{
+											"key": "projetId",
+											"value": "{{projetId}}"
+										},
+										{
+											"key": "apiKey",
+											"value": "{{apiKey}}"
+										}
+									]
+								},
+								"description": "Cette requête permet de récupérer la liste des utilisateurs d’un membre.\r\n\r\n/v002/utilisateur/get-by-membre/{membre_id}?&apiKey={apiKey}&projetId={projetId}"
+							},
+							"response": []
+						},
+						{
+							"name": "Récupération de la liste complète des utilisateurs",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/v002/utilisateur/get-all-utilisateurs?projetId={{projetId}}&apiKey={{apiKey}}",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"v002",
+										"utilisateur",
+										"get-all-utilisateurs"
+									],
+									"query": [
+										{
+											"key": "projetId",
+											"value": "{{projetId}}"
+										},
+										{
+											"key": "apiKey",
+											"value": "{{apiKey}}"
+										}
+									]
+								},
+								"description": "Cette requête permet de récupérer la liste complète des utilisateurs.\r\n\r\n/v002/utilisateur/get-all-utilisateurs?projetId={projetId}&apiKey={apiKey}"
+							},
+							"response": []
+						}
+					],
+					"description": "Ces services ne sont accessibles qu’avec des niveaux de droits élevés. Merci de nous consulter pour tout besoin.\r\nCes services sont à votre disposition pour récupérer les utilisateurs."
+				},
+				{
+					"name": "Multi-horaires",
+					"item": [
+						{
+							"name": "Récupération des périodes d'ouverture (id)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{MULTI-HORAIRE_ENDPOINT}}?id=\"19798757\"",
+									"host": [
+										"{{MULTI-HORAIRE_ENDPOINT}}"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "\"19798757\""
+										}
+									]
+								},
+								"description": "Cette requête permet de récupérer les périodes d'ouvertures d'un objet touristiques à partir de son id.\r\n\r\nhttps://api.apihours.apidae-tourisme.com/apidae_period?id=\"XXX\" avec XXX l'identifiant technique de la période (disponnible avec le responseField : ouverture.periodesOuvertures.identifiantTechnique)"
+							},
+							"response": []
+						},
+						{
+							"name": "Récupération des périodes d'ouverture (ids)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{MULTI-HORAIRE_ENDPOINT}}?ids=[\"19798757\",\"19522902\"]",
+									"host": [
+										"{{MULTI-HORAIRE_ENDPOINT}}"
+									],
+									"query": [
+										{
+											"key": "ids",
+											"value": "[\"19798757\",\"19522902\"]"
+										}
+									]
+								},
+								"description": "Cette requête permet de récupérer les périodes d'ouvertures d'un objet touristiques à partir de son id.\r\n\r\nhttps://api.apihours.apidae-tourisme.com/apidae_period?ids=[\"XXX\", ..., \"YYY\"] avec XXX l'identifiant technique de la période (disponnible avec le responseField : ouverture.periodesOuvertures.identifiantTechnique)"
+							},
+							"response": []
+						}
+					],
+					"description": "Le multi-horaires est un bloc métier permettant de détailler plus précisément les périodes d’ouvertures d’une offre touristique en spécifiant des tranches horaires."
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "SSO",
+			"item": [
+				{
+					"name": "Permalink",
+					"item": [
+						{
+							"name": "Consultation d'un objet touristique",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "accessTokenUrl",
+											"value": "http://api.apidae-tourisme.com/oauth/token",
+											"type": "string"
+										},
+										{
+											"key": "clientId",
+											"value": "{{client_id}}",
+											"type": "string"
+										},
+										{
+											"key": "clientSecret",
+											"value": "{{secret}}",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "useBrowser",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "https://oauth.pstmn.io/v1/callback",
+											"type": "string"
+										},
+										{
+											"key": "authUrl",
+											"value": "http://base.apidae-tourisme.com/oauth/authorize",
+											"type": "string"
+										},
+										{
+											"key": "scope",
+											"value": "sso",
+											"type": "string"
+										},
+										{
+											"key": "tokenName",
+											"value": "Token_SSO",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"type": "string"
+										},
+										{
+											"key": "client_authentication",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://base.apidae-tourisme.com/permalink/consulter/objet-touristique/5045803?aspect=ete",
+									"protocol": "https",
+									"host": [
+										"base",
+										"apidae-tourisme",
+										"com"
+									],
+									"path": [
+										"permalink",
+										"consulter",
+										"objet-touristique",
+										"5045803"
+									],
+									"query": [
+										{
+											"key": "aspect",
+											"value": "ete"
+										}
+									]
+								},
+								"description": "Cette requête affiche une page de consultation de l’objet touristique. {id} est l’identifiant numérique de l’objet ; {aspect} est facultatif et correspond au nom de l’aspect (en minuscule : ete, hiver, tourisme-affaires, …).\r\n\r\nhttps://base.apidae-tourisme.com/permalink/consulter/objet-touristique/{id}?aspect={aspect}"
+							},
+							"response": []
+						},
+						{
+							"name": "Gestion d'un objet touristique",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "accessTokenUrl",
+											"value": "http://api.apidae-tourisme.com/oauth/token",
+											"type": "string"
+										},
+										{
+											"key": "clientId",
+											"value": "{{client_id}}",
+											"type": "string"
+										},
+										{
+											"key": "clientSecret",
+											"value": "{{secret}}",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "useBrowser",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "https://oauth.pstmn.io/v1/callback",
+											"type": "string"
+										},
+										{
+											"key": "authUrl",
+											"value": "http://base.apidae-tourisme.com/oauth/authorize",
+											"type": "string"
+										},
+										{
+											"key": "scope",
+											"value": "sso",
+											"type": "string"
+										},
+										{
+											"key": "tokenName",
+											"value": "Token_SSO",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"type": "string"
+										},
+										{
+											"key": "client_authentication",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://base.apidae-tourisme.com/permalink/gerer/objet-touristique/5045803?aspect=ete",
+									"protocol": "https",
+									"host": [
+										"base",
+										"apidae-tourisme",
+										"com"
+									],
+									"path": [
+										"permalink",
+										"gerer",
+										"objet-touristique",
+										"5045803"
+									],
+									"query": [
+										{
+											"key": "aspect",
+											"value": "ete"
+										}
+									]
+								},
+								"description": "Cette requête permet d'afficher une page de gestion (affichage typé formulaire) de l’objet touristique. {id} est l’identifiant numérique de l’objet ; {aspect} est facultatif et correspond au nom de l’aspect (en minuscule : ete, hiver, tourisme-affaires, …).\r\n\r\nhttps://base.apidae-tourisme.com/permalink/gerer/objet-touristique/{id}?aspect={aspect}"
+							},
+							"response": []
+						},
+						{
+							"name": "Affichage du profil utilisateur",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "accessTokenUrl",
+											"value": "http://api.apidae-tourisme.com/oauth/token",
+											"type": "string"
+										},
+										{
+											"key": "clientId",
+											"value": "{{client_id}}",
+											"type": "string"
+										},
+										{
+											"key": "clientSecret",
+											"value": "{{secret}}",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "useBrowser",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "https://oauth.pstmn.io/v1/callback",
+											"type": "string"
+										},
+										{
+											"key": "authUrl",
+											"value": "http://base.apidae-tourisme.com/oauth/authorize",
+											"type": "string"
+										},
+										{
+											"key": "scope",
+											"value": "sso",
+											"type": "string"
+										},
+										{
+											"key": "tokenName",
+											"value": "Token_SSO",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"type": "string"
+										},
+										{
+											"key": "client_authentication",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://base.apidae-tourisme.com/permalink/utilisateur/mon-profil",
+									"protocol": "https",
+									"host": [
+										"base",
+										"apidae-tourisme",
+										"com"
+									],
+									"path": [
+										"permalink",
+										"utilisateur",
+										"mon-profil"
+									]
+								},
+								"description": "Cette requête permet d'afficher la page de profil de l’utilisateur connecté.\r\n\r\nhttps://base.apidae-tourisme.com/permalink/utilisateur/mon-profil"
+							},
+							"response": []
+						},
+						{
+							"name": "Récupération du profil utilisateur (id)",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "accessTokenUrl",
+											"value": "http://api.apidae-tourisme.com/oauth/token",
+											"type": "string"
+										},
+										{
+											"key": "clientId",
+											"value": "{{client_id}}",
+											"type": "string"
+										},
+										{
+											"key": "clientSecret",
+											"value": "{{secret}}",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "useBrowser",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "https://oauth.pstmn.io/v1/callback",
+											"type": "string"
+										},
+										{
+											"key": "authUrl",
+											"value": "http://base.apidae-tourisme.com/oauth/authorize",
+											"type": "string"
+										},
+										{
+											"key": "scope",
+											"value": "sso",
+											"type": "string"
+										},
+										{
+											"key": "tokenName",
+											"value": "Token_SSO",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"type": "string"
+										},
+										{
+											"key": "client_authentication",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://base.apidae-tourisme.com/permalink/echanger/utilisateur/profil/{{client_id}}",
+									"protocol": "https",
+									"host": [
+										"base",
+										"apidae-tourisme",
+										"com"
+									],
+									"path": [
+										"permalink",
+										"echanger",
+										"utilisateur",
+										"profil",
+										"{{client_id}}"
+									]
+								},
+								"description": "Cette requête permet d'afficher la page de profil de l’utilisateur désigné par l’identifiant {id}\r\n\r\nhttps://base.apidae-tourisme.com/permalink/echanger/utilisateur/profil/{id}"
+							},
+							"response": []
+						}
+					],
+					"description": "Des liens « permalinks » vous permettent d’insérer dans vos sites des liens vers les fiches objets ou d’autres éléments de la base Apidae"
+				},
+				{
+					"name": "Récupération du profil de l'utilisateur",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "accessTokenUrl",
+									"value": "http://api.apidae-tourisme.com/oauth/token",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{client_id}}",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "{{secret}}",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "useBrowser",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https://oauth.pstmn.io/v1/callback",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "http://base.apidae-tourisme.com/oauth/authorize",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "sso",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "Token_SSO",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "authorization_code",
+									"type": "string"
+								},
+								{
+									"key": "client_authentication",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_ENDPOINT}}/v002/sso/utilisateur/profil",
+							"host": [
+								"{{API_ENDPOINT}}"
+							],
+							"path": [
+								"v002",
+								"sso",
+								"utilisateur",
+								"profil"
+							]
+						},
+						"description": "Renvoi les informations du profil de l’utilisateur authentifié.\r\n\r\nhttp://api.apidae-tourisme.com/api/v002/sso/utilisateur/profil"
+					},
+					"response": []
+				},
+				{
+					"name": "Consultation d'autorisation de modification d'un objet",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "accessTokenUrl",
+									"value": "http://api.apidae-tourisme.com/oauth/token",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{client_id}}",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "{{secret}}",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "useBrowser",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https://oauth.pstmn.io/v1/callback",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "http://base.apidae-tourisme.com/oauth/authorize",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "sso",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "Token_SSO",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "authorization_code",
+									"type": "string"
+								},
+								{
+									"key": "client_authentication",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_ENDPOINT}}/v002/sso/utilisateur/autorisation/objet-touristique/modification/5045803",
+							"host": [
+								"{{API_ENDPOINT}}"
+							],
+							"path": [
+								"v002",
+								"sso",
+								"utilisateur",
+								"autorisation",
+								"objet-touristique",
+								"modification",
+								"5045803"
+							]
+						},
+						"description": "Cette requête permet de savoir si un utilisateur peut ou non modifier un objet touristique en passant son id. L’authentification est faite par SSO (voir la doc SSO)\r\n\r\n3 valeurs possibles :\r\n\r\n* MODIFICATION_POSSIBLE : si l’objet touristique peut actuellement être modifié par l’utilisateur.\r\n* VERROUILLE : si l’objet touristique est actuellement en cours de modification.\r\n* NON_DISPONIBLE : si l’utilisateur n’est pas autorisé à réaliser de modifications sur cet objet.\r\n\r\nhttp://api.apidae-tourisme.com/api/v002/sso/utilisateur/autorisation/objet-touristique/modification/{id}"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "API d'écriture",
+			"item": [
+				{
+					"name": "Création",
+					"item": [
+						{
+							"name": "Création d'un objet (simple)",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "tokenType",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "tokenName",
+											"value": "Token_Ecriture",
+											"type": "string"
+										},
+										{
+											"key": "accessTokenUrl",
+											"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
+											"type": "string"
+										},
+										{
+											"key": "clientSecret",
+											"value": "{{secret_ecriture}}",
+											"type": "string"
+										},
+										{
+											"key": "clientId",
+											"value": "{{client_id_ecriture}}",
+											"type": "string"
+										},
+										{
+											"key": "scope",
+											"value": "api_ecriture",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "string"
+										},
+										{
+											"key": "useBrowser",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "https://oauth.pstmn.io/v1/callback",
+											"type": "string"
+										},
+										{
+											"key": "authUrl",
+											"value": "http://base.apidae-tourisme.com/oauth/authorize",
+											"type": "string"
+										},
+										{
+											"key": "client_authentication",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "mode",
+											"value": "CREATION",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "EQUIPEMENT",
+											"type": "text"
+										},
+										{
+											"key": "root",
+											"value": "{ \"type\" : \"EQUIPEMENT\", \"nom\" : { \"libelleFr\" : \"Nouvel équipement\", \"libelleEn\" : \"New equipment\" } }",
+											"type": "text"
+										},
+										{
+											"key": "fields",
+											"value": "[\"root\"]",
+											"type": "text"
+										},
+										{
+											"key": "root.fieldList",
+											"value": "[\"nom\"]",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_ENDPOINT}}v002/ecriture/",
+									"host": [
+										"{{API_ENDPOINT}}v002"
+									],
+									"path": [
+										"ecriture",
+										""
+									]
+								},
+								"description": "Cette requête permet de créer un objet touristique.\r\n\r\nv002/ecriture/"
+							},
+							"response": []
+						},
+						{
+							"name": "Création d'un objet (multimedia)",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "tokenType",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "tokenName",
+											"value": "Token_Ecriture",
+											"type": "string"
+										},
+										{
+											"key": "accessTokenUrl",
+											"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
+											"type": "string"
+										},
+										{
+											"key": "clientSecret",
+											"value": "{{secret_ecriture}}",
+											"type": "string"
+										},
+										{
+											"key": "clientId",
+											"value": "{{client_id_ecriture}}",
+											"type": "string"
+										},
+										{
+											"key": "scope",
+											"value": "api_ecriture",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "string"
+										},
+										{
+											"key": "useBrowser",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "https://oauth.pstmn.io/v1/callback",
+											"type": "string"
+										},
+										{
+											"key": "authUrl",
+											"value": "http://base.apidae-tourisme.com/oauth/authorize",
+											"type": "string"
+										},
+										{
+											"key": "client_authentication",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "mode",
+											"value": "CREATION",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "EQUIPEMENT",
+											"type": "text"
+										},
+										{
+											"key": "root",
+											"value": "{ \"type\" : \"EQUIPEMENT\", \"nom\" : { \"libelleFr\" : \"Nouvel équipement\", \"libelleEn\" : \"New equipment\" },\"illustrations\":[{\"link\":false,\"type\":\"IMAGE\",\"traductionFichiers\":[{\"locale\":\"fr\",\"url\":\"MULTIMEDIA#illustration-1\"}]}] }",
+											"type": "text"
+										},
+										{
+											"key": "fields",
+											"value": "[\"root\"]",
+											"type": "text"
+										},
+										{
+											"key": "root.fieldList",
+											"value": "[\"nom\",\"illustrations\"]",
+											"type": "text"
+										},
+										{
+											"key": "multimedia.illustration-1",
+											"type": "file",
+											"src": "/C:/Users/MaximeBerger/Downloads/loutre-1-085135.jpg"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_ENDPOINT}}v002/ecriture/",
+									"host": [
+										"{{API_ENDPOINT}}v002"
+									],
+									"path": [
+										"ecriture",
+										""
+									]
+								},
+								"description": "Cette requête permet de créer un objet touristique.\r\n\r\nv002/ecriture/"
+							},
+							"response": []
+						},
+						{
+							"name": "Création d'un objet (sans verification)",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "tokenType",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "tokenName",
+											"value": "Token_Ecriture",
+											"type": "string"
+										},
+										{
+											"key": "accessTokenUrl",
+											"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
+											"type": "string"
+										},
+										{
+											"key": "clientSecret",
+											"value": "{{secret_ecriture}}",
+											"type": "string"
+										},
+										{
+											"key": "clientId",
+											"value": "{{client_id_ecriture}}",
+											"type": "string"
+										},
+										{
+											"key": "scope",
+											"value": "api_ecriture",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "string"
+										},
+										{
+											"key": "useBrowser",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "https://oauth.pstmn.io/v1/callback",
+											"type": "string"
+										},
+										{
+											"key": "authUrl",
+											"value": "http://base.apidae-tourisme.com/oauth/authorize",
+											"type": "string"
+										},
+										{
+											"key": "client_authentication",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "mode",
+											"value": "CREATION",
+											"type": "text"
+										},
+										{
+											"key": "skipValidation",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "EQUIPEMENT",
+											"type": "text"
+										},
+										{
+											"key": "root",
+											"value": "{ \"type\" : \"EQUIPEMENT\", \"nom\" : { \"libelleFr\" : \"Nouvel équipement bis\", \"libelleEn\" : \"New equipment bis\" },\"localisation\":{\"adresse\":{\"codePostal\":\"37278\",\"commune\":{\"id\":14707}}} }",
+											"type": "text"
+										},
+										{
+											"key": "fields",
+											"value": "[\"root\"]",
+											"type": "text"
+										},
+										{
+											"key": "root.fieldList",
+											"value": "[\"nom\",\"localisation.adresse.codePostal\",\"localisation.adresse.commune\"]",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_ENDPOINT}}v002/ecriture/",
+									"host": [
+										"{{API_ENDPOINT}}v002"
+									],
+									"path": [
+										"ecriture",
+										""
+									]
+								},
+								"description": "Cette requête permet de créer un objet touristique.\r\n\r\nv002/ecriture/"
+							},
+							"response": []
+						},
+						{
+							"name": "Création d'un objet (avec aspect)",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "tokenType",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "tokenName",
+											"value": "Token_Ecriture",
+											"type": "string"
+										},
+										{
+											"key": "accessTokenUrl",
+											"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
+											"type": "string"
+										},
+										{
+											"key": "clientSecret",
+											"value": "{{secret_ecriture}}",
+											"type": "string"
+										},
+										{
+											"key": "clientId",
+											"value": "{{client_id_ecriture}}",
+											"type": "string"
+										},
+										{
+											"key": "scope",
+											"value": "api_ecriture",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "string"
+										},
+										{
+											"key": "useBrowser",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "https://oauth.pstmn.io/v1/callback",
+											"type": "string"
+										},
+										{
+											"key": "authUrl",
+											"value": "http://base.apidae-tourisme.com/oauth/authorize",
+											"type": "string"
+										},
+										{
+											"key": "client_authentication",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "mode",
+											"value": "CREATION",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "EQUIPEMENT",
+											"type": "text"
+										},
+										{
+											"key": "root",
+											"value": "{ \"type\" : \"EQUIPEMENT\", \"nom\" : { \"libelleFr\" : \"Nouvel équipement ter\", \"libelleEn\" : \"New equipment ter\" } }",
+											"type": "text"
+										},
+										{
+											"key": "fields",
+											"value": "[\"root\", \"aspect.HIVER.root\"]",
+											"type": "text"
+										},
+										{
+											"key": "root.fieldList",
+											"value": "[\"nom\"]",
+											"type": "text"
+										},
+										{
+											"key": "aspect.HIVER.root",
+											"value": "{ \"presentation\" : { \"descriptifCourt\" : { \"libelleFr\" : \"Descriptif court HIVER\" } } }",
+											"type": "text"
+										},
+										{
+											"key": "aspect.HIVER.root.fieldList",
+											"value": "[ \"presentation.descriptifCourt\" ]",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_ENDPOINT}}v002/ecriture/",
+									"host": [
+										"{{API_ENDPOINT}}v002"
+									],
+									"path": [
+										"ecriture",
+										""
+									]
+								},
+								"description": "Cette requête permet de créer un objet touristique.\r\n\r\nv002/ecriture/"
+							},
+							"response": []
+						}
+					],
+					"description": "Ces requêtes permettent de créer un objet touristique"
+				},
+				{
+					"name": "Modification",
+					"item": [
+						{
+							"name": "Modification d'un objet (simple)",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "tokenType",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "tokenName",
+											"value": "Token_Ecriture",
+											"type": "string"
+										},
+										{
+											"key": "accessTokenUrl",
+											"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
+											"type": "string"
+										},
+										{
+											"key": "clientSecret",
+											"value": "{{secret_ecriture}}",
+											"type": "string"
+										},
+										{
+											"key": "clientId",
+											"value": "{{client_id_ecriture}}",
+											"type": "string"
+										},
+										{
+											"key": "scope",
+											"value": "api_ecriture",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "string"
+										},
+										{
+											"key": "useBrowser",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "https://oauth.pstmn.io/v1/callback",
+											"type": "string"
+										},
+										{
+											"key": "authUrl",
+											"value": "http://base.apidae-tourisme.com/oauth/authorize",
+											"type": "string"
+										},
+										{
+											"key": "client_authentication",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "mode",
+											"value": "MODIFICATION",
+											"type": "text"
+										},
+										{
+											"key": "id",
+											"value": "4659645",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "EQUIPEMENT",
+											"type": "text"
+										},
+										{
+											"key": "root",
+											"value": "{ \"type\" : \"EQUIPEMENT\", \"nom\" : { \"libelleFr\" : \"Nouvel équipement\", \"libelleEn\" : \"New equipment\" } }",
+											"type": "text"
+										},
+										{
+											"key": "fields",
+											"value": "[\"root\"]",
+											"type": "text"
+										},
+										{
+											"key": "root.fieldList",
+											"value": "[\"nom\"]",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_ENDPOINT}}v002/ecriture/",
+									"host": [
+										"{{API_ENDPOINT}}v002"
+									],
+									"path": [
+										"ecriture",
+										""
+									]
+								},
+								"description": "Cette requête permet de modifier un objet touristique.\r\n\r\nv002/ecriture/"
+							},
+							"response": []
+						},
+						{
+							"name": "Modification d'un objet (sans vérification)",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "tokenType",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "tokenName",
+											"value": "Token_Ecriture",
+											"type": "string"
+										},
+										{
+											"key": "accessTokenUrl",
+											"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
+											"type": "string"
+										},
+										{
+											"key": "clientSecret",
+											"value": "{{secret_ecriture}}",
+											"type": "string"
+										},
+										{
+											"key": "clientId",
+											"value": "{{client_id_ecriture}}",
+											"type": "string"
+										},
+										{
+											"key": "scope",
+											"value": "api_ecriture",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "string"
+										},
+										{
+											"key": "useBrowser",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "https://oauth.pstmn.io/v1/callback",
+											"type": "string"
+										},
+										{
+											"key": "authUrl",
+											"value": "http://base.apidae-tourisme.com/oauth/authorize",
+											"type": "string"
+										},
+										{
+											"key": "client_authentication",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "mode",
+											"value": "MODIFICATION",
+											"type": "text"
+										},
+										{
+											"key": "id",
+											"value": "4687800",
+											"type": "text"
+										},
+										{
+											"key": "skipValidation",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "EQUIPEMENT",
+											"type": "text"
+										},
+										{
+											"key": "root",
+											"value": "{ \"type\" : \"EQUIPEMENT\", \"nom\" : { \"libelleFr\" : \"Nouvel équipement\", \"libelleEn\" : \"New equipment\" } }",
+											"type": "text"
+										},
+										{
+											"key": "fields",
+											"value": "[\"root\"]",
+											"type": "text"
+										},
+										{
+											"key": "root.fieldList",
+											"value": "[\"nom\"]",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_ENDPOINT}}v002/ecriture/",
+									"host": [
+										"{{API_ENDPOINT}}v002"
+									],
+									"path": [
+										"ecriture",
+										""
+									]
+								},
+								"description": "Cette requête permet de modifier un objet touristique.\r\n\r\nv002/ecriture/"
+							},
+							"response": []
+						},
+						{
+							"name": "Modification d'un objet (avec aspect)",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "tokenType",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "tokenName",
+											"value": "Token_Ecriture",
+											"type": "string"
+										},
+										{
+											"key": "accessTokenUrl",
+											"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
+											"type": "string"
+										},
+										{
+											"key": "clientSecret",
+											"value": "{{secret_ecriture}}",
+											"type": "string"
+										},
+										{
+											"key": "clientId",
+											"value": "{{client_id_ecriture}}",
+											"type": "string"
+										},
+										{
+											"key": "scope",
+											"value": "api_ecriture",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "string"
+										},
+										{
+											"key": "useBrowser",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "https://oauth.pstmn.io/v1/callback",
+											"type": "string"
+										},
+										{
+											"key": "authUrl",
+											"value": "http://base.apidae-tourisme.com/oauth/authorize",
+											"type": "string"
+										},
+										{
+											"key": "client_authentication",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "mode",
+											"value": "MODIFICATION",
+											"type": "text"
+										},
+										{
+											"key": "id",
+											"value": "866919",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "HEBERGEMENT_LOCATIF",
+											"type": "text"
+										},
+										{
+											"key": "root",
+											"value": "{ \"type\" : \"HEBERGEMENT_LOCATIF\", \"nom\" : { \"libelleFr\" : \"Nouvel équipement\", \"libelleEn\" : \"New equipment\" } }",
+											"type": "text"
+										},
+										{
+											"key": "fields",
+											"value": "[\"root\", \"aspect.HIVER.root\"]",
+											"type": "text"
+										},
+										{
+											"key": "root.fieldList",
+											"value": "[\"nom\"]",
+											"type": "text"
+										},
+										{
+											"key": "aspect.HIVER.root",
+											"value": "{ \"presentation\" : { \"descriptifCourt\" : { \"libelleFr\" : \"Descriptif court HIVER\" } } }",
+											"type": "text"
+										},
+										{
+											"key": "aspect.HIVER.root.fieldList",
+											"value": "[ \"presentation.descriptifCourt\" ]",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_ENDPOINT}}v002/ecriture/",
+									"host": [
+										"{{API_ENDPOINT}}v002"
+									],
+									"path": [
+										"ecriture",
+										""
+									]
+								},
+								"description": "Cette requête permet de modifier un objet touristique.\r\n\r\nv002/ecriture/"
+							},
+							"response": []
+						}
+					],
+					"description": "Ces requêtes permettent de modifier un objet touristique"
+				},
+				{
+					"name": "Suppression",
+					"item": [
+						{
+							"name": "Suppression d'un objet (simple)",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "tokenType",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "tokenName",
+											"value": "Token_Ecriture",
+											"type": "string"
+										},
+										{
+											"key": "accessTokenUrl",
+											"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
+											"type": "string"
+										},
+										{
+											"key": "clientSecret",
+											"value": "{{secret_ecriture}}",
+											"type": "string"
+										},
+										{
+											"key": "clientId",
+											"value": "{{client_id_ecriture}}",
+											"type": "string"
+										},
+										{
+											"key": "scope",
+											"value": "api_ecriture",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "string"
+										},
+										{
+											"key": "useBrowser",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "https://oauth.pstmn.io/v1/callback",
+											"type": "string"
+										},
+										{
+											"key": "authUrl",
+											"value": "http://base.apidae-tourisme.com/oauth/authorize",
+											"type": "string"
+										},
+										{
+											"key": "client_authentication",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "mode",
+											"value": "DEMANDE_SUPPRESSION",
+											"type": "text"
+										},
+										{
+											"key": "id",
+											"value": "4659645",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_ENDPOINT}}v002/ecriture/",
+									"host": [
+										"{{API_ENDPOINT}}v002"
+									],
+									"path": [
+										"ecriture",
+										""
+									]
+								},
+								"description": "Cette requête permet de modifier un objet touristique.\r\n\r\nv002/ecriture/"
+							},
+							"response": []
+						}
+					],
+					"description": "Ces requêtes permettent de supprimer un objet touristique."
+				},
+				{
+					"name": "Ajout de critères internes",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenType",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "accessToken",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "Token_Ecriture",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "{{secret_ecriture}}",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{client_id_ecriture}}",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "api_ecriture",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "useBrowser",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https://oauth.pstmn.io/v1/callback",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "http://base.apidae-tourisme.com/oauth/authorize",
+									"type": "string"
+								},
+								{
+									"key": "client_authentication",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "criteres",
+									"value": "{\n    \"id\": [4659645, 4687800],\n    \"criteresInternesAAjouter\": [11576]\n}",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_ENDPOINT}}v002/criteres-internes/",
+							"host": [
+								"{{API_ENDPOINT}}v002"
+							],
+							"path": [
+								"criteres-internes",
+								""
+							]
+						},
+						"description": "Cette requête permet d'utiliser l’API de gestion des critères internes pour en ajouter une liste de critères internes à une liste d’objets touristiques.\r\n\r\nv002/criteres-internes/"
+					},
+					"response": []
+				},
+				{
+					"name": "Suppression de critères internes",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "clientSecret",
+									"value": "8Y3CkA1mpxwZI3h",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "7d52fafe-7cc4-4c9f-831a-8cbec4b92c5e",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "http://api.apidae-tourisme.com/oauth/token",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "api_metadonnees",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "Token_Ecriture",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "useBrowser",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https://oauth.pstmn.io/v1/callback",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "http://base.apidae-tourisme.com/oauth/authorize",
+									"type": "string"
+								},
+								{
+									"key": "client_authentication",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "criteres",
+									"value": "{\n    \"id\": [4659645, 4687800],\n    \"criteresInternesASupprimer\" : [11576]\n}",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_ENDPOINT}}/v002/criteres-internes/",
+							"host": [
+								"{{API_ENDPOINT}}"
+							],
+							"path": [
+								"v002",
+								"criteres-internes",
+								""
+							]
+						},
+						"description": "Cette requête permet d'utiliser l’API de gestion des critères internes pour en supprimer une liste de critères internes à une liste d’objets touristiques.\r\n\r\nv002/criteres-internes/"
+					},
+					"response": []
+				},
+				{
+					"name": "Ajout de descriptifs",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenName",
+									"value": "Token_Ecriture",
+									"type": "string"
+								},
+								{
+									"key": "client_authentication",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "{{secret_ecriture}}",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{client_id_ecriture}}",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "api_ecriture",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "useBrowser",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https://oauth.pstmn.io/v1/callback",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "http://base.apidae-tourisme.com/oauth/authorize",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "donneesPrivees",
+									"value": "{\n    \"objetsTouristiques\": [\n        {\n            \"id\": 4659645,\n            \"donneesPrivees\": [\n                {\n                    \"nomTechnique\": \"1157_Vg_testDescriptifPrive-1\",\n                    \"descriptif\": {\n                        \"libelleFr\": \"Descriptif_1\",\n                        \"libelleEn\": \"Content_1\"\n                    }\n                },\n                {\n                    \"nomTechnique\": \"1157_TitreCoupDeCoeur\",\n                    \"descriptif\": {\n                        \"libelleFr\": \"Descriptif_2\",\n                        \"libelleEn\": \"Content_2\"\n                    }\n                }\n            ]\n        },\n        {\n            \"id\": 4687800,\n            \"donneesPrivees\": [\n                {\n                    \"nomTechnique\": \"1157_Vg_testDescriptifPrive-1\",\n                    \"descriptif\": {\n                        \"libelleFr\": \"Descriptif_3\",\n                        \"libelleEn\": \"Content_3\"\n                    }\n                }\n            ]\n        }\n    ]\n}",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_ENDPOINT}}v002/donnees-privees/",
+							"host": [
+								"{{API_ENDPOINT}}v002"
+							],
+							"path": [
+								"donnees-privees",
+								""
+							]
+						},
+						"description": "Cette requête permet d'utiliser l’API de gestion des descriptifs privés pour ajouter une liste de descriptifs à une liste d’objets touristiques. Ces descriptifs sont des libellés multilingues rattachés à des champs privés. La liste des champs disponibles pour un membre est gérée par les administrateurs de ce membre.\r\n\r\nv002/donnees-privees/"
+					},
+					"response": []
+				},
+				{
+					"name": "Suppression de descriptifs",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "clientSecret",
+									"value": "{{secret_ecriture}}",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{client_id_ecriture}}",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "api_ecriture",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "Token_Ecriture",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "useBrowser",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https://oauth.pstmn.io/v1/callback",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "http://base.apidae-tourisme.com/oauth/authorize",
+									"type": "string"
+								},
+								{
+									"key": "client_authentication",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "donneesPrivees",
+									"value": "{\n    \"objetsTouristiques\": [\n        {\n            \"id\": 4659645,\n            \"donneesPrivees\": [\n                {\n                    \"nomTechnique\": \"1157_Vg_testDescriptifPrive-1\"\n                }\n            ]\n        }\n    ]\n}",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_ENDPOINT}}v002/donnees-privees/",
+							"host": [
+								"{{API_ENDPOINT}}v002"
+							],
+							"path": [
+								"donnees-privees",
+								""
+							]
+						},
+						"description": "Cette requête permet d'utiliser l’API de gestion des descriptifs privés pour supprimer une liste de descriptifs à une liste d’objets touristiques. Ces descriptifs sont des libellés multilingues rattachés à des champs privés. La liste des champs disponibles pour un membre est gérée par les administrateurs de ce membre.\r\n\r\nv002/donnees-privees/"
+					},
+					"response": []
+				}
+			],
+			"description": "Les API d’écriture permettent de créer, modifier et supprimer des fiches Apidae via l’appel à un service REST. Pour faciliter son utilisation, l’API repose sur le même format d’objet JSON que les flux de diffusion API et Exports. L’idée étant de pouvoir réutiliser au maximum les informations renvoyées par ces deux outils pour modifier les informations d’une fiche."
+		},
+		{
+			"name": "API métadonnées",
+			"item": [
+				{
+					"name": "Insertion ",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "scope",
+									"value": "api_metadonnees",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "{{secret_meta}}",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{client_id_meta}}",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "Token_Meta",
+									"type": "string"
+								},
+								{
+									"key": "tokenType",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "useBrowser",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https://oauth.pstmn.io/v1/callback",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "http://base.apidae-tourisme.com/oauth/authorize",
+									"type": "string"
+								},
+								{
+									"key": "client_authentication",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "general",
+									"value": "{\"infoGenerale\":\"Ceci est une information a portée générale\"}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{API_ENDPOINT}}v002/metadata/4640947/apidae-interne/",
+							"host": [
+								"{{API_ENDPOINT}}v002"
+							],
+							"path": [
+								"metadata",
+								"4640947",
+								"apidae-interne",
+								""
+							]
+						},
+						"description": "Cette requête permet d'insèrer ou de modifier des métadonnées sur un objet, pour un noeud donné. Attention, pour cette méthode, les métadonnées doivent être passées dans des paramètres de la requête. Voir le format des données.\r\n\r\n/v002/metadata/{referenceId}/{nodeId}\r\n\r\n- referenceId, paramètre obligatoire. Un entier, l’id de l’objet touristique portant les métadonnées.\r\n- nodeId, paramètre obligatoire. Une chaîne de caractères, le nom de votre noeud fournissant les métadonnées."
+					},
+					"response": []
+				},
+				{
+					"name": "Lecture",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "scope",
+									"value": "api_metadonnees",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "{{secret_meta}}",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{client_id_meta}}",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "Token_Meta",
+									"type": "string"
+								},
+								{
+									"key": "tokenType",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "useBrowser",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https://oauth.pstmn.io/v1/callback",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "http://base.apidae-tourisme.com/oauth/authorize",
+									"type": "string"
+								},
+								{
+									"key": "client_authentication",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{API_ENDPOINT}}v002/metadata/4640947/apidae-interne/",
+							"host": [
+								"{{API_ENDPOINT}}v002"
+							],
+							"path": [
+								"metadata",
+								"4640947",
+								"apidae-interne",
+								""
+							]
+						},
+						"description": "Cette requête permet de récupèrer des métadonnées sur un objet et pour un noeud donné. Si aucune cible n’est spécifiée, retourne l’intégralité des métadonnées de l’objet pour ce noeud.\r\n\r\nv002/metadata/{referenceId}/{nodeId}/{targetType}/{targetId}\r\n\r\n- referenceId, paramètre obligatoire. Un entier, l’id de l’objet touristique portant les métadonnées.\r\n- nodeId, paramètre obligatoire. Une chaîne de caractères, le nom de votre noeud fournissant les métadonnées.\r\n- targetType, paramètre facultatif. Une chaîne de caractères, le type de la cible parmi general, membre, projet.\r\n- targetId, paramètre facultatif. Un entier, l’id du membre ou du projet cible."
+					},
+					"response": []
+				},
+				{
+					"name": "Suppression",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "scope",
+									"value": "api_metadonnees",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "{{secret_meta}}",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{client_id_meta}}",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "Token_Meta",
+									"type": "string"
+								},
+								{
+									"key": "tokenType",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "useBrowser",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https://oauth.pstmn.io/v1/callback",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "http://base.apidae-tourisme.com/oauth/authorize",
+									"type": "string"
+								},
+								{
+									"key": "client_authentication",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{API_ENDPOINT}}v002/metadata/4640947/apidae-interne/",
+							"host": [
+								"{{API_ENDPOINT}}v002"
+							],
+							"path": [
+								"metadata",
+								"4640947",
+								"apidae-interne",
+								""
+							]
+						},
+						"description": "Cette requête permet de supprimer une ou plusieurs métadonnées sur une objet et pour un noeud donné. Si aucune cible n’est spécifiée, elle supprime l’intégralité des métadonnées de l’objet pour ce noeud.\r\n\r\n/v002/metadata/{referenceId}/{nodeId}/{targetType}/{targetId}\r\n\r\n- referenceId, paramètre obligatoire. Un entier, l’id de l’objet touristique portant les métadonnées.\r\n- nodeId, paramètre obligatoire. Une chaîne de caractères, le nom de votre noeud fournissant les métadonnées.\r\n- targetType, paramètre facultatif. Une chaîne de caractères, le type de la cible parmi general, membre, projet.\r\n- targetId, paramètre facultatif. Un entier, l’id du membre ou du projet cible."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Appel de notification",
+			"item": [
+				{
+					"name": "Notification Apidae-Export",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "projetId",
+									"value": "3030",
+									"type": "text"
+								},
+								{
+									"key": "statut",
+									"value": "SUCCESS",
+									"type": "text"
+								},
+								{
+									"key": "ponctuel",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "reinitialisation",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "urlRecuperation",
+									"value": "http://export.apidae-tourisme.com/exports/3126_20190215-0156_H8zWaD.zip",
+									"type": "text"
+								},
+								{
+									"key": "urlConfirmation",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/apidae/apidae-exports/notifications.php",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"apidae",
+								"apidae-exports",
+								"notifications.php"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "MULTI-HORAIRE_ENDPOINT",
+			"value": "https://api.apihours.apidae-tourisme.com/apidae_period"
+		},
+		{
+			"key": "apiKey",
+			"value": "XXX"
+		},
+		{
+			"key": "projetId",
+			"value": "XXX"
+		},
+		{
+			"key": "selectionIds",
+			"value": "XXX"
+		},
+		{
+			"key": "client_id",
+			"value": "XXX"
+		},
+		{
+			"key": "secret",
+			"value": "XXX"
+		},
+		{
+			"key": "access_token",
+			"value": "XXX"
+		},
+		{
+			"key": "client_id_ecriture",
+			"value": "XXX"
+		},
+		{
+			"key": "secret_ecriture",
+			"value": "XXX"
+		},
+		{
+			"key": "access_token_ecriture",
+			"value": "XXX"
+		},
+		{
+			"key": "client_id_meta",
+			"value": "XXX"
+		},
+		{
+			"key": "secret_meta",
+			"value": "XXX"
+		},
+		{
+			"key": "access_token_meta",
+			"value": "XXX"
+		}
+	]
+}
