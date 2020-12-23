@@ -23,11 +23,11 @@ Postman utilise des tokens pour gérer les autorisations, notamment avec le syst
 
 1. Dans l'onglet de la requête sélectionner Authorization et choisir le type OAuth 2.0
 
-   <img src="OAuth_1.png" alt="OAuth_1" style="zoom:25%;" />
+   <img src="screenshot/OAuth_1.png" alt="OAuth_1" style="zoom:25%;" />
 
 2. **Si** vous possédez déjà un Access Token vous aurez juste à sélectionner **Manage Tokens** dans le menu déroulant de la partie *Curent Token* puis de copier/coller l'*access token* dans le champs associé. **Sinon** vous devrez utiliser la deuxième partie de la fenêtre *Configure New Token*
 
-   <img src="OAuth_2.png" alt="OAuth_1" style="zoom:25%;" />
+   <img src="screenshot/OAuth_2.png" alt="OAuth_1" style="zoom:25%;" />
 
 3. Pour remplir les champs de la partie *Configure New Token* il vous suffit de suivre ces points :
 
@@ -39,13 +39,13 @@ Postman utilise des tokens pour gérer les autorisations, notamment avec le syst
    - Ici le **Scope** correspond à la valeur *sso*
    - Le champ **State** est facultatif
 
-<img src="OAuth_3.png" alt="OAuth_1" style="zoom:25%;" />
+<img src="screenshot/OAuth_3.png" alt="OAuth_1" style="zoom:25%;" />
 
 4. Pour finir il vous suffit de cliquer sur **Get New Access Token** pour générer le nouveau token. Vous avez maintenant votre token mais il y a problème avec Postman donc vous aurez juste à copier/coller l'*access token* dans la partie **Current Token**.
 
-<img src="OAuth_4.1.png" alt="OAuth_1" style="zoom:47%;" />
+<img src="screenshot/OAuth_4.1.png" alt="OAuth_1" style="zoom:47%;" />
 
-<img src="OAuth_4.2.png" alt="OAuth_1" style="zoom:25%;" />
+<img src="screenshot/OAuth_4.2.png" alt="OAuth_1" style="zoom:25%;" />
 
 
 
@@ -57,11 +57,11 @@ Postman utilise des tokens pour gérer les autorisations, notamment avec le syst
 
 1. Dans l'onglet de la requête sélectionner Authorization et choisir le type OAuth 2.0
 
-   <img src="OAuth_1.png" alt="OAuth_1" style="zoom:25%;" />
+   <img src="screenshot/OAuth_1.png" alt="OAuth_1" style="zoom:25%;" />
 
 2. **Si** vous possédez déjà un Access Token vous aurez juste à sélectionner **Manage Tokens** dans le menu déroulant de la partie *Curent Token* puis de copier/coller l'*access token* dans le champs associé. **Sinon** vous devrez utiliser la deuxième partie de la fenêtre *Configure New Token*
 
-   <img src="OAuth_2.png" alt="OAuth_1" style="zoom:25%;" />
+   <img src="screenshot/OAuth_2.png" alt="OAuth_1" style="zoom:25%;" />
 
 3. Pour remplir les champs de la partie *Configure New Token* il vous suffit de suivre ces points :
 
@@ -70,13 +70,13 @@ Postman utilise des tokens pour gérer les autorisations, notamment avec le syst
    - Le **Client ID** est disponible au niveau de votre projet et le **Client secret** à du vous être envoyé à l'adresse mail spécifiée lors de la création du client.
    - Ici le **Scope** correspond à la valeur `api_ecriture` ou `api_metadonnees`
 
-   <img src="OAuth_3bis.png" alt="OAuth_1" style="zoom:25%;" />
+   <img src="screenshot/OAuth_3bis.png" alt="OAuth_1" style="zoom:25%;" />
 
 4. Pour finir il vous suffit de cliquer sur **Get New Access Token** pour générer le nouveau token. Vous avez maintenant votre token mais il y a problème avec Postman donc vous aurez juste à copier/coller l'*access token* dans la partie **Current Token**.
 
-<img src="OAuth_4.1.png" alt="OAuth_1" style="zoom:47%;" />
+<img src="screenshot/OAuth_4.1.png" alt="OAuth_1" style="zoom:47%;" />
 
-<img src="OAuth_4.2.png" alt="OAuth_1" style="zoom:25%;" />
+<img src="screenshot/OAuth_4.2.png" alt="OAuth_1" style="zoom:25%;" />
 
 
 

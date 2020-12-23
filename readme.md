@@ -1,10 +1,10 @@
 # Collection Postman de requête Apidae
 
-Cette collection Postman permet de se familiariser avec les différents types d'API que propose Apidae au travers d'exemples variés.
+Cette collection Postman (https://www.postman.com/) permet de se familiariser avec les différents types d'API que propose Apidae au travers d'exemples variés. Il existe également deux environnements : la **Production** et la **Pré-production**. Pour les APIs de consultation ainsi que le SSO vous pouvez utiliser l'environnement de `Production` mais pour les autres type de requête il faut utiliser celui de `Pré-Production`.
 
 ### La liste des exemples disponibles
 
-- **APIs de consultation**
+- **APIs de consultation** (http://dev.apidae-tourisme.com/fr/documentation-technique/v2/api-de-diffusion)
   * Recherche d'un objet touristique
   * Recherche d'objets touristiques
   * Agenda
@@ -13,18 +13,18 @@ Cette collection Postman permet de se familiariser avec les différents types d'
   * Consultation des utilisateurs
   * Multi-horaires
 
-- **Single Sign On (SSO)**
-- **APIs d'écriture**
+- **Single Sign On (SSO)** (http://dev.apidae-tourisme.com/fr/documentation-technique/v2/oauth/single-sign-on)
+- **APIs d'écriture** (http://dev.apidae-tourisme.com/fr/documentation-technique/v2/api-decriture)
   * Création
   * Modification
   * Suppression
 
-- **APIs de métadonnées**
-- **Appel de notifications**
+- **APIs de métadonnées** (http://dev.apidae-tourisme.com/fr/documentation-technique/v2/metadonnees)
+- **Appel de notifications** 
 
 ##### <span style="color:red"> ATTENTION BUG : </span>
 
-La suppression de descriptifs n'est pas encore fonctionnelle. 
+La suppression de descriptif n'est pas encore fonctionnelle. 
 
 ### Liste des paramètres
 
@@ -32,11 +32,11 @@ Avant toute utilisation de la collection, il est important de renseigner les var
 
 1. Survolez votre collection avec le pointeur, puis cliquez sur les 3 points et enfin sélectionnez `edit` dans le menu déroulant
 
-<img src="variable_1.PNG" style="zoom: 33%;" />
+<img src="screenshot/variable_1.PNG" style="zoom: 33%;" />
 
 2. Rendez vous dans l'onglet `Variables` (1) puis dans un second temps vous n'aurez plus qu'à remplacer les `XXX` par vos valeurs (2)
 
-   <img src="variables_2.png" style="zoom: 33%;" />
+   <img src="screenshot/variables_2.png" style="zoom: 33%;" />
 
 **apiKey**: La clé d'API
 
@@ -48,27 +48,25 @@ Avant toute utilisation de la collection, il est important de renseigner les var
 
 **secret**: Le secret associé au client précédemment renseigné
 
-**access_token**: Le token utilisé pour configurer l'`Authorization`(voir documentation sur la configuration des tokens)
+**access_token**: Le token utilisé pour configurer l'`Authorization`(voir documentation sur la configuration des tokens <a href="./Documentation_Token_Postman.md">ici</a>)
 
 **client_id_ecriture**: L'identifiant du client utilisé pour un projet de type `API d'écriture`
 
 **secret_ecriture**: Le secret associé au client précédemment renseigné
 
-**access_token_ecriture**: Le token utilisé pour configurer l'`Authorization`(voir documentation sur la configuration des tokens)
+**access_token_ecriture**: Le token utilisé pour configurer l'`Authorization`(voir documentation sur la configuration des tokens <a href="./Documentation_Token_Postman.md">ici</a>)
 
 **client_id_meta**: L'identifiant du client utilisé pour un projet de type `API de métadonnées`
 
 **secret_meta**: Le secret associé au client précédemment renseigné
 
-**access_token_meta**: Le token utilisé pour configurer l'`Authorization`(voir documentation sur la configuration des tokens)
+**access_token_meta**: Le token utilisé pour configurer l'`Authorization`(voir documentation sur la configuration des tokens <a href="./Documentation_Token_Postman.md">ici</a>)
 
 
 
 ##### <span style="color:red">ATTENTION : </span>
 
-Il existe deux environnements : la **Production** et la **Pré-production**. Pour les APIs de consultation ainsi que le SSO vous pouvez utiliser l'environnement de `Production` mais pour les autres type de requête il faut utiliser celui de `Pré-Production`.
-
-Enfin il peut y avoir des problèmes avec les identifiants des objets déjà présents car vos projets ne les possèdent pas forcément en cas de problème il vous suffit de remplacer cet id par un des votre.
+Il peut y avoir des problèmes avec les identifiants des objets déjà présents car vos projets ne les possèdent pas forcément en cas de problème il vous suffit de remplacer cet id par un des votre.
 
 **Toutes les requêtes sont documentées sur leur utilité ou encore comment les construire avec des paramètres remplaçables en cas de d'incompréhension ou si vous cherchez des informations complémentaires vous pouvez vous rendre sur le site d'aide aux développeurs de la plateforme : http://dev.apidae-tourisme.com/fr/documentation-technique/v2**
 
