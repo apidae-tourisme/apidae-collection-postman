@@ -1,6 +1,6 @@
 # Collection Postman de requêtes Apidae
 
-Cette collection [Postman](https://www.postman.com/) permet de se familiariser avec les différents types d'API que propose [Apidae](https://www.apidae-tourisme.com/) au travers d'exemples variés. Il existe également deux environnements : la **Production** et la **Pré-production**. Pour les APIs de consultation ainsi que le SSO vous pouvez utiliser l'environnement de `Production` mais pour les autres type de requête il faut utiliser celui de `Pré-Production`.
+Cette collection [Postman](https://www.postman.com/) permet de se familiariser avec les différents types d'API que propose [Apidae](https://www.apidae-tourisme.com/) au travers d'exemples variés. Il existe également deux environnements : la **Production** et la **Recette**. Pour les APIs de consultation ainsi que le SSO vous pouvez utiliser l'environnement de `Apidae-Production` mais pour les autres type de requête il faut utiliser celui de `Apidae-Recette`.
 
 ### La liste des exemples disponibles
 
