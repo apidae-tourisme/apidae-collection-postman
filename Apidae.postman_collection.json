@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "ba59078a-c13d-4bfd-aa27-1efa0630ce2c",
-		"name": "Production.postman_collection",
+		"_postman_id": "7b8efb42-96b5-4e80-9725-11253bdd6a9c",
+		"name": "Apidae",
 		"description": "Cette collection regroupe les différentes requête disponnible sur la plateforme apidae",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -10,7 +10,94 @@
 			"name": "API de consultation",
 			"item": [
 				{
-					"name": "Recherche d'un objet touristique",
+					"name": "Lecture des sélections d'un projet",
+					"item": [
+						{
+							"name": "Récupération des sélections d'un projet",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/v002/referentiel/selections/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\"}",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"v002",
+										"referentiel",
+										"selections",
+										""
+									],
+									"query": [
+										{
+											"key": "query",
+											"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\"}"
+										}
+									]
+								},
+								"description": "Cette requête permet de récupérer toutes les selections d'un projet\r\n\r\n/v002/referentiel/selections/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\"}"
+							},
+							"response": []
+						},
+						{
+							"name": "Récupération de sélections",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/v002/referentiel/selections/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"selectionIds\":[{{selectionIds}}]}",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"v002",
+										"referentiel",
+										"selections",
+										""
+									],
+									"query": [
+										{
+											"key": "query",
+											"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"selectionIds\":[{{selectionIds}}]}"
+										}
+									]
+								},
+								"description": "Cette requête permet de récupérer une ou plusieurs selections à partir de leurs id\r\n\r\n/v002/referentiel/selections/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"selectionIds\":[{selectionIds}]}"
+							},
+							"response": []
+						},
+						{
+							"name": "Récupération de sélection par objet touristique",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/v002/referentiel/selections-par-objet/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"referenceIds\":[5148473]}",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"v002",
+										"referentiel",
+										"selections-par-objet",
+										""
+									],
+									"query": [
+										{
+											"key": "query",
+											"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"referenceIds\":[5148473]}"
+										}
+									]
+								},
+								"description": "Cette requête permet de récupérer des sélections en fonction des id des objets qu'elles contiennent.\r\n\r\n/v002/referentiel/selections-par-objet/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"referenceIds\":[{X, ..., Y}]}"
+							},
+							"response": []
+						}
+					],
+					"description": "Ces requêtes permettent de lire les sélections présentes sur un projet"
+				},
+				{
+					"name": "Lecture d'un objet touristique",
 					"item": [
 						{
 							"name": "Récupération par Id",
@@ -50,7 +137,7 @@
 										}
 									]
 								},
-								"description": "Cette requête permet de récupérer les informations d’un seul objet touristique de manière simple en passant son ID.\r\n\r\n/v002/objet-touristique/get-by-id/{id}?&apiKey={apiKey}&projetId={projetId}\r\n\r\nATTENTION a bien changer l'id de l'exemple car les filtres de votre projet ne contiennent pas forcéement l'objet touristique associé."
+								"description": "Cette requête permet de récupérer les informations d’un seul objet touristique de manière simple en passant son Id.\r\n\r\n/v002/objet-touristique/get-by-id/{id}?&apiKey={apiKey}&projetId={projetId}\r\n\r\n**ATTENTION** a bien changer l'id de l'exemple car les filtres de votre projet ne contiennent pas forcément l'objet touristique associé."
 							},
 							"response": []
 						},
@@ -89,7 +176,7 @@
 										}
 									]
 								},
-								"description": "Cette requête permet de récupérer un objet touristique à partir de son identifier.\r\n\r\n/v002/objet-touristique/get-by-identifier/{identifier}?&apiKey={apiKey}&projetId={projetId}\r\n\r\nATTENTION a bien changer l'identifier (disponnible avec la requête ci-avant) de l'exemple car les filtres de votre projet ne contiennent pas forcéement l'objet touristique associé."
+								"description": "Cette requête permet de récupérer un objet touristique à partir de son identifier.\r\n\r\n/v002/objet-touristique/get-by-identifier/{identifier}?&apiKey={apiKey}&projetId={projetId}\r\n\r\n**ATTENTION** a bien changer l'identifier (disponnible avec la requête ci-avant) de l'exemple car les filtres de votre projet ne contiennent pas forcément l'objet touristique associé."
 							},
 							"response": []
 						}
@@ -171,7 +258,7 @@
 												}
 											]
 										},
-										"description": "Cette requête permet d'effectuer une recherche restreinte à une zone géographique, il faut déterminer le centre du cercle à utiliser ainsi que le rayon du cercle(en mètre).\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"responseFields\":{responseFields},\"center\":{\"type\":\"Point\",\"coordinates\":[{longitude},{latitude}]},\"radius\":\"{rayon}\"}"
+										"description": "Cette requête permet d'effectuer une recherche restreinte à une zone géographique, il faut déterminer le centre du cercle à utiliser ainsi que le rayon du cercle (en mètres).\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"responseFields\":{responseFields},\"center\":{\"type\":\"Point\",\"coordinates\":[{longitude},{latitude}]},\"radius\":\"{rayon}\"}"
 									},
 									"response": []
 								},
@@ -924,7 +1011,7 @@
 												}
 											]
 										},
-										"description": "Cette requête permet de récupérer une liste d’identifiants d’objets touristiques à partir d’une recherche, trié par date d’ouverture.\r\n\r\n/v002/agenda/simple/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"dateDebut\":\"{YYYY-MM-DD}\",\"dateFin\":\"{YYYY-MM-DD}\"}"
+										"description": "Cette requête permet de récupérer une liste d’identifiants d’objets touristiques à partir d’une recherche, triée par date d’ouverture.\r\n\r\n/v002/agenda/simple/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"dateDebut\":\"{YYYY-MM-DD}\",\"dateFin\":\"{YYYY-MM-DD}\"}"
 									},
 									"response": []
 								},
@@ -952,7 +1039,7 @@
 												}
 											]
 										},
-										"description": "Cette requête permet de récupérer une liste d’objets touristiques à partir d’une recherche, trié par date d’ouverture.\r\n\r\n/v002/agenda/simple/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"{YYYY-MM-DD}\",\"dateFin\":\"{YYYY-MM-DD}\"}"
+										"description": "Cette requête permet de récupérer une liste d’objets touristiques à partir d’une recherche, triée par date d’ouverture.\r\n\r\n/v002/agenda/simple/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"{YYYY-MM-DD}\",\"dateFin\":\"{YYYY-MM-DD}\"}"
 									},
 									"response": []
 								}
@@ -1077,7 +1164,7 @@
 										}
 									]
 								},
-								"description": "Requête qui permet de récupérer des communes à partir de code INSEE (disponnible ici : http://www.insee.fr/fr/methodes/nomenclatures/cog/)\r\n\r\n/v002/referentiel/communes/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"codesInsee\":[{\"XXX\", ..., \"YYY\"}]}"
+								"description": "Requête qui permet de récupérer des communes à partir de code INSEE (disponnible ici : http://www.insee.fr/fr/methodes/nomenclatures/cog/) ou dans les fichiers d’export.\r\n\r\n/v002/referentiel/communes/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"codesInsee\":[{\"XXX\", ..., \"YYY\"}]}"
 							},
 							"response": []
 						},
@@ -1131,12 +1218,12 @@
 										}
 									]
 								},
-								"description": "Cette requête permet de récupérer des critères internes en fonction de leur id.\r\n\r\nOù trouver l’information sur l'id : dans le menu Diffuser > Outils développeur > Référentiel > Critères internes ou dans les fichiers d’export.\r\n\r\n/v002/referentiel/criteres-internes/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"critereInterneIds\":[{X, ..., Y}]}"
+								"description": "Cette requête permet de récupérer des critères internes en fonction de leur id.\r\n\r\nOù trouver l’information sur l'id : dans le menu [Diffuser > Outils développeur > Référentiel > Critères internes](https://base.apidae-tourisme.com/diffuser/dev-tools/referentiel/criteres-internes/) ou dans les fichiers d’export.\r\n\r\n/v002/referentiel/criteres-internes/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"critereInterneIds\":[{X, ..., Y}]}"
 							},
 							"response": []
 						},
 						{
-							"name": "Récupération de sellections ",
+							"name": "Récupération de sélections",
 							"request": {
 								"method": "GET",
 								"header": [],
@@ -1158,7 +1245,7 @@
 										}
 									]
 								},
-								"description": "Cette requête permet de récupérer des selections à partir de leur id\r\n\r\n/v002/referentiel/selections/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"selectionIds\":[{selectionIds}]}"
+								"description": "Cette requête permet de récupérer une ou plusieurs selections à partir de leurs id\r\n\r\n/v002/referentiel/selections/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"selectionIds\":[{selectionIds}]}"
 							},
 							"response": []
 						},
@@ -1222,7 +1309,7 @@
 										}
 									]
 								},
-								"description": "Cette requête permet de récupérer un membre à partir de son id"
+								"description": "Cette requête permet de récupérer un membre à partir de son id.\n\n**Attention** : la consultation des membres nécessite des droits très spécifiques sur la plateforme, cette fonction n'est pas ouverte à tous."
 							},
 							"response": []
 						},
@@ -1248,7 +1335,7 @@
 										}
 									]
 								},
-								"description": "Cette requête permet de rechercher un membre en focntion de filtres."
+								"description": "Cette requête permet de rechercher un membre en fonction de filtres.\n\n**Attention** : la consultation des membres nécessite des droits très spécifiques sur la plateforme, cette fonction n'est pas ouverte à tous."
 							},
 							"response": []
 						}
@@ -1256,7 +1343,7 @@
 					"description": "Ces services ne sont accessibles qu’avec des niveaux de droits élevés. Merci de nous consulter pour tout besoin.\r\nCes services sont à votre disposition pour récupérer les membres."
 				},
 				{
-					"name": "Consulatation des utilisateurs",
+					"name": "Consultation des utilisateurs",
 					"item": [
 						{
 							"name": "Récupération d'un utilisateur (id)",
@@ -1285,7 +1372,7 @@
 										}
 									]
 								},
-								"description": "Cette requête permet de récupérer un utilisateur à partir de son id.\r\n\r\n/v002/utilisateur/get-by-id/{id}?&apiKey={apiKey}&projetId={projetId}"
+								"description": "Cette requête permet de récupérer un utilisateur à partir de son id.\r\n\r\n/v002/utilisateur/get-by-id/{id}?&apiKey={apiKey}&projetId={projetId}\r\n\r\n\r\n**Attention** : la consultation des membres nécessite des droits très spécifiques sur la plateforme, cette fonction n'est pas ouverte à tous."
 							},
 							"response": []
 						},
@@ -1316,7 +1403,7 @@
 										}
 									]
 								},
-								"description": "Cette requête permet de récupérer un utilisateur à partir de son adresse email.\r\n\r\n/v002/utilisateur/get-by-mail/{eMail}?&apiKey={apiKey}&projetId={projetId}"
+								"description": "Cette requête permet de récupérer un utilisateur à partir de son adresse email.\r\n\r\n/v002/utilisateur/get-by-mail/{eMail}?&apiKey={apiKey}&projetId={projetId}\r\n\r\n\r\n**Attention** : la consultation des membres nécessite des droits très spécifiques sur la plateforme, cette fonction n'est pas ouverte à tous."
 							},
 							"response": []
 						},
@@ -1347,7 +1434,7 @@
 										}
 									]
 								},
-								"description": "Cette requête permet de récupérer la liste des utilisateurs d’un membre.\r\n\r\n/v002/utilisateur/get-by-membre/{membre_id}?&apiKey={apiKey}&projetId={projetId}"
+								"description": "Cette requête permet de récupérer la liste des utilisateurs d’un membre.\r\n\r\n/v002/utilisateur/get-by-membre/{membre_id}?&apiKey={apiKey}&projetId={projetId}\r\n\r\n\r\n**Attention** : la consultation des membres nécessite des droits très spécifiques sur la plateforme, cette fonction n'est pas ouverte à tous."
 							},
 							"response": []
 						},
@@ -1377,12 +1464,32 @@
 										}
 									]
 								},
-								"description": "Cette requête permet de récupérer la liste complète des utilisateurs.\r\n\r\n/v002/utilisateur/get-all-utilisateurs?projetId={projetId}&apiKey={apiKey}"
+								"description": "Cette requête permet de récupérer la liste complète des utilisateurs.\r\n\r\n/v002/utilisateur/get-all-utilisateurs?projetId={projetId}&apiKey={apiKey}\r\n\r\n\r\n**Attention** : la consultation des membres nécessite des droits très spécifiques sur la plateforme, cette fonction n'est pas ouverte à tous."
 							},
 							"response": []
 						}
 					],
-					"description": "Ces services ne sont accessibles qu’avec des niveaux de droits élevés. Merci de nous consulter pour tout besoin.\r\nCes services sont à votre disposition pour récupérer les utilisateurs."
+					"description": "Ces services ne sont accessibles qu’avec des niveaux de droits élevés. Merci de nous consulter pour tout besoin.\r\nCes services sont à votre disposition pour récupérer les utilisateurs.",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
 				},
 				{
 					"name": "Multi-horaires",
@@ -1888,7 +1995,7 @@
 								"profil"
 							]
 						},
-						"description": "Renvoi les informations du profil de l’utilisateur authentifié.\r\n\r\nhttp://api.apidae-tourisme.com/api/v002/sso/utilisateur/profil"
+						"description": "Renvoi les informations du profil de l’utilisateur authentifié.\r\n\r\nhttps://api.apidae-tourisme.com/api/v002/sso/utilisateur/profil"
 					},
 					"response": []
 				},
@@ -1972,7 +2079,7 @@
 								"5045803"
 							]
 						},
-						"description": "Cette requête permet de savoir si un utilisateur peut ou non modifier un objet touristique en passant son id. L’authentification est faite par SSO (voir la doc SSO)\r\n\r\n3 valeurs possibles :\r\n\r\n* MODIFICATION_POSSIBLE : si l’objet touristique peut actuellement être modifié par l’utilisateur.\r\n* VERROUILLE : si l’objet touristique est actuellement en cours de modification.\r\n* NON_DISPONIBLE : si l’utilisateur n’est pas autorisé à réaliser de modifications sur cet objet.\r\n\r\nhttp://api.apidae-tourisme.com/api/v002/sso/utilisateur/autorisation/objet-touristique/modification/{id}"
+						"description": "Cette requête permet de savoir si un utilisateur peut ou non modifier un objet touristique en passant son id. L’authentification est faite par SSO (voir la doc SSO)\r\n\r\n3 valeurs possibles :\r\n\r\n* MODIFICATION_POSSIBLE : si l’objet touristique peut actuellement être modifié par l’utilisateur.\r\n* VERROUILLE : si l’objet touristique est actuellement en cours de modification.\r\n* NON_DISPONIBLE : si l’utilisateur n’est pas autorisé à réaliser de modifications sur cet objet.\r\n\r\nhttps://api.apidae-tourisme.com/api/v002/sso/utilisateur/autorisation/objet-touristique/modification/{id}"
 					},
 					"response": []
 				}
@@ -2979,7 +3086,7 @@
 										""
 									]
 								},
-								"description": "Cette requête permet de modifier un objet touristique.\r\n\r\nv002/ecriture/"
+								"description": "Cette requête permet de demander la suppression d'un objet touristique.\r\n\r\n**NB :** La suppression d'un objet touristique est **toujours soumise à validation** manuelle de son propriétaire.\r\n\r\nv002/ecriture/"
 							},
 							"response": []
 						}
@@ -3097,7 +3204,7 @@
 								""
 							]
 						},
-						"description": "Cette requête permet d'utiliser l’API de gestion des critères internes pour en ajouter une liste de critères internes à une liste d’objets touristiques.\r\n\r\nv002/criteres-internes/"
+						"description": "Cette requête permet d'utiliser l’API de gestion des critères internes pour ajouter un ou plusieurs critères internes à un ou plusieurs objets touristiques.\r\n\r\nv002/criteres-internes/"
 					},
 					"response": []
 				},
@@ -3192,7 +3299,7 @@
 								""
 							]
 						},
-						"description": "Cette requête permet d'utiliser l’API de gestion des critères internes pour en supprimer une liste de critères internes à une liste d’objets touristiques.\r\n\r\nv002/criteres-internes/"
+						"description": "Cette requête permet d'utiliser l’API de gestion des critères internes pour supprimer un ou plusieurs critères internes affectés à un ou plusieurs objets touristiques.\r\n\r\n\r\nv002/criteres-internes/"
 					},
 					"response": []
 				},
@@ -3380,7 +3487,7 @@
 								""
 							]
 						},
-						"description": "Cette requête permet d'utiliser l’API de gestion des descriptifs privés pour supprimer une liste de descriptifs à une liste d’objets touristiques. Ces descriptifs sont des libellés multilingues rattachés à des champs privés. La liste des champs disponibles pour un membre est gérée par les administrateurs de ce membre.\r\n\r\nv002/donnees-privees/"
+						"description": "Cette requête permet d'utiliser l’API de gestion des descriptifs privés pour supprimer une liste de descriptifs affectée à une liste d’objets touristiques. Ces descriptifs sont des libellés multilingues rattachés à des champs privés. La liste des champs disponibles pour un membre est gérée par les administrateurs de ce membre.\r\n\r\nv002/donnees-privees/"
 					},
 					"response": []
 				}
@@ -3482,7 +3589,7 @@
 								""
 							]
 						},
-						"description": "Cette requête permet d'insèrer ou de modifier des métadonnées sur un objet, pour un noeud donné. Attention, pour cette méthode, les métadonnées doivent être passées dans des paramètres de la requête. Voir le format des données.\r\n\r\n/v002/metadata/{referenceId}/{nodeId}\r\n\r\n- referenceId, paramètre obligatoire. Un entier, l’id de l’objet touristique portant les métadonnées.\r\n- nodeId, paramètre obligatoire. Une chaîne de caractères, le nom de votre noeud fournissant les métadonnées."
+						"description": "Cette requête permet d'insérer ou de modifier des métadonnées sur un objet, pour un noeud donné. Attention, pour cette méthode, les métadonnées doivent être passées dans des paramètres de la requête. Voir le format des données.\r\n\r\n/v002/metadata/{referenceId}/{nodeId}\r\n\r\n- referenceId, paramètre obligatoire. Un entier, l’id de l’objet touristique portant les métadonnées.\r\n- nodeId, paramètre obligatoire. Une chaîne de caractères, le nom de votre noeud fournissant les métadonnées."
 					},
 					"response": []
 				},
@@ -3658,7 +3765,7 @@
 								""
 							]
 						},
-						"description": "Cette requête permet de supprimer une ou plusieurs métadonnées sur une objet et pour un noeud donné. Si aucune cible n’est spécifiée, elle supprime l’intégralité des métadonnées de l’objet pour ce noeud.\r\n\r\n/v002/metadata/{referenceId}/{nodeId}/{targetType}/{targetId}\r\n\r\n- referenceId, paramètre obligatoire. Un entier, l’id de l’objet touristique portant les métadonnées.\r\n- nodeId, paramètre obligatoire. Une chaîne de caractères, le nom de votre noeud fournissant les métadonnées.\r\n- targetType, paramètre facultatif. Une chaîne de caractères, le type de la cible parmi general, membre, projet.\r\n- targetId, paramètre facultatif. Un entier, l’id du membre ou du projet cible."
+						"description": "Cette requête permet de supprimer une ou plusieurs métadonnées sur un objet et pour un noeud donné. Si aucune cible n’est spécifiée, elle supprime l’intégralité des métadonnées dont vous êtes propriétaire pour l’objet donné.\r\n\r\n/v002/metadata/{referenceId}/{nodeId}/{targetType}/{targetId}\r\n\r\n- referenceId, paramètre obligatoire. Un entier, l’id de l’objet touristique portant les métadonnées.\r\n- nodeId, paramètre obligatoire. Une chaîne de caractères, le nom de votre noeud fournissant les métadonnées.\r\n- targetType, paramètre facultatif. Une chaîne de caractères, le type de la cible parmi general, membre, projet.\r\n- targetId, paramètre facultatif. Un entier, l’id du membre ou du projet cible."
 					},
 					"response": []
 				}
@@ -3725,7 +3832,8 @@
 								"apidae-exports",
 								"notifications.php"
 							]
-						}
+						},
+						"description": "Cette requête concerne [les notifications d'export](http://dev.apidae-tourisme.com/fr/documentation-technique/v2/exports/notificationi-traitement-confirmation) et portera sur un webservice sur l'un de vos serveurs (ou en local) et non pas sur Apidae. \n\nDès qu’un export se termine, avec succès ou en erreur, l’application Apidae peut notifier un web service de votre choix. Pour cela, il faut définir l’URL du web service dans la configuration de l’export.\n\nCette requête simule la réception d'une notification de la plateforme Apidae vers le webservice présent sur votre serveur.\n\nPensez à bien personnaliser l'URL d'appel de la requête."
 					},
 					"response": []
 				}
