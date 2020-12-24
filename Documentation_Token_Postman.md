@@ -4,7 +4,7 @@
 
 Tout d'abord avant de rentrer dans le vif du sujet : il faut dans un premier temps comprendre comment fonctionne l'autorisation.
 
-La première phase consiste à autoriser le client à se connecter au compte de l’utilisateur. Pour cela au fait appel au webservice *authorize*. Une fois l’autorisation accordée, le service redirige l’utilisateur vers la récupération du token se fera via le webservice *token*.
+La première phase consiste à autoriser le client à se connecter au compte de l’utilisateur. Pour cela on fait appel au webservice *authorize*. Une fois l’autorisation accordée, le service redirige l’utilisateur vers la récupération du token se fera via le webservice *token*.
 
 ##### Les informations utiles :
 
@@ -31,7 +31,7 @@ Postman utilise des tokens pour gérer les autorisations, notamment avec le syst
 
 3. Pour remplir les champs de la partie *Configure New Token* il vous suffit de suivre ces points :
 
-   - Sélectionner le **Grant type**: *Authorization Code*
+   - Sélectionner le **Grant type** : *Authorization Code*
    - **Callback URL** l'url spécifié dans le projet dans la case **URLs de redirection autorisées**
    - Vous pouvez cocher la case **Authorize using browser** pour que la page s'ouvre dans votre navigateur plutôt que dans Postman
    - **Auth URL** ainsi que le **Access Token URL** correspondent aux URL renseignées ci-dessus.
@@ -41,7 +41,7 @@ Postman utilise des tokens pour gérer les autorisations, notamment avec le syst
 
 <img src="screenshot/OAuth_3.png" alt="OAuth_1" style="zoom:25%;" />
 
-4. Pour finir il vous suffit de cliquer sur **Get New Access Token** pour générer le nouveau token. Vous avez maintenant votre token mais il y a problème avec Postman donc vous aurez juste à copier/coller l'*access token* dans la partie **Current Token**.
+4. Pour finir il vous suffit de cliquer sur **Get New Access Token** pour générer le nouveau token. Vous disposez maintenant de votre token mais Postman ne le récupère pas automatiquement, il vous faudra copier/coller l'*access token* dans la partie **Current Token**.
 
 <img src="screenshot/OAuth_4.1.png" alt="OAuth_1" style="zoom:47%;" />
 
@@ -51,7 +51,7 @@ Postman utilise des tokens pour gérer les autorisations, notamment avec le syst
 
 5. Et voila vous n'avez plus qu'à envoyer votre requête ! **Attention** il faudra surement rafraichir le token de temps à autre.
 
-### Postman APIs Écriture et Métadonnées
+### Postman API Écriture et Métadonnées
 
 #### 	Configuration
 
@@ -72,7 +72,7 @@ Postman utilise des tokens pour gérer les autorisations, notamment avec le syst
 
    <img src="screenshot/OAuth_3bis.png" alt="OAuth_1" style="zoom:25%;" />
 
-4. Pour finir il vous suffit de cliquer sur **Get New Access Token** pour générer le nouveau token. Vous avez maintenant votre token mais il y a problème avec Postman donc vous aurez juste à copier/coller l'*access token* dans la partie **Current Token**.
+4. Pour finir il vous suffit de cliquer sur **Get New Access Token** pour générer le nouveau token. Vous disposez maintenant de votre token mais Postman ne le récupère pas automatiquement, il vous faudra copier/coller l'*access token* dans la partie **Current Token**.
 
 <img src="screenshot/OAuth_4.1.png" alt="OAuth_1" style="zoom:47%;" />
 
