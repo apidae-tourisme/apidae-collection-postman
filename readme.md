@@ -5,14 +5,15 @@ Cette collection [Postman](https://www.postman.com/) permet de se familiariser a
 ### La liste des exemples disponibles
 
 - **APIs de consultation** - [documentation](http://dev.apidae-tourisme.com/fr/documentation-technique/v2/api-de-diffusion)
-  * Recherche d'un objet touristique
+  * Lecture des sélections d'un projet
+  * Lecture d'un objet touristique
   * Recherche d'objets touristiques
   * Agenda
   * Consultation du référentiel
   * Consultation des membres
   * Consultation des utilisateurs
-  * Multi-horaires
-
+* Multi-horaires
+  
 - **Single Sign On (SSO)** - [documentation](http://dev.apidae-tourisme.com/fr/documentation-technique/v2/oauth/single-sign-on)
 - **APIs d'écriture** - [documentation](http://dev.apidae-tourisme.com/fr/documentation-technique/v2/api-decriture)
   * Création
@@ -20,11 +21,11 @@ Cette collection [Postman](https://www.postman.com/) permet de se familiariser a
   * Suppression
 
 - **APIs de métadonnées** - [documentation](http://dev.apidae-tourisme.com/fr/documentation-technique/v2/metadonnees)
-- **Appel de notifications** - [documentation](http://dev.apidae-tourisme.com/fr/documentation-technique/v2/exports/notificationi-traitement-confirmation)
+- **Appel de notification** - [documentation](http://dev.apidae-tourisme.com/fr/documentation-technique/v2/exports/notificationi-traitement-confirmation)
 
 ##### <span style="color:red"> ATTENTION BUG : </span>
 
-La suppression de descriptif privés n'est pas encore fonctionnelle. 
+La suppression de descriptif privés n'est pas encore fonctionnelle mais le sera très bientôt. 
 
 ### Liste des paramètres
 
@@ -66,7 +67,7 @@ Avant toute utilisation de la collection, il est important de renseigner les var
 
 ##### <span style="color:red">ATTENTION : </span>
 
-Il peut y avoir des problèmes avec les identifiants des objets déjà présents car vos projets ne les possèdent pas forcément en cas de problème il vous suffit de remplacer cet id par un des votre.
+Il peut y avoir des problèmes avec les identifiants des objets déjà présents car vos projets ne les possèdent pas forcément en cas de problème il vous suffit de remplacer cet id par un des votre.m
 
 **Toutes les requêtes sont documentées sur leur utilité et leur construction avec des paramètres remplaçables. En cas de d'incompréhension ou si vous cherchez des informations complémentaires n'hésitez pas à consulter le [site d'aide aux développeurs](http://dev.apidae-tourisme.com/fr/documentation-technique/v2).**
 

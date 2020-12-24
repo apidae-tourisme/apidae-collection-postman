@@ -10,6 +10,10 @@ La première phase consiste à autoriser le client à se connecter au compte de 
 
 - Autorisation URL (Auth URL) : http://base.apidae-tourisme.com/oauth/authorize
 - URL de récupération de token (Access Token URL) : http://api.apidae-tourisme.com/oauth/token
+- Liste des scopes non exhaustive :
+  * `sso`
+  * `api_ecriture`
+  * `api_metadonnees`
 
 ### Postman SSO
 
