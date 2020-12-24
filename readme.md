@@ -1,10 +1,10 @@
 # Collection Postman de requête Apidae
 
-Cette collection Postman (https://www.postman.com/) permet de se familiariser avec les différents types d'API que propose Apidae au travers d'exemples variés. Il existe également deux environnements : la **Production** et la **Pré-production**. Pour les APIs de consultation ainsi que le SSO vous pouvez utiliser l'environnement de `Production` mais pour les autres type de requête il faut utiliser celui de `Pré-Production`.
+Cette collection [Postman](https://www.postman.com/) permet de se familiariser avec les différents types d'API que propose [Apidae](https://www.apidae-tourisme.com/) au travers d'exemples variés. Il existe également deux environnements : la **Production** et la **Pré-production**. Pour les APIs de consultation ainsi que le SSO vous pouvez utiliser l'environnement de `Production` mais pour les autres type de requête il faut utiliser celui de `Pré-Production`.
 
 ### La liste des exemples disponibles
 
-- **APIs de consultation** (http://dev.apidae-tourisme.com/fr/documentation-technique/v2/api-de-diffusion)
+- **APIs de consultation** - [documentation](http://dev.apidae-tourisme.com/fr/documentation-technique/v2/api-de-diffusion)
   * Recherche d'un objet touristique
   * Recherche d'objets touristiques
   * Agenda
@@ -13,18 +13,18 @@ Cette collection Postman (https://www.postman.com/) permet de se familiariser av
   * Consultation des utilisateurs
   * Multi-horaires
 
-- **Single Sign On (SSO)** (http://dev.apidae-tourisme.com/fr/documentation-technique/v2/oauth/single-sign-on)
-- **APIs d'écriture** (http://dev.apidae-tourisme.com/fr/documentation-technique/v2/api-decriture)
+- **Single Sign On (SSO)** - [documentation](http://dev.apidae-tourisme.com/fr/documentation-technique/v2/oauth/single-sign-on)
+- **APIs d'écriture** - [documentation](http://dev.apidae-tourisme.com/fr/documentation-technique/v2/api-decriture)
   * Création
   * Modification
   * Suppression
 
-- **APIs de métadonnées** (http://dev.apidae-tourisme.com/fr/documentation-technique/v2/metadonnees)
-- **Appel de notifications** 
+- **APIs de métadonnées** - [documentation](http://dev.apidae-tourisme.com/fr/documentation-technique/v2/metadonnees)
+- **Appel de notifications** - [documentation](http://dev.apidae-tourisme.com/fr/documentation-technique/v2/exports/notificationi-traitement-confirmation)
 
 ##### <span style="color:red"> ATTENTION BUG : </span>
 
-La suppression de descriptif n'est pas encore fonctionnelle. 
+La suppression de descriptif privés n'est pas encore fonctionnelle. 
 
 ### Liste des paramètres
 
@@ -48,19 +48,19 @@ Avant toute utilisation de la collection, il est important de renseigner les var
 
 **secret**: Le secret associé au client précédemment renseigné
 
-**access_token**: Le token utilisé pour configurer l'`Authorization`(voir documentation sur la configuration des tokens <a href="./Documentation_Token_Postman.md">ici</a>)
+**access_token**: Le token utilisé pour configurer l'`Authorization` ([voir documentation sur la configuration des tokens](./Documentation_Token_Postman.md))
 
 **client_id_ecriture**: L'identifiant du client utilisé pour un projet de type `API d'écriture`
 
 **secret_ecriture**: Le secret associé au client précédemment renseigné
 
-**access_token_ecriture**: Le token utilisé pour configurer l'`Authorization`(voir documentation sur la configuration des tokens <a href="./Documentation_Token_Postman.md">ici</a>)
+**access_token_ecriture**: Le token utilisé pour configurer l'`Authorization` ([voir documentation sur la configuration des tokens](./Documentation_Token_Postman.md))
 
 **client_id_meta**: L'identifiant du client utilisé pour un projet de type `API de métadonnées`
 
 **secret_meta**: Le secret associé au client précédemment renseigné
 
-**access_token_meta**: Le token utilisé pour configurer l'`Authorization`(voir documentation sur la configuration des tokens <a href="./Documentation_Token_Postman.md">ici</a>)
+**access_token_meta**: Le token utilisé pour configurer l'`Authorization` ([voir documentation sur la configuration des tokens](./Documentation_Token_Postman.md))
 
 
 
@@ -68,5 +68,5 @@ Avant toute utilisation de la collection, il est important de renseigner les var
 
 Il peut y avoir des problèmes avec les identifiants des objets déjà présents car vos projets ne les possèdent pas forcément en cas de problème il vous suffit de remplacer cet id par un des votre.
 
-**Toutes les requêtes sont documentées sur leur utilité ou encore comment les construire avec des paramètres remplaçables en cas de d'incompréhension ou si vous cherchez des informations complémentaires vous pouvez vous rendre sur le site d'aide aux développeurs de la plateforme : http://dev.apidae-tourisme.com/fr/documentation-technique/v2**
+**Toutes les requêtes sont documentées sur leur utilité et leur construction avec des paramètres remplaçables. En cas de d'incompréhension ou si vous cherchez des informations complémentaires n'hésitez pas à consulter le [site d'aide aux développeurs](http://dev.apidae-tourisme.com/fr/documentation-technique/v2).**
 
