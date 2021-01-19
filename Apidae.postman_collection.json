@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7b8efb42-96b5-4e80-9725-11253bdd6a9c",
+		"_postman_id": "1c4e54ae-93e2-48c5-9945-0201215005ab",
 		"name": "Apidae",
 		"description": "Cette collection regroupe les différentes requête disponnible sur la plateforme apidae",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -3467,7 +3467,7 @@
 							"formdata": [
 								{
 									"key": "donneesPrivees",
-									"value": "{\n    \"objetsTouristiques\": [\n        {\n            \"id\": 4659645,\n            \"donneesPrivees\": [\n                {\n                    \"nomTechnique\": \"1157_Vg_testDescriptifPrive-1\"\n                }\n            ]\n        }\n    ]\n}",
+									"value": "{\n    \"objetsTouristiques\": [\n        {\n            \"id\": 4659645,\n            \"donneesPriveesASupprimer\": [\n\"1157_Vg_testDescriptifPrive-1\"\n            ]\n        }\n    ]\n}",
 									"type": "text"
 								}
 							],

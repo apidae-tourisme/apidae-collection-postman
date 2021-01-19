@@ -23,9 +23,7 @@ Cette collection [Postman](https://www.postman.com/) permet de se familiariser a
 - **APIs de métadonnées** - [documentation](http://dev.apidae-tourisme.com/fr/documentation-technique/v2/metadonnees)
 - **Appel de notification** - [documentation](http://dev.apidae-tourisme.com/fr/documentation-technique/v2/exports/notificationi-traitement-confirmation)
 
-##### <span style="color:red"> ATTENTION BUG : </span>
 
-La suppression de descriptif privés n'est pas encore fonctionnelle mais le sera très bientôt. 
 
 ### Liste des paramètres
 
