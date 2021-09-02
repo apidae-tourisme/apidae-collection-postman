@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "1c4e54ae-93e2-48c5-9945-0201215005ab",
+		"_postman_id": "4af459f5-7bf8-4231-a743-9ffde5514cc4",
 		"name": "Apidae",
 		"description": "Cette collection regroupe les différentes requête disponnible sur la plateforme apidae",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -2189,12 +2189,7 @@
 											"value": "[\"nom\"]",
 											"type": "text"
 										}
-									],
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
+									]
 								},
 								"url": {
 									"raw": "{{API_ENDPOINT}}v002/ecriture/",
@@ -2313,12 +2308,7 @@
 											"type": "file",
 											"src": "/C:/Users/MaximeBerger/Downloads/loutre-1-085135.jpg"
 										}
-									],
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
+									]
 								},
 								"url": {
 									"raw": "{{API_ENDPOINT}}v002/ecriture/",
@@ -2437,12 +2427,7 @@
 											"value": "[\"nom\",\"localisation.adresse.codePostal\",\"localisation.adresse.commune\"]",
 											"type": "text"
 										}
-									],
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
+									]
 								},
 								"url": {
 									"raw": "{{API_ENDPOINT}}v002/ecriture/",
@@ -2566,12 +2551,7 @@
 											"value": "[ \"presentation.descriptifCourt\" ]",
 											"type": "text"
 										}
-									],
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
+									]
 								},
 								"url": {
 									"raw": "{{API_ENDPOINT}}v002/ecriture/",
@@ -2696,12 +2676,7 @@
 											"value": "[\"nom\"]",
 											"type": "text"
 										}
-									],
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
+									]
 								},
 								"url": {
 									"raw": "{{API_ENDPOINT}}v002/ecriture/",
@@ -2825,12 +2800,7 @@
 											"value": "[\"nom\"]",
 											"type": "text"
 										}
-									],
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
+									]
 								},
 								"url": {
 									"raw": "{{API_ENDPOINT}}v002/ecriture/",
@@ -2959,12 +2929,7 @@
 											"value": "[ \"presentation.descriptifCourt\" ]",
 											"type": "text"
 										}
-									],
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
+									]
 								},
 								"url": {
 									"raw": "{{API_ENDPOINT}}v002/ecriture/",
@@ -3069,12 +3034,7 @@
 											"value": "4659645",
 											"type": "text"
 										}
-									],
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
+									]
 								},
 								"url": {
 									"raw": "{{API_ENDPOINT}}v002/ecriture/",
@@ -3092,6 +3052,191 @@
 						}
 					],
 					"description": "Ces requêtes permettent de supprimer un objet touristique."
+				},
+				{
+					"name": "Autorisation modification",
+					"item": [
+						{
+							"name": "Autorisation modification (sans tokenSSO)",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "scope",
+											"value": "api_ecriture",
+											"type": "string"
+										},
+										{
+											"key": "clientSecret",
+											"value": "{{secret_ecriture}}",
+											"type": "string"
+										},
+										{
+											"key": "clientId",
+											"value": "{{client_id_ecriture}}",
+											"type": "string"
+										},
+										{
+											"key": "tokenName",
+											"value": "Token_Ecriture",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "string"
+										},
+										{
+											"key": "accessTokenUrl",
+											"value": "https://api.apidae-tourisme.com/oauth/token",
+											"type": "string"
+										},
+										{
+											"key": "tokenType",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "useBrowser",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "https://oauth.pstmn.io/v1/callback",
+											"type": "string"
+										},
+										{
+											"key": "authUrl",
+											"value": "http://base.apidae-tourisme.com/oauth/authorize",
+											"type": "string"
+										},
+										{
+											"key": "client_authentication",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/v002/autorisation/objet-touristique/modification/5295065",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"v002",
+										"autorisation",
+										"objet-touristique",
+										"modification",
+										"5295065"
+									]
+								},
+								"description": "### Description\nCette méthode permet de tester avant l’écriture d’une offre si la modification sur l’offre touristique sera possible. Apidae vérifie que le projet d’écriture ou l’utilisateur dispose des droits nécessaires et qu’il n’y a pas de brouillon verrouillé par un autre utilisateur.\n\n/v002/autorisation/objet-touristique/modification/{reference_id}\n\n**Ici le tokenSSO est absent, la permission est déterminée à partir de l’utilisateur associé au projet en écriture.**\n\n### Formats de sortie\n- MODIFICATION_POSSIBLE : si l’objet touristique peut actuellement être modifié par le projet d’écriture ou l’utilisateur.\n- VERROUILLE : si l’objet touristique est actuellement en cours de modification par un utilisateur différent.\n- NON_DISPONIBLE : si l’utilisateur n’est pas autorisé à réaliser de modifications sur cet objet."
+							},
+							"response": []
+						},
+						{
+							"name": "Autorisation modification (avec tokenSSO)",
+							"request": {
+								"auth": {
+									"type": "oauth2",
+									"oauth2": [
+										{
+											"key": "accessTokenUrl",
+											"value": "https://api.apidae-tourisme.com/oauth/token",
+											"type": "string"
+										},
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"type": "string"
+										},
+										{
+											"key": "tokenName",
+											"value": "Token_SSO",
+											"type": "string"
+										},
+										{
+											"key": "scope",
+											"value": "sso",
+											"type": "string"
+										},
+										{
+											"key": "clientSecret",
+											"value": "{{secret}}",
+											"type": "string"
+										},
+										{
+											"key": "clientId",
+											"value": "{{client_id}}",
+											"type": "string"
+										},
+										{
+											"key": "tokenType",
+											"value": "",
+											"type": "string"
+										},
+										{
+											"key": "addTokenTo",
+											"value": "header",
+											"type": "string"
+										},
+										{
+											"key": "useBrowser",
+											"value": true,
+											"type": "boolean"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "https://oauth.pstmn.io/v1/callback",
+											"type": "string"
+										},
+										{
+											"key": "authUrl",
+											"value": "http://base.apidae-tourisme.com/oauth/authorize",
+											"type": "string"
+										},
+										{
+											"key": "client_authentication",
+											"value": "header",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_ENDPOINT}}/v002/autorisation/objet-touristique/modification/5295065?tokenSSO={{access_token}}",
+									"host": [
+										"{{API_ENDPOINT}}"
+									],
+									"path": [
+										"v002",
+										"autorisation",
+										"objet-touristique",
+										"modification",
+										"5295065"
+									],
+									"query": [
+										{
+											"key": "tokenSSO",
+											"value": "{{access_token}}"
+										}
+									]
+								},
+								"description": "### Description\nCette méthode permet de tester avant l’écriture d’une offre si la modification sur l’offre touristique sera possible. Apidae vérifie que le projet d’écriture ou l’utilisateur dispose des droits nécessaires et qu’il n’y a pas de brouillon verrouillé par un autre utilisateur.\n\n/v002/autorisation/objet-touristique/modification/{reference_id}?tokenSSO={token_SSO}\n\n**Ici le tokenSSO est présent, la permission est déterminée par rapport à l’utilisateur identifié.**\n\n### Formats de sortie"
+							},
+							"response": []
+						}
+					]
 				},
 				{
 					"name": "Ajout de critères internes",
@@ -3187,12 +3332,7 @@
 									"value": "{\n    \"id\": [4659645, 4687800],\n    \"criteresInternesAAjouter\": [11576]\n}",
 									"type": "text"
 								}
-							],
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							]
 						},
 						"url": {
 							"raw": "{{API_ENDPOINT}}v002/criteres-internes/",
@@ -3281,12 +3421,7 @@
 									"value": "{\n    \"id\": [4659645, 4687800],\n    \"criteresInternesASupprimer\" : [11576]\n}",
 									"type": "text"
 								}
-							],
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							]
 						},
 						"url": {
 							"raw": "{{API_ENDPOINT}}/v002/criteres-internes/",
@@ -3376,12 +3511,7 @@
 									"value": "{\n    \"objetsTouristiques\": [\n        {\n            \"id\": 4659645,\n            \"donneesPrivees\": [\n                {\n                    \"nomTechnique\": \"1157_Vg_testDescriptifPrive-1\",\n                    \"descriptif\": {\n                        \"libelleFr\": \"Descriptif_1\",\n                        \"libelleEn\": \"Content_1\"\n                    }\n                },\n                {\n                    \"nomTechnique\": \"1157_TitreCoupDeCoeur\",\n                    \"descriptif\": {\n                        \"libelleFr\": \"Descriptif_2\",\n                        \"libelleEn\": \"Content_2\"\n                    }\n                }\n            ]\n        },\n        {\n            \"id\": 4687800,\n            \"donneesPrivees\": [\n                {\n                    \"nomTechnique\": \"1157_Vg_testDescriptifPrive-1\",\n                    \"descriptif\": {\n                        \"libelleFr\": \"Descriptif_3\",\n                        \"libelleEn\": \"Content_3\"\n                    }\n                }\n            ]\n        }\n    ]\n}",
 									"type": "text"
 								}
-							],
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							]
 						},
 						"url": {
 							"raw": "{{API_ENDPOINT}}v002/donnees-privees/",
@@ -3467,15 +3597,10 @@
 							"formdata": [
 								{
 									"key": "donneesPrivees",
-									"value": "{\n    \"objetsTouristiques\": [\n        {\n            \"id\": 4659645,\n            \"donneesPriveesASupprimer\": [\n\"1157_Vg_testDescriptifPrive-1\"\n            ]\n        }\n    ]\n}",
+									"value": "{\n    \"objetsTouristiques\": [\n        {\n            \"id\": 4659645,\n            \"donneesPrivees\": [\n                {\n                    \"nomTechnique\": \"1157_Vg_testDescriptifPrive-1\"\n                }\n            ]\n        }\n    ]\n}",
 									"type": "text"
 								}
-							],
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							]
 						},
 						"url": {
 							"raw": "{{API_ENDPOINT}}v002/donnees-privees/",
