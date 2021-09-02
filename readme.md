@@ -19,7 +19,8 @@ Cette collection [Postman](https://www.postman.com/) permet de se familiariser a
   * Création
   * Modification
   * Suppression
-
+  * Autorisation de Modification
+  
 - **APIs de métadonnées** - [documentation](http://dev.apidae-tourisme.com/fr/documentation-technique/v2/metadonnees)
 - **Appel de notification** - [documentation](http://dev.apidae-tourisme.com/fr/documentation-technique/v2/exports/notificationi-traitement-confirmation)
 
