@@ -1,6 +1,6 @@
 # Collection Postman de requêtes Apidae
 
-Cette collection [Postman](https://www.postman.com/) permet de se familiariser avec les différents types d'API que propose [Apidae](https://www.apidae-tourisme.com/) au travers d'exemples variés. Il existe également deux environnements : la **Production** et la **Recette**. Pour les APIs de consultation ainsi que le SSO vous pouvez utiliser l'environnement de `Apidae-Production` mais pour les autres type de requête il faut utiliser celui de `Apidae-Recette`.
+Cette collection [Postman](https://www.postman.com/) permet de se familiariser avec les différents types d'API que propose [Apidae](https://www.apidae-tourisme.com/) au travers d'exemples variés. Il existe également trois environnements : la **Production** et la **Recette** au sein de laquelle vous pouvez choisir entre **Accelance** ou **Cooking**. Pour les APIs de consultation ainsi que le SSO vous pouvez utiliser l'environnement de `Apidae-Production` mais pour les autres type de requête il faut utiliser celui de `Apidae-Pre-Production-...`.
 
 ### La liste des exemples disponibles
 
@@ -20,9 +20,9 @@ Cette collection [Postman](https://www.postman.com/) permet de se familiariser a
   * Modification
   * Suppression
   * Autorisation de Modification
-  
 - **APIs de métadonnées** - [documentation](http://dev.apidae-tourisme.com/fr/documentation-technique/v2/metadonnees)
 - **Appel de notification** - [documentation](http://dev.apidae-tourisme.com/fr/documentation-technique/v2/exports/notificationi-traitement-confirmation)
+- **Appel enrichi** - [documentation](https://dev.apidae-tourisme.com/fr/documentation-technique/v2/api-de-diffusion/appels-enrichis)
 
 
 

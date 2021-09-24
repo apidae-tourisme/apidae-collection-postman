@@ -3963,6 +3963,112 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Appels enrichis",
+			"item": [
+				{
+					"name": "API Gateway (simple)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.plateforme.apidae-tourisme.com/apidae/objetenrich/?id=5924591&apiKey={{apiKey}}&projetId={{projetId}}&enrichments=multihoraire&locales=[\"fr\", \"en\"]",
+							"protocol": "https",
+							"host": [
+								"api",
+								"plateforme",
+								"apidae-tourisme",
+								"com"
+							],
+							"path": [
+								"apidae",
+								"objetenrich",
+								""
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "5924591"
+								},
+								{
+									"key": "apiKey",
+									"value": "{{apiKey}}"
+								},
+								{
+									"key": "projetId",
+									"value": "{{projetId}}"
+								},
+								{
+									"key": "enrichments",
+									"value": "multihoraire"
+								},
+								{
+									"key": "locales",
+									"value": "[\"fr\", \"en\"]"
+								}
+							]
+						},
+						"description": "**Attention** <br/>\nCes fonctionnalités sont actuellement en version Beta\n\nCette requête permet de récupérer sur un objet touristique enrichi des informations fournies par des partenaires d’Apidae.\n\nhttps://api.plateforme.apidae-tourisme.com/apidae/objetenrich/?id={id}&apiKey={apiKey}&projetId={projetId}&enrichments={multihoraire}\n\n- id est l’identifiant numérique de l’objet à récupérer\n- locales : cf. [Filtrage des langues](http://localhost/fr/documentation-technique/v2/api-de-diffusion/filtrage-des-langues)\n- apiKey : clé d’API\n- projetId : identifiant du projet\n- enrichments : liste des enrichissements souhaités, séparés par une virgule"
+					},
+					"response": []
+				},
+				{
+					"name": "API Gateway (avancé)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.plateforme.apidae-tourisme.com/apidae/objetenrich/?id=5924591&responseFields=[\"id\", \"nom\", \"presentation\"]&locales=[ \"fr\", \"en\" ]&apiKey={{apiKey}}&projetId={{projetId}}&enrichments=multihoraire",
+							"protocol": "https",
+							"host": [
+								"api",
+								"plateforme",
+								"apidae-tourisme",
+								"com"
+							],
+							"path": [
+								"apidae",
+								"objetenrich",
+								""
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "5924591"
+								},
+								{
+									"key": "callback",
+									"value": "{callback}",
+									"disabled": true
+								},
+								{
+									"key": "responseFields",
+									"value": "[\"id\", \"nom\", \"presentation\"]"
+								},
+								{
+									"key": "locales",
+									"value": "[ \"fr\", \"en\" ]"
+								},
+								{
+									"key": "apiKey",
+									"value": "{{apiKey}}"
+								},
+								{
+									"key": "projetId",
+									"value": "{{projetId}}"
+								},
+								{
+									"key": "enrichments",
+									"value": "multihoraire"
+								}
+							]
+						},
+						"description": "**Attention** <br/>\n- Ces fonctionnalités sont actuellement en version Beta.\n- Le domaine api.plateforme.apidae-tourisme.com est différent du domaine utilisé pour les autres appels\n- Seul l’enrichissement du multi-horaire est disponible aujourd’hui\n\nCette requête permet de récupérer sur un objet touristique enrichi des informations fournies par des partenaires d’Apidae.\n\nhttps://api.plateforme.apidae-tourisme.com/apidae/objetenrich/?id={id}&callback={callback}&responseFields={responseFields}&locales={locales}&apiKey={apiKey}&projetId={projetId}&enrichments={enrichissements}\n\n- id est l’identifiant numérique de l’objet à récupérer\n- callback (optionnel) : nom de la fonction de callback (pour JSONP)\n- responseFields (optionnel) : cf. [Filtrage des données](http://localhost/fr/documentation-technique/v2/api-de-diffusion/filtrage-des-donnees)\n- locales : cf. [Filtrage des langues](http://localhost/fr/documentation-technique/v2/api-de-diffusion/filtrage-des-langues)\n- apiKey : clé d’API\n- projetId : identifiant du projet\n- enrichments : liste des enrichissements souhaités, séparés par une virgule"
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
