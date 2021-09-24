@@ -1538,6 +1538,108 @@
 						}
 					],
 					"description": "Le multi-horaires est un bloc métier permettant de détailler plus précisément les périodes d’ouvertures d’une offre touristique en spécifiant des tranches horaires."
+				},
+				{
+					"name": "Appels enrichis",
+					"item": [
+						{
+							"name": "API Gateway (simple)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/apidae/objetenrich/?id=5924591&apiKey={{apiKey}}&projetId={{projetId}}&enrichments=multihoraire&locales=[\"fr\", \"en\"]",
+									"host": [
+										"{{API_PLATEFORME_ENDPOINT}}"
+									],
+									"path": [
+										"apidae",
+										"objetenrich",
+										""
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "5924591"
+										},
+										{
+											"key": "apiKey",
+											"value": "{{apiKey}}"
+										},
+										{
+											"key": "projetId",
+											"value": "{{projetId}}"
+										},
+										{
+											"key": "enrichments",
+											"value": "multihoraire"
+										},
+										{
+											"key": "locales",
+											"value": "[\"fr\", \"en\"]"
+										}
+									]
+								},
+								"description": "**Attention** <br/>\nCes fonctionnalités sont actuellement en version Beta\n\nCette requête permet de récupérer sur un objet touristique enrichi des informations fournies par des partenaires d’Apidae.\n\nhttps://api.plateforme.apidae-tourisme.com/apidae/objetenrich/?id={id}&apiKey={apiKey}&projetId={projetId}&enrichments={multihoraire}\n\n- id est l’identifiant numérique de l’objet à récupérer\n- locales : cf. [Filtrage des langues](http://localhost/fr/documentation-technique/v2/api-de-diffusion/filtrage-des-langues)\n- apiKey : clé d’API\n- projetId : identifiant du projet\n- enrichments : liste des enrichissements souhaités, séparés par une virgule"
+							},
+							"response": []
+						},
+						{
+							"name": "API Gateway (avancé)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.plateforme.apidae-tourisme.com/apidae/objetenrich/?id=5924591&responseFields=[\"id\", \"nom\", \"presentation\"]&locales=[ \"fr\", \"en\" ]&apiKey={{apiKey}}&projetId={{projetId}}&enrichments=multihoraire",
+									"protocol": "https",
+									"host": [
+										"api",
+										"plateforme",
+										"apidae-tourisme",
+										"com"
+									],
+									"path": [
+										"apidae",
+										"objetenrich",
+										""
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "5924591"
+										},
+										{
+											"key": "callback",
+											"value": "{callback}",
+											"disabled": true
+										},
+										{
+											"key": "responseFields",
+											"value": "[\"id\", \"nom\", \"presentation\"]"
+										},
+										{
+											"key": "locales",
+											"value": "[ \"fr\", \"en\" ]"
+										},
+										{
+											"key": "apiKey",
+											"value": "{{apiKey}}"
+										},
+										{
+											"key": "projetId",
+											"value": "{{projetId}}"
+										},
+										{
+											"key": "enrichments",
+											"value": "multihoraire"
+										}
+									]
+								},
+								"description": "**Attention** <br/>\n- Ces fonctionnalités sont actuellement en version Beta.\n- Le domaine api.plateforme.apidae-tourisme.com est différent du domaine utilisé pour les autres appels\n- Seul l’enrichissement du multi-horaire est disponible aujourd’hui\n\nCette requête permet de récupérer sur un objet touristique enrichi des informations fournies par des partenaires d’Apidae.\n\nhttps://api.plateforme.apidae-tourisme.com/apidae/objetenrich/?id={id}&callback={callback}&responseFields={responseFields}&locales={locales}&apiKey={apiKey}&projetId={projetId}&enrichments={enrichissements}\n\n- id est l’identifiant numérique de l’objet à récupérer\n- callback (optionnel) : nom de la fonction de callback (pour JSONP)\n- responseFields (optionnel) : cf. [Filtrage des données](http://localhost/fr/documentation-technique/v2/api-de-diffusion/filtrage-des-donnees)\n- locales : cf. [Filtrage des langues](http://localhost/fr/documentation-technique/v2/api-de-diffusion/filtrage-des-langues)\n- apiKey : clé d’API\n- projetId : identifiant du projet\n- enrichments : liste des enrichissements souhaités, séparés par une virgule"
+							},
+							"response": []
+						}
+					]
 				}
 			],
 			"event": [
@@ -1575,7 +1677,12 @@
 									"oauth2": [
 										{
 											"key": "accessTokenUrl",
-											"value": "http://api.apidae-tourisme.com/oauth/token",
+											"value": "{{AUTH_ACCESS_TOKEN_URL}}",
+											"type": "string"
+										},
+										{
+											"key": "authUrl",
+											"value": "{{AUTH_URL}}",
 											"type": "string"
 										},
 										{
@@ -1601,11 +1708,6 @@
 										{
 											"key": "redirect_uri",
 											"value": "https://oauth.pstmn.io/v1/callback",
-											"type": "string"
-										},
-										{
-											"key": "authUrl",
-											"value": "http://base.apidae-tourisme.com/oauth/authorize",
 											"type": "string"
 										},
 										{
@@ -1665,7 +1767,12 @@
 									"oauth2": [
 										{
 											"key": "accessTokenUrl",
-											"value": "http://api.apidae-tourisme.com/oauth/token",
+											"value": "{{AUTH_ACCESS_TOKEN_URL}}",
+											"type": "string"
+										},
+										{
+											"key": "authUrl",
+											"value": "{{AUTH_URL}}",
 											"type": "string"
 										},
 										{
@@ -1691,11 +1798,6 @@
 										{
 											"key": "redirect_uri",
 											"value": "https://oauth.pstmn.io/v1/callback",
-											"type": "string"
-										},
-										{
-											"key": "authUrl",
-											"value": "http://base.apidae-tourisme.com/oauth/authorize",
 											"type": "string"
 										},
 										{
@@ -1755,7 +1857,12 @@
 									"oauth2": [
 										{
 											"key": "accessTokenUrl",
-											"value": "http://api.apidae-tourisme.com/oauth/token",
+											"value": "{{AUTH_ACCESS_TOKEN_URL}}",
+											"type": "string"
+										},
+										{
+											"key": "authUrl",
+											"value": "{{AUTH_URL}}",
 											"type": "string"
 										},
 										{
@@ -1781,11 +1888,6 @@
 										{
 											"key": "redirect_uri",
 											"value": "https://oauth.pstmn.io/v1/callback",
-											"type": "string"
-										},
-										{
-											"key": "authUrl",
-											"value": "http://base.apidae-tourisme.com/oauth/authorize",
 											"type": "string"
 										},
 										{
@@ -1838,7 +1940,12 @@
 									"oauth2": [
 										{
 											"key": "accessTokenUrl",
-											"value": "http://api.apidae-tourisme.com/oauth/token",
+											"value": "{{AUTH_ACCESS_TOKEN_URL}}",
+											"type": "string"
+										},
+										{
+											"key": "authUrl",
+											"value": "{{AUTH_URL}}",
 											"type": "string"
 										},
 										{
@@ -1864,11 +1971,6 @@
 										{
 											"key": "redirect_uri",
 											"value": "https://oauth.pstmn.io/v1/callback",
-											"type": "string"
-										},
-										{
-											"key": "authUrl",
-											"value": "http://base.apidae-tourisme.com/oauth/authorize",
 											"type": "string"
 										},
 										{
@@ -1926,7 +2028,12 @@
 							"oauth2": [
 								{
 									"key": "accessTokenUrl",
-									"value": "http://api.apidae-tourisme.com/oauth/token",
+									"value": "{{AUTH_ACCESS_TOKEN_URL}}",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "{{AUTH_URL}}",
 									"type": "string"
 								},
 								{
@@ -1952,11 +2059,6 @@
 								{
 									"key": "redirect_uri",
 									"value": "https://oauth.pstmn.io/v1/callback",
-									"type": "string"
-								},
-								{
-									"key": "authUrl",
-									"value": "http://base.apidae-tourisme.com/oauth/authorize",
 									"type": "string"
 								},
 								{
@@ -2007,7 +2109,12 @@
 							"oauth2": [
 								{
 									"key": "accessTokenUrl",
-									"value": "http://api.apidae-tourisme.com/oauth/token",
+									"value": "{{AUTH_ACCESS_TOKEN_URL}}",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "{{AUTH_URL}}",
 									"type": "string"
 								},
 								{
@@ -2033,11 +2140,6 @@
 								{
 									"key": "redirect_uri",
 									"value": "https://oauth.pstmn.io/v1/callback",
-									"type": "string"
-								},
-								{
-									"key": "authUrl",
-									"value": "http://base.apidae-tourisme.com/oauth/authorize",
 									"type": "string"
 								},
 								{
@@ -2098,6 +2200,11 @@
 									"type": "oauth2",
 									"oauth2": [
 										{
+											"key": "accessTokenUrl",
+											"value": "{{AUTH_ACCESS_TOKEN_URL}}",
+											"type": "string"
+										},
+										{
 											"key": "tokenType",
 											"value": "",
 											"type": "string"
@@ -2110,11 +2217,6 @@
 										{
 											"key": "tokenName",
 											"value": "Token_Ecriture",
-											"type": "string"
-										},
-										{
-											"key": "accessTokenUrl",
-											"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
 											"type": "string"
 										},
 										{
@@ -2212,6 +2314,11 @@
 									"type": "oauth2",
 									"oauth2": [
 										{
+											"key": "accessTokenUrl",
+											"value": "{{AUTH_ACCESS_TOKEN_URL}}",
+											"type": "string"
+										},
+										{
 											"key": "tokenType",
 											"value": "",
 											"type": "string"
@@ -2224,11 +2331,6 @@
 										{
 											"key": "tokenName",
 											"value": "Token_Ecriture",
-											"type": "string"
-										},
-										{
-											"key": "accessTokenUrl",
-											"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
 											"type": "string"
 										},
 										{
@@ -2331,6 +2433,11 @@
 									"type": "oauth2",
 									"oauth2": [
 										{
+											"key": "accessTokenUrl",
+											"value": "{{AUTH_ACCESS_TOKEN_URL}}",
+											"type": "string"
+										},
+										{
 											"key": "tokenType",
 											"value": "",
 											"type": "string"
@@ -2343,11 +2450,6 @@
 										{
 											"key": "tokenName",
 											"value": "Token_Ecriture",
-											"type": "string"
-										},
-										{
-											"key": "accessTokenUrl",
-											"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
 											"type": "string"
 										},
 										{
@@ -2450,6 +2552,11 @@
 									"type": "oauth2",
 									"oauth2": [
 										{
+											"key": "accessTokenUrl",
+											"value": "{{AUTH_ACCESS_TOKEN_URL}}",
+											"type": "string"
+										},
+										{
 											"key": "tokenType",
 											"value": "",
 											"type": "string"
@@ -2462,11 +2569,6 @@
 										{
 											"key": "tokenName",
 											"value": "Token_Ecriture",
-											"type": "string"
-										},
-										{
-											"key": "accessTokenUrl",
-											"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
 											"type": "string"
 										},
 										{
@@ -2580,6 +2682,11 @@
 									"type": "oauth2",
 									"oauth2": [
 										{
+											"key": "accessTokenUrl",
+											"value": "{{AUTH_ACCESS_TOKEN_URL}}",
+											"type": "string"
+										},
+										{
 											"key": "tokenType",
 											"value": "",
 											"type": "string"
@@ -2592,11 +2699,6 @@
 										{
 											"key": "tokenName",
 											"value": "Token_Ecriture",
-											"type": "string"
-										},
-										{
-											"key": "accessTokenUrl",
-											"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
 											"type": "string"
 										},
 										{
@@ -2699,6 +2801,11 @@
 									"type": "oauth2",
 									"oauth2": [
 										{
+											"key": "accessTokenUrl",
+											"value": "{{AUTH_ACCESS_TOKEN_URL}}",
+											"type": "string"
+										},
+										{
 											"key": "tokenType",
 											"value": "",
 											"type": "string"
@@ -2711,11 +2818,6 @@
 										{
 											"key": "tokenName",
 											"value": "Token_Ecriture",
-											"type": "string"
-										},
-										{
-											"key": "accessTokenUrl",
-											"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
 											"type": "string"
 										},
 										{
@@ -2823,6 +2925,11 @@
 									"type": "oauth2",
 									"oauth2": [
 										{
+											"key": "accessTokenUrl",
+											"value": "{{AUTH_ACCESS_TOKEN_URL}}",
+											"type": "string"
+										},
+										{
 											"key": "tokenType",
 											"value": "",
 											"type": "string"
@@ -2835,11 +2942,6 @@
 										{
 											"key": "tokenName",
 											"value": "Token_Ecriture",
-											"type": "string"
-										},
-										{
-											"key": "accessTokenUrl",
-											"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
 											"type": "string"
 										},
 										{
@@ -2958,6 +3060,11 @@
 									"type": "oauth2",
 									"oauth2": [
 										{
+											"key": "accessTokenUrl",
+											"value": "{{AUTH_ACCESS_TOKEN_URL}}",
+											"type": "string"
+										},
+										{
 											"key": "tokenType",
 											"value": "",
 											"type": "string"
@@ -2970,11 +3077,6 @@
 										{
 											"key": "tokenName",
 											"value": "Token_Ecriture",
-											"type": "string"
-										},
-										{
-											"key": "accessTokenUrl",
-											"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
 											"type": "string"
 										},
 										{
@@ -3063,6 +3165,11 @@
 									"type": "oauth2",
 									"oauth2": [
 										{
+											"key": "accessTokenUrl",
+											"value": "{{AUTH_ACCESS_TOKEN_URL}}",
+											"type": "string"
+										},
+										{
 											"key": "scope",
 											"value": "api_ecriture",
 											"type": "string"
@@ -3085,11 +3192,6 @@
 										{
 											"key": "grant_type",
 											"value": "client_credentials",
-											"type": "string"
-										},
-										{
-											"key": "accessTokenUrl",
-											"value": "https://api.apidae-tourisme.com/oauth/token",
 											"type": "string"
 										},
 										{
@@ -3151,7 +3253,12 @@
 									"oauth2": [
 										{
 											"key": "accessTokenUrl",
-											"value": "https://api.apidae-tourisme.com/oauth/token",
+											"value": "{{AUTH_ACCESS_TOKEN_URL}}",
+											"type": "string"
+										},
+										{
+											"key": "authUrl",
+											"value": "{{AUTH_URL}}",
 											"type": "string"
 										},
 										{
@@ -3197,11 +3304,6 @@
 										{
 											"key": "redirect_uri",
 											"value": "https://oauth.pstmn.io/v1/callback",
-											"type": "string"
-										},
-										{
-											"key": "authUrl",
-											"value": "http://base.apidae-tourisme.com/oauth/authorize",
 											"type": "string"
 										},
 										{
@@ -3256,6 +3358,11 @@
 							"type": "oauth2",
 							"oauth2": [
 								{
+									"key": "accessTokenUrl",
+									"value": "{{AUTH_ACCESS_TOKEN_URL}}",
+									"type": "string"
+								},
+								{
 									"key": "tokenType",
 									"value": "",
 									"type": "string"
@@ -3273,11 +3380,6 @@
 								{
 									"key": "tokenName",
 									"value": "Token_Ecriture",
-									"type": "string"
-								},
-								{
-									"key": "accessTokenUrl",
-									"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
 									"type": "string"
 								},
 								{
@@ -3355,33 +3457,33 @@
 							"type": "oauth2",
 							"oauth2": [
 								{
+									"key": "tokenName",
+									"value": "Token_Ecriture",
+									"type": "string"
+								},
+								{
 									"key": "clientSecret",
-									"value": "8Y3CkA1mpxwZI3h",
+									"value": "{{secret_ecriture}}",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "api_ecriture",
 									"type": "string"
 								},
 								{
 									"key": "clientId",
-									"value": "7d52fafe-7cc4-4c9f-831a-8cbec4b92c5e",
+									"value": "{{client_id_ecriture}}",
 									"type": "string"
 								},
 								{
 									"key": "accessTokenUrl",
-									"value": "http://api.apidae-tourisme.com/oauth/token",
+									"value": "{{AUTH_ACCESS_TOKEN_URL}}",
 									"type": "string"
 								},
 								{
 									"key": "grant_type",
 									"value": "client_credentials",
-									"type": "string"
-								},
-								{
-									"key": "scope",
-									"value": "api_metadonnees",
-									"type": "string"
-								},
-								{
-									"key": "tokenName",
-									"value": "Token_Ecriture",
 									"type": "string"
 								},
 								{
@@ -3445,6 +3547,11 @@
 							"type": "oauth2",
 							"oauth2": [
 								{
+									"key": "accessTokenUrl",
+									"value": "{{AUTH_ACCESS_TOKEN_URL}}",
+									"type": "string"
+								},
+								{
 									"key": "tokenName",
 									"value": "Token_Ecriture",
 									"type": "string"
@@ -3467,11 +3574,6 @@
 								{
 									"key": "scope",
 									"value": "api_ecriture",
-									"type": "string"
-								},
-								{
-									"key": "accessTokenUrl",
-									"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
 									"type": "string"
 								},
 								{
@@ -3534,6 +3636,11 @@
 							"type": "oauth2",
 							"oauth2": [
 								{
+									"key": "accessTokenUrl",
+									"value": "{{AUTH_ACCESS_TOKEN_URL}}",
+									"type": "string"
+								},
+								{
 									"key": "clientSecret",
 									"value": "{{secret_ecriture}}",
 									"type": "string"
@@ -3546,11 +3653,6 @@
 								{
 									"key": "scope",
 									"value": "api_ecriture",
-									"type": "string"
-								},
-								{
-									"key": "accessTokenUrl",
-									"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
 									"type": "string"
 								},
 								{
@@ -3629,6 +3731,11 @@
 							"type": "oauth2",
 							"oauth2": [
 								{
+									"key": "accessTokenUrl",
+									"value": "{{AUTH_ACCESS_TOKEN_URL}}",
+									"type": "string"
+								},
+								{
 									"key": "scope",
 									"value": "api_metadonnees",
 									"type": "string"
@@ -3656,11 +3763,6 @@
 								{
 									"key": "addTokenTo",
 									"value": "header",
-									"type": "string"
-								},
-								{
-									"key": "accessTokenUrl",
-									"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
 									"type": "string"
 								},
 								{
@@ -3725,6 +3827,11 @@
 							"type": "oauth2",
 							"oauth2": [
 								{
+									"key": "accessTokenUrl",
+									"value": "{{AUTH_ACCESS_TOKEN_URL}}",
+									"type": "string"
+								},
+								{
 									"key": "scope",
 									"value": "api_metadonnees",
 									"type": "string"
@@ -3752,11 +3859,6 @@
 								{
 									"key": "addTokenTo",
 									"value": "header",
-									"type": "string"
-								},
-								{
-									"key": "accessTokenUrl",
-									"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
 									"type": "string"
 								},
 								{
@@ -3811,6 +3913,11 @@
 							"type": "oauth2",
 							"oauth2": [
 								{
+									"key": "accessTokenUrl",
+									"value": "{{AUTH_ACCESS_TOKEN_URL}}",
+									"type": "string"
+								},
+								{
 									"key": "scope",
 									"value": "api_metadonnees",
 									"type": "string"
@@ -3838,11 +3945,6 @@
 								{
 									"key": "addTokenTo",
 									"value": "header",
-									"type": "string"
-								},
-								{
-									"key": "accessTokenUrl",
-									"value": "https://api.apidae-tourisme-recette.accelance.net/oauth/token",
 									"type": "string"
 								},
 								{
@@ -3963,112 +4065,6 @@
 					"response": []
 				}
 			]
-		},
-		{
-			"name": "Appels enrichis",
-			"item": [
-				{
-					"name": "API Gateway (simple)",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "https://api.plateforme.apidae-tourisme.com/apidae/objetenrich/?id=5924591&apiKey={{apiKey}}&projetId={{projetId}}&enrichments=multihoraire&locales=[\"fr\", \"en\"]",
-							"protocol": "https",
-							"host": [
-								"api",
-								"plateforme",
-								"apidae-tourisme",
-								"com"
-							],
-							"path": [
-								"apidae",
-								"objetenrich",
-								""
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": "5924591"
-								},
-								{
-									"key": "apiKey",
-									"value": "{{apiKey}}"
-								},
-								{
-									"key": "projetId",
-									"value": "{{projetId}}"
-								},
-								{
-									"key": "enrichments",
-									"value": "multihoraire"
-								},
-								{
-									"key": "locales",
-									"value": "[\"fr\", \"en\"]"
-								}
-							]
-						},
-						"description": "**Attention** <br/>\nCes fonctionnalités sont actuellement en version Beta\n\nCette requête permet de récupérer sur un objet touristique enrichi des informations fournies par des partenaires d’Apidae.\n\nhttps://api.plateforme.apidae-tourisme.com/apidae/objetenrich/?id={id}&apiKey={apiKey}&projetId={projetId}&enrichments={multihoraire}\n\n- id est l’identifiant numérique de l’objet à récupérer\n- locales : cf. [Filtrage des langues](http://localhost/fr/documentation-technique/v2/api-de-diffusion/filtrage-des-langues)\n- apiKey : clé d’API\n- projetId : identifiant du projet\n- enrichments : liste des enrichissements souhaités, séparés par une virgule"
-					},
-					"response": []
-				},
-				{
-					"name": "API Gateway (avancé)",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "https://api.plateforme.apidae-tourisme.com/apidae/objetenrich/?id=5924591&responseFields=[\"id\", \"nom\", \"presentation\"]&locales=[ \"fr\", \"en\" ]&apiKey={{apiKey}}&projetId={{projetId}}&enrichments=multihoraire",
-							"protocol": "https",
-							"host": [
-								"api",
-								"plateforme",
-								"apidae-tourisme",
-								"com"
-							],
-							"path": [
-								"apidae",
-								"objetenrich",
-								""
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": "5924591"
-								},
-								{
-									"key": "callback",
-									"value": "{callback}",
-									"disabled": true
-								},
-								{
-									"key": "responseFields",
-									"value": "[\"id\", \"nom\", \"presentation\"]"
-								},
-								{
-									"key": "locales",
-									"value": "[ \"fr\", \"en\" ]"
-								},
-								{
-									"key": "apiKey",
-									"value": "{{apiKey}}"
-								},
-								{
-									"key": "projetId",
-									"value": "{{projetId}}"
-								},
-								{
-									"key": "enrichments",
-									"value": "multihoraire"
-								}
-							]
-						},
-						"description": "**Attention** <br/>\n- Ces fonctionnalités sont actuellement en version Beta.\n- Le domaine api.plateforme.apidae-tourisme.com est différent du domaine utilisé pour les autres appels\n- Seul l’enrichissement du multi-horaire est disponible aujourd’hui\n\nCette requête permet de récupérer sur un objet touristique enrichi des informations fournies par des partenaires d’Apidae.\n\nhttps://api.plateforme.apidae-tourisme.com/apidae/objetenrich/?id={id}&callback={callback}&responseFields={responseFields}&locales={locales}&apiKey={apiKey}&projetId={projetId}&enrichments={enrichissements}\n\n- id est l’identifiant numérique de l’objet à récupérer\n- callback (optionnel) : nom de la fonction de callback (pour JSONP)\n- responseFields (optionnel) : cf. [Filtrage des données](http://localhost/fr/documentation-technique/v2/api-de-diffusion/filtrage-des-donnees)\n- locales : cf. [Filtrage des langues](http://localhost/fr/documentation-technique/v2/api-de-diffusion/filtrage-des-langues)\n- apiKey : clé d’API\n- projetId : identifiant du projet\n- enrichments : liste des enrichissements souhaités, séparés par une virgule"
-					},
-					"response": []
-				}
-			]
 		}
 	],
 	"event": [
@@ -4093,8 +4089,20 @@
 	],
 	"variable": [
 		{
+			"key": "AUTH_URL",
+			"value": "http://base.apidae-tourisme.com/oauth/authorize"
+		},
+		{
+			"key": "AUTH_ACCESS_TOKEN_URL",
+			"value": "http://api.apidae-tourisme.com/oauth/token"
+		},
+		{
 			"key": "MULTI-HORAIRE_ENDPOINT",
 			"value": "https://api.apihours.apidae-tourisme.com/apidae_period"
+		},
+		{
+			"key": "API_PLATEFORME_ENDPOINT",
+			"value": "https://api.plateforme.apidae-tourisme.com"
 		},
 		{
 			"key": "apiKey",

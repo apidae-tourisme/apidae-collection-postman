@@ -12,6 +12,7 @@ Cette collection [Postman](https://www.postman.com/) permet de se familiariser a
   * Consultation du référentiel
   * Consultation des membres
   * Consultation des utilisateurs
+  * Appel enrichi
 * Multi-horaires
   
 - **Single Sign On (SSO)** - [documentation](http://dev.apidae-tourisme.com/fr/documentation-technique/v2/oauth/single-sign-on)
@@ -22,7 +23,6 @@ Cette collection [Postman](https://www.postman.com/) permet de se familiariser a
   * Autorisation de Modification
 - **APIs de métadonnées** - [documentation](http://dev.apidae-tourisme.com/fr/documentation-technique/v2/metadonnees)
 - **Appel de notification** - [documentation](http://dev.apidae-tourisme.com/fr/documentation-technique/v2/exports/notificationi-traitement-confirmation)
-- **Appel enrichi** - [documentation](https://dev.apidae-tourisme.com/fr/documentation-technique/v2/api-de-diffusion/appels-enrichis)
 
 
 
