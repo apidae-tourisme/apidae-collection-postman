@@ -4089,22 +4089,6 @@
 	],
 	"variable": [
 		{
-			"key": "AUTH_URL",
-			"value": "http://base.apidae-tourisme.com/oauth/authorize"
-		},
-		{
-			"key": "AUTH_ACCESS_TOKEN_URL",
-			"value": "http://api.apidae-tourisme.com/oauth/token"
-		},
-		{
-			"key": "MULTI-HORAIRE_ENDPOINT",
-			"value": "https://api.apihours.apidae-tourisme.com/apidae_period"
-		},
-		{
-			"key": "API_PLATEFORME_ENDPOINT",
-			"value": "https://api.plateforme.apidae-tourisme.com"
-		},
-		{
 			"key": "apiKey",
 			"value": "XXX"
 		},
