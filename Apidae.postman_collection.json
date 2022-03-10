@@ -2278,7 +2278,7 @@
 										},
 										{
 											"key": "root",
-											"value": "{ \"type\" : \"EQUIPEMENT\", \"nom\" : { \"libelleFr\" : \"Nouvel équipement\", \"libelleEn\" : \"New equipment\" } }",
+											"value": "{ \"type\" : \"EQUIPEMENT\", \"nom\" : { \"libelleFr\" : \"Nouvel équipement\", \"libelleEn\" : \"New equipment\" }, \"localisation\" : {\"adresse\" : { \"commune\" : { \"id\" : XXXX } } } }",
 											"type": "text"
 										},
 										{
@@ -2288,7 +2288,7 @@
 										},
 										{
 											"key": "root.fieldList",
-											"value": "[\"nom\"]",
+											"value": "[\"nom\", \"localisation\"]",
 											"type": "text"
 										}
 									]
@@ -2392,7 +2392,7 @@
 										},
 										{
 											"key": "root",
-											"value": "{ \"type\" : \"EQUIPEMENT\", \"nom\" : { \"libelleFr\" : \"Nouvel équipement\", \"libelleEn\" : \"New equipment\" },\"illustrations\":[{\"link\":false,\"type\":\"IMAGE\",\"traductionFichiers\":[{\"locale\":\"fr\",\"url\":\"MULTIMEDIA#illustration-1\"}]}] }",
+											"value": "{ \"type\" : \"EQUIPEMENT\", \"nom\" : { \"libelleFr\" : \"Nouvel équipement\", \"libelleEn\" : \"New equipment\" }, \"localisation\" : {\"adresse\" : { \"commune\" : { \"id\" : XXXX } } }, \"illustrations\":[{\"link\":false,\"type\":\"IMAGE\",\"traductionFichiers\":[{\"locale\":\"fr\",\"url\":\"MULTIMEDIA#illustration-1\"}]}] }",
 											"type": "text"
 										},
 										{
@@ -2402,7 +2402,7 @@
 										},
 										{
 											"key": "root.fieldList",
-											"value": "[\"nom\",\"illustrations\"]",
+											"value": "[\"nom\",\"localisation\",\"illustrations\"]",
 											"type": "text"
 										},
 										{
@@ -2630,7 +2630,7 @@
 										},
 										{
 											"key": "root",
-											"value": "{ \"type\" : \"EQUIPEMENT\", \"nom\" : { \"libelleFr\" : \"Nouvel équipement ter\", \"libelleEn\" : \"New equipment ter\" } }",
+											"value": "{ \"type\" : \"EQUIPEMENT\", \"nom\" : { \"libelleFr\" : \"Nouvel équipement ter\", \"libelleEn\" : \"New equipment ter\" }, \"localisation\" : {\"adresse\" : { \"commune\" : { \"id\" : XXXX } } } }",
 											"type": "text"
 										},
 										{
@@ -2640,7 +2640,7 @@
 										},
 										{
 											"key": "root.fieldList",
-											"value": "[\"nom\"]",
+											"value": "[\"nom\",\"localisation\"]",
 											"type": "text"
 										},
 										{
