@@ -1,6 +1,7 @@
 # Collection Postman de requêtes Apidae
 
-Cette collection [Postman](https://www.postman.com/) permet de se familiariser avec les différents types d'API que propose [Apidae](https://www.apidae-tourisme.com/) au travers d'exemples variés. Il existe également trois environnements : la **Production** et la **Recette** au sein de laquelle vous pouvez choisir entre **Accelance** ou **Cooking**. Pour les APIs de consultation ainsi que le SSO vous pouvez utiliser l'environnement de `Apidae-Production` mais pour les autres type de requête il faut utiliser celui de `Apidae-Pre-Production-...`.
+Cette collection [Postman](https://www.postman.com/) permet de se familiariser avec les différents types d'API que propose [Apidae](https://www.apidae-tourisme.com/) au travers d'exemples variés. Il existe également deux environnements : la **Production** et **Cooking** qui est un environnement de test. 
+Pour les APIs de consultation ainsi que le SSO vous pouvez utiliser l'environnement de `Apidae-Production` mais pour les autres type de requête il faut utiliser celui de `Apidae-Cooking-...`.
 
 ### La liste des exemples disponibles
 
@@ -66,7 +67,7 @@ Avant toute utilisation de la collection, il est important de renseigner les var
 
 ##### <span style="color:red">ATTENTION : </span>
 
-Il peut y avoir des problèmes avec les identifiants des objets déjà présents car vos projets ne les possèdent pas forcément en cas de problème il vous suffit de remplacer cet id par un des votre.m
+Il peut y avoir des problèmes avec les identifiants des objets déjà présents car vos projets ne les possèdent pas forcément, en cas de problème il vous suffit de remplacer cet id par un des votre.
 
 **Toutes les requêtes sont documentées sur leur utilité et leur construction avec des paramètres remplaçables. En cas de d'incompréhension ou si vous cherchez des informations complémentaires n'hésitez pas à consulter le [site d'aide aux développeurs](http://dev.apidae-tourisme.com/fr/documentation-technique/v2).**
 

@@ -1,375 +1,735 @@
 {
 	"info": {
-		"_postman_id": "4af459f5-7bf8-4231-a743-9ffde5514cc4",
+		"_postman_id": "2435cd33-0090-4322-b934-cf2a9885ec06",
 		"name": "Apidae",
 		"description": "Cette collection regroupe les différentes requête disponnible sur la plateforme apidae",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5494910"
 	},
 	"item": [
 		{
 			"name": "API de consultation",
 			"item": [
 				{
-					"name": "Lecture des sélections d'un projet",
+					"name": "Service de consentement",
 					"item": [
 						{
-							"name": "Récupération des sélections d'un projet",
+							"name": "Récupération des ensembles d'offres",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
 							"request": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{API_ENDPOINT}}/v002/referentiel/selections/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\"}",
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/searchs/?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}",
 									"host": [
-										"{{API_ENDPOINT}}"
+										"{{API_PLATEFORME_ENDPOINT}}"
 									],
 									"path": [
+										"api",
 										"v002",
-										"referentiel",
-										"selections",
+										"channel",
+										"searchs",
 										""
 									],
 									"query": [
 										{
-											"key": "query",
-											"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\"}"
+											"key": "projectId",
+											"value": "{{Channel_projectId}}",
+											"description": "Identifiant du Channel dans le service de consentement."
+										},
+										{
+											"key": "apiKey",
+											"value": "{{Channel_apiKey}}",
+											"description": "Clef API du Channel dans le service de consentement."
 										}
 									]
 								},
-								"description": "Cette requête permet de récupérer toutes les selections d'un projet\r\n\r\n/v002/referentiel/selections/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\"}"
+								"description": "Cette requête liste les ensembles d'offres disponibles au sein d'un channel.\n\nLes identifiants des recherches seront ensuite utilisés en tant que searchId sur les requêtes suivantes."
 							},
 							"response": []
 						},
 						{
-							"name": "Récupération de sélections",
+							"name": "Recherche - list-identifiants",
 							"request": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{API_ENDPOINT}}/v002/referentiel/selections/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"selectionIds\":[{{selectionIds}}]}",
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/recherche/list-identifiants/?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}",
 									"host": [
-										"{{API_ENDPOINT}}"
+										"{{API_PLATEFORME_ENDPOINT}}"
 									],
 									"path": [
+										"api",
 										"v002",
-										"referentiel",
-										"selections",
+										"channel",
+										"recherche",
+										"list-identifiants",
 										""
 									],
 									"query": [
 										{
-											"key": "query",
-											"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"selectionIds\":[{{selectionIds}}]}"
+											"key": "projectId",
+											"value": "{{Channel_projectId}}",
+											"description": "Identifiant du Channel dans le service de consentement."
+										},
+										{
+											"key": "apiKey",
+											"value": "{{Channel_apiKey}}",
+											"description": "Clef API du Channel dans le service de consentement."
+										},
+										{
+											"key": "searchId",
+											"value": "{{Channel_searchId}}",
+											"description": "Identifiant d'un ensemble d'offre"
+										},
+										{
+											"key": "count",
+											"value": "200",
+											"description": "Nombre d'offres maximum retourné par le web service (20 par défaut)",
+											"disabled": true
 										}
 									]
 								},
-								"description": "Cette requête permet de récupérer une ou plusieurs selections à partir de leurs id\r\n\r\n/v002/referentiel/selections/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"selectionIds\":[{selectionIds}]}"
+								"description": "Cette méthode permet de récupérer la liste des identifiants d'offres d'un ensemble d'offres.\n\nLa valeur de Channel_searchId se récupère sur la requête \"Récupération des ensembles d'offres\" (/api/v002/channel/searchs/)."
 							},
 							"response": []
 						},
 						{
-							"name": "Récupération de sélection par objet touristique",
+							"name": "Recherche - list-objets-touristiques",
 							"request": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{API_ENDPOINT}}/v002/referentiel/selections-par-objet/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"referenceIds\":[5148473]}",
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/recherche/list-objets-touristiques/?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}",
 									"host": [
-										"{{API_ENDPOINT}}"
+										"{{API_PLATEFORME_ENDPOINT}}"
 									],
 									"path": [
+										"api",
 										"v002",
-										"referentiel",
-										"selections-par-objet",
+										"channel",
+										"recherche",
+										"list-objets-touristiques",
 										""
 									],
 									"query": [
 										{
-											"key": "query",
-											"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"referenceIds\":[5148473]}"
+											"key": "projectId",
+											"value": "{{Channel_projectId}}",
+											"description": "Identifiant du Channel dans le service de consentement."
+										},
+										{
+											"key": "apiKey",
+											"value": "{{Channel_apiKey}}",
+											"description": "Clef API du Channel dans le service de consentement."
+										},
+										{
+											"key": "searchId",
+											"value": "{{Channel_searchId}}",
+											"description": "Identifiant d'un ensemble d'offre"
+										},
+										{
+											"key": "responseFields",
+											"value": "[\"id\",\"nom\"]",
+											"description": "Facultatif. Liste des noeuds JSON souhaités, sous forme de tableau de chaînes.",
+											"disabled": true
+										},
+										{
+											"key": "locales",
+											"value": "fr,en",
+											"description": "Facultatif. Liste des locales séparées par des virgules.",
+											"disabled": true
+										},
+										{
+											"key": "count",
+											"value": "200",
+											"description": "Nombre d'offres maximum retourné par le web service (20 par défaut)",
+											"disabled": true
 										}
 									]
 								},
-								"description": "Cette requête permet de récupérer des sélections en fonction des id des objets qu'elles contiennent.\r\n\r\n/v002/referentiel/selections-par-objet/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"referenceIds\":[{X, ..., Y}]}"
+								"description": "Cette méthode permet de récupérer le contenu d'une liste d'offres.\n\nLa valeur de Channel_searchId se récupère sur la requête \"Récupération des ensembles d'offres\" (/api/v002/channel/searchs/).\n\nLa gestion des responseFileds (optionnel) est détaillée dans le [filtrage des données](https://desktop.postman.com/?desktopVersion=9.31.0&userId=5494910&teamId=279703).\n\nL'utilisation des locales est détaillé dans le [filtrage des langues](https://desktop.postman.com/?desktopVersion=9.31.0&userId=5494910&teamId=279703)."
 							},
 							"response": []
-						}
-					],
-					"description": "Ces requêtes permettent de lire les sélections présentes sur un projet"
-				},
-				{
-					"name": "Lecture d'un objet touristique",
-					"item": [
+						},
 						{
-							"name": "Récupération par Id",
+							"name": "Récupération d'un objet touristiques - get-by-id",
 							"request": {
-								"auth": {
-									"type": "noauth"
-								},
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{API_ENDPOINT}}/v002/objet-touristique/get-by-id/5148473?responseFields=id,nom,identifier&locales=fr,en&apiKey={{apiKey}}&projetId={{projetId}}",
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/objets-touristiques/get-by-id/6238693?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}",
 									"host": [
-										"{{API_ENDPOINT}}"
+										"{{API_PLATEFORME_ENDPOINT}}"
 									],
 									"path": [
+										"api",
 										"v002",
-										"objet-touristique",
+										"channel",
+										"objets-touristiques",
 										"get-by-id",
-										"5148473"
+										"6238693"
 									],
 									"query": [
 										{
-											"key": "responseFields",
-											"value": "id,nom,identifier"
-										},
-										{
-											"key": "locales",
-											"value": "fr,en"
+											"key": "projectId",
+											"value": "{{Channel_projectId}}",
+											"description": "Identifiant du Channel dans le service de consentement."
 										},
 										{
 											"key": "apiKey",
-											"value": "{{apiKey}}"
+											"value": "{{Channel_apiKey}}",
+											"description": "Clef API du Channel dans le service de consentement."
 										},
 										{
-											"key": "projetId",
-											"value": "{{projetId}}"
+											"key": "searchId",
+											"value": "{{Channel_searchId}}",
+											"description": "Identifiant d'un ensemble d'offre"
+										},
+										{
+											"key": "responseFields",
+											"value": "[\"id\",\"nom\"]",
+											"description": "Facultatif. Liste des noeuds JSON souhaités, sous forme de tableau de chaînes.",
+											"disabled": true
+										},
+										{
+											"key": "locales",
+											"value": "fr,en",
+											"description": "Facultatif. Liste des locales séparées par des virgules.",
+											"disabled": true
 										}
 									]
 								},
-								"description": "Cette requête permet de récupérer les informations d’un seul objet touristique de manière simple en passant son Id.\r\n\r\n/v002/objet-touristique/get-by-id/{id}?&apiKey={apiKey}&projetId={projetId}\r\n\r\n**ATTENTION** a bien changer l'id de l'exemple car les filtres de votre projet ne contiennent pas forcément l'objet touristique associé."
+								"description": "Cette méthode permet de récupérer le contenu d'un objet touristique.\n\nL'identifiant de l'objet est récupéré lors d'une recherche classique ou d'une rechercher agenda."
 							},
 							"response": []
 						},
 						{
-							"name": "Récupération par identifier",
+							"name": "Récupération d'un objet touristique enrichi - enrich",
 							"request": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{API_ENDPOINT}}/v002/objet-touristique/get-by-identifier/SITRA2_EVE_5148473?responseFields=id,nom&locales=fr,en&apiKey={{apiKey}}&projetId={{projetId}}",
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/objets-touristiques/enrich/6238693?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}&enrichments=multihoraire,apidae-photo",
 									"host": [
-										"{{API_ENDPOINT}}"
+										"{{API_PLATEFORME_ENDPOINT}}"
 									],
 									"path": [
+										"api",
 										"v002",
-										"objet-touristique",
-										"get-by-identifier",
-										"SITRA2_EVE_5148473"
+										"channel",
+										"objets-touristiques",
+										"enrich",
+										"6238693"
 									],
 									"query": [
 										{
-											"key": "responseFields",
-											"value": "id,nom"
-										},
-										{
-											"key": "locales",
-											"value": "fr,en"
+											"key": "projectId",
+											"value": "{{Channel_projectId}}",
+											"description": "Identifiant du Channel dans le service de consentement."
 										},
 										{
 											"key": "apiKey",
-											"value": "{{apiKey}}"
+											"value": "{{Channel_apiKey}}",
+											"description": "Clef API du Channel dans le service de consentement."
 										},
 										{
-											"key": "projetId",
-											"value": "{{projetId}}"
+											"key": "searchId",
+											"value": "{{Channel_searchId}}",
+											"description": "Identifiant d'un ensemble d'offre"
+										},
+										{
+											"key": "enrichments",
+											"value": "multihoraire,apidae-photo",
+											"description": "Liste des enrichissements souhaités, séparés par une virgule"
+										},
+										{
+											"key": "locales",
+											"value": "fr,en",
+											"description": "Facultatif. Liste des locales séparées par des virgules.",
+											"disabled": true
+										},
+										{
+											"key": "responseFields",
+											"value": "[\"id\",\"nom\"]",
+											"description": "Facultatif. Liste des noeuds JSON souhaités, sous forme de tableau de chaînes.",
+											"disabled": true
 										}
 									]
 								},
-								"description": "Cette requête permet de récupérer un objet touristique à partir de son identifier.\r\n\r\n/v002/objet-touristique/get-by-identifier/{identifier}?&apiKey={apiKey}&projetId={projetId}\r\n\r\n**ATTENTION** a bien changer l'identifier (disponnible avec la requête ci-avant) de l'exemple car les filtres de votre projet ne contiennent pas forcément l'objet touristique associé."
+								"description": "Cette méthode permet de récupérer le contenu d'un objet touristique enrichi.\n\nL'identifiant de l'objet est récupéré lors d'une recherche classique ou d'une rechercher agenda.\n\nLes différents enrichissements possibles sont disponibles sur le site d'aide aux développeurs à l'adresse suivante : [https://dev.apidae-tourisme.com/documentation-technique/v2/api-de-diffusion/appels-enrichis/](https://dev.apidae-tourisme.com/documentation-technique/v2/api-de-diffusion/appels-enrichis/)"
 							},
 							"response": []
-						}
-					],
-					"description": "Ces services permettent de récupérer les informations d’un seul objet touristique de manière simple.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
 						},
 						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
+							"name": "Agenda Simple - list-identifiants",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/agenda/simple/list-identifiants/?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}&dateDebut=2022-09-23",
+									"host": [
+										"{{API_PLATEFORME_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"v002",
+										"channel",
+										"agenda",
+										"simple",
+										"list-identifiants",
+										""
+									],
+									"query": [
+										{
+											"key": "projectId",
+											"value": "{{Channel_projectId}}",
+											"description": "Identifiant du Channel dans le service de consentement."
+										},
+										{
+											"key": "apiKey",
+											"value": "{{Channel_apiKey}}",
+											"description": "Clef API du Channel dans le service de consentement."
+										},
+										{
+											"key": "searchId",
+											"value": "{{Channel_searchId}}",
+											"description": "Identifiant d'un ensemble d'offre"
+										},
+										{
+											"key": "dateDebut",
+											"value": "2022-09-23",
+											"description": "Obligatoire : date de début des évènements."
+										},
+										{
+											"key": "dateFinF",
+											"value": "2022-09-30",
+											"description": "Facultatif : date de fin des évènements.",
+											"disabled": true
+										},
+										{
+											"key": "count",
+											"value": "200",
+											"description": "Nombre d'offres maximum retourné par le web service (20 par défaut)",
+											"disabled": true
+										}
+									]
+								},
+								"description": "Cette méthode permet de récupérer la liste des identifiants d'offres d'un ensemble d'offres triés par la date de début des évènements\n\nLa valeur de Channel_searchId se récupère sur la requête \"Récupération des ensembles d'offres\" (/api/v002/channel/searchs/)."
+							},
+							"response": []
+						},
+						{
+							"name": "Agenda Simple - list-objets-touristiques",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/agenda/simple/list-objets-touristiques/?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}&dateDebut=2022-09-23",
+									"host": [
+										"{{API_PLATEFORME_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"v002",
+										"channel",
+										"agenda",
+										"simple",
+										"list-objets-touristiques",
+										""
+									],
+									"query": [
+										{
+											"key": "projectId",
+											"value": "{{Channel_projectId}}",
+											"description": "Identifiant du Channel dans le service de consentement."
+										},
+										{
+											"key": "apiKey",
+											"value": "{{Channel_apiKey}}",
+											"description": "Clef API du Channel dans le service de consentement."
+										},
+										{
+											"key": "searchId",
+											"value": "{{Channel_searchId}}",
+											"description": "Identifiant d'un ensemble d'offre"
+										},
+										{
+											"key": "dateDebut",
+											"value": "2022-09-23",
+											"description": "Obligatoire : date de début des évènements."
+										},
+										{
+											"key": "dateFin",
+											"value": "2022-09-30",
+											"description": "Facultatif : date de fin des évènements.",
+											"disabled": true
+										},
+										{
+											"key": "responseFields",
+											"value": "[\"id\",\"nom\"]",
+											"description": "Facultatif. Liste des noeuds JSON souhaités, sous forme de tableau de chaînes.",
+											"disabled": true
+										},
+										{
+											"key": "locales",
+											"value": "fr,en",
+											"description": "Facultatif. Liste des locales séparées par des virgules.",
+											"disabled": true
+										},
+										{
+											"key": "count",
+											"value": "200",
+											"description": "Nombre d'offres maximum retourné par le web service (20 par défaut)",
+											"disabled": true
+										}
+									]
+								},
+								"description": "Cette méthode permet de récupérer le contenu d'une liste d'offres triée par la date de début des évènements\n\nLa valeur de Channel_searchId se récupère sur la requête \"Récupération des ensembles d'offres\" (/api/v002/channel/searchs/)."
+							},
+							"response": []
+						},
+						{
+							"name": "Agenda Détaillé - list-identifiants",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/agenda/detaille/list-identifiants/?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}&dateDebut=2022-09-22",
+									"host": [
+										"{{API_PLATEFORME_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"v002",
+										"channel",
+										"agenda",
+										"detaille",
+										"list-identifiants",
+										""
+									],
+									"query": [
+										{
+											"key": "projectId",
+											"value": "{{Channel_projectId}}",
+											"description": "Identifiant du Channel dans le service de consentement."
+										},
+										{
+											"key": "apiKey",
+											"value": "{{Channel_apiKey}}",
+											"description": "Clef API du Channel dans le service de consentement."
+										},
+										{
+											"key": "searchId",
+											"value": "{{Channel_searchId}}",
+											"description": "Identifiant d'un ensemble d'offre"
+										},
+										{
+											"key": "dateDebut",
+											"value": "2022-09-22",
+											"description": "Obligatoire : date de début des évènements."
+										},
+										{
+											"key": "dateFin",
+											"value": "2022-09-30",
+											"description": "Facultatif : date de fin des évènements.",
+											"disabled": true
+										},
+										{
+											"key": "count",
+											"value": "200",
+											"description": "Nombre d'offres maximum retourné par le web service (20 par défaut)",
+											"disabled": true
+										}
+									]
+								},
+								"description": "Cette méthode permet de récupérer la liste des identifiants d'offres d'un ensemble d'offres. Les objets sont regroupés par date d’évènement. Un objet touristique qui se déroule sur plusieurs journées est listé plusieurs fois dans le résultat (une fois pour chaque jour d’ouverture).\n\nLa valeur de Channel_searchId se récupère sur la requête \"Récupération des ensembles d'offres\" (/api/v002/channel/searchs/)."
+							},
+							"response": []
+						},
+						{
+							"name": "Agenda Détaillé - list-objets-touristiques",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/agenda/detaille/list-objets-touristiques/?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}&dateDebut=2022-09-23",
+									"host": [
+										"{{API_PLATEFORME_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"v002",
+										"channel",
+										"agenda",
+										"detaille",
+										"list-objets-touristiques",
+										""
+									],
+									"query": [
+										{
+											"key": "projectId",
+											"value": "{{Channel_projectId}}",
+											"description": "Identifiant du Channel dans le service de consentement."
+										},
+										{
+											"key": "apiKey",
+											"value": "{{Channel_apiKey}}",
+											"description": "Clef API du Channel dans le service de consentement."
+										},
+										{
+											"key": "searchId",
+											"value": "{{Channel_searchId}}",
+											"description": "Identifiant d'un ensemble d'offre"
+										},
+										{
+											"key": "dateDebut",
+											"value": "2022-09-23",
+											"description": "Obligatoire : date de début des évènements."
+										},
+										{
+											"key": "dateFin",
+											"value": "2022-09-30",
+											"description": "Facultatif : date de fin des évènements.",
+											"disabled": true
+										},
+										{
+											"key": "locales",
+											"value": "fr,en",
+											"description": "Facultatif. Liste des locales séparées par des virgules.",
+											"disabled": true
+										},
+										{
+											"key": "responseFields",
+											"value": "[\"id\",\"nom\"]",
+											"description": "Facultatif. Liste des noeuds JSON souhaités, sous forme de tableau de chaînes.",
+											"disabled": true
+										},
+										{
+											"key": "count",
+											"value": "200",
+											"description": "Nombre d'offres maximum retourné par le web service (20 par défaut)",
+											"disabled": true
+										}
+									]
+								},
+								"description": "Cette méthode permet de récupérer le contenu d'une liste d'offres. Les objets sont regroupés par date d’évènement. Un objet touristique qui se déroule sur plusieurs journées est listé plusieurs fois dans le résultat (une fois pour chaque jour d’ouverture).\n\nLa valeur de Channel_searchId se récupère sur la requête \"Récupération des ensembles d'offres\" (/api/v002/channel/searchs/)."
+							},
+							"response": []
+						},
+						{
+							"name": "Recherche - list-objets-touristiques - Query",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "query",
+											"value": "{ \n    \"projectId\": \"{{Channel_projectId}}\",\n    \"apiKey\": \"{{Channel_apiKey}}\",\n    \"searchId\": \"{{Channel_searchId}}\",\n    \"responseFields\":[\"id\",\"nom\"],\n     \"locales\":[\"fr\",\"en\",\"ja\"]\n}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/recherche/list-objets-touristiques/",
+									"host": [
+										"{{API_PLATEFORME_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"v002",
+										"channel",
+										"recherche",
+										"list-objets-touristiques",
+										""
+									]
+								},
+								"description": "Exemple complémentaire utilisant le service en méthode POST avec l'utilisation du paramètre Query.\n\nL'ensemble des requêtes du Service de consentement sont utilisables avec la méthode POST.\n\nCette méthode permet de récupérer le contenu d'une liste d'offres.\n\nLa valeur de Channel_searchId se récupère sur la requête \"Récupération des ensembles d'offres\" (/api/v002/channel/searchs/).\n\nLe détail de la construction du paramètre Query est détaillée dans [le format des recherches](https://dev.apidae-tourisme.com/documentation-technique/v2/api-de-diffusion/format-des-recherches/)."
+							},
+							"response": []
 						}
 					]
 				},
 				{
-					"name": "Recherche d'objets touristiques",
+					"name": "Projets numériques",
 					"item": [
 						{
-							"name": "Dans une zone géographique",
+							"name": "Lecture des sélections d'un projet",
 							"item": [
 								{
-									"name": "Récupération dans un rayon (ids)",
+									"name": "Récupération des sélections d'un projet",
 									"request": {
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"center\":{\"type\":\"Point\",\"coordinates\":[4.833,45.767]},\"radius\":\"3000\"}",
+											"raw": "{{API_ENDPOINT}}/v002/referentiel/selections/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\"}",
 											"host": [
 												"{{API_ENDPOINT}}"
 											],
 											"path": [
 												"v002",
-												"recherche",
-												"list-identifiants",
+												"referentiel",
+												"selections",
 												""
 											],
 											"query": [
 												{
 													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"center\":{\"type\":\"Point\",\"coordinates\":[4.833,45.767]},\"radius\":\"3000\"}"
+													"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\"}"
 												}
 											]
 										},
-										"description": "Cette requête permet d'effectuer une recherche restreinte à une zone géographique, il faut déterminer le centre du cercle à utiliser ainsi que le rayon du cercle(en mètre).\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"center\":{\"type\":\"Point\",\"coordinates\":[{longitude},{latitude}]},\"radius\":\"{rayon}\"}"
+										"description": "Cette requête permet de récupérer toutes les selections d'un projet\r\n\r\n/v002/referentiel/selections/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\"}"
 									},
 									"response": []
 								},
 								{
-									"name": "Récupération dans un rayon (objets)",
+									"name": "Récupération de sélections",
 									"request": {
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"center\":{\"type\":\"Point\",\"coordinates\":[4.833,45.767]},\"radius\":\"3000\"}",
+											"raw": "{{API_ENDPOINT}}/v002/referentiel/selections/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"selectionIds\":[{{selectionIds}}]}",
 											"host": [
 												"{{API_ENDPOINT}}"
 											],
 											"path": [
 												"v002",
-												"recherche",
-												"list-objets-touristiques"
-											],
-											"query": [
-												{
-													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"center\":{\"type\":\"Point\",\"coordinates\":[4.833,45.767]},\"radius\":\"3000\"}"
-												}
-											]
-										},
-										"description": "Cette requête permet d'effectuer une recherche restreinte à une zone géographique, il faut déterminer le centre du cercle à utiliser ainsi que le rayon du cercle (en mètres).\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"responseFields\":{responseFields},\"center\":{\"type\":\"Point\",\"coordinates\":[{longitude},{latitude}]},\"radius\":\"{rayon}\"}"
-									},
-									"response": []
-								},
-								{
-									"name": "Récupération sur un territoire (ids)",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"territoireIds\":[95938,156922]}",
-											"host": [
-												"{{API_ENDPOINT}}"
-											],
-											"path": [
-												"v002",
-												"recherche",
-												"list-identifiants",
+												"referentiel",
+												"selections",
 												""
 											],
 											"query": [
 												{
 													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"territoireIds\":[95938,156922]}"
+													"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"selectionIds\":[{{selectionIds}}]}"
 												}
 											]
 										},
-										"description": "Cette requête permet d'effectuer une recherche à partir d'un ou plusieur identifiants des territoires sur lesquels se trouvent les objets à retourner.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"territoireIds\":[\"XXX\", ..., \"XXX\"]}"
+										"description": "Cette requête permet de récupérer une ou plusieurs selections à partir de leurs id\r\n\r\n/v002/referentiel/selections/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"selectionIds\":[{selectionIds}]}"
 									},
 									"response": []
 								},
 								{
-									"name": "Récupération sur un territoire (objets)",
+									"name": "Récupération de sélection par objet touristique",
 									"request": {
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"territoireIds\":[95938,156922]}",
+											"raw": "{{API_ENDPOINT}}/v002/referentiel/selections-par-objet/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"referenceIds\":[5148473]}",
 											"host": [
 												"{{API_ENDPOINT}}"
 											],
 											"path": [
 												"v002",
-												"recherche",
-												"list-objets-touristiques"
-											],
-											"query": [
-												{
-													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"territoireIds\":[95938,156922]}"
-												}
-											]
-										},
-										"description": "Cette requête permet d'effectuer une recherche à partir d'un ou plusieur identifiants des territoires sur lesquels se trouvent les objets à retourner.\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"responseFields\":{responseFields},\"territoireIds\":[\"XXX\", ..., \"XXX\"]}"
-									},
-									"response": []
-								},
-								{
-									"name": "Récupération à partir d'une commune (ids)",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"communeCodesInsee\":[\"69275\",\"69388\"]}",
-											"host": [
-												"{{API_ENDPOINT}}"
-											],
-											"path": [
-												"v002",
-												"recherche",
-												"list-identifiants",
+												"referentiel",
+												"selections-par-objet",
 												""
 											],
 											"query": [
 												{
 													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"communeCodesInsee\":[\"69275\",\"69388\"]}"
+													"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"referenceIds\":[5148473]}"
 												}
 											]
 										},
-										"description": "Cette requête permet d'effectuer une recherche à partir d'un ou plusieur code INSEE des communes sur lesquels se trouvent les objets à retourner.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"communeCodesInsee\":[\"XXX\", ..., \"XXX\"]}"
-									},
-									"response": []
-								},
-								{
-									"name": "Récupération à partir d'une commune (objets)",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"communeCodesInsee\":[\"69275\",\"69388\"]}",
-											"host": [
-												"{{API_ENDPOINT}}"
-											],
-											"path": [
-												"v002",
-												"recherche",
-												"list-objets-touristiques"
-											],
-											"query": [
-												{
-													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"communeCodesInsee\":[\"69275\",\"69388\"]}"
-												}
-											]
-										},
-										"description": "Cette requête permet d'effectuer une recherche à partir d'un ou plusieur code INSEE des communes sur lesquels se trouvent les objets à retourner.\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"responseFields\":{responseFields},\"communeCodesInsee\":[\"XXX\", ..., \"XXX\"]}"
+										"description": "Cette requête permet de récupérer des sélections en fonction des id des objets qu'elles contiennent.\r\n\r\n/v002/referentiel/selections-par-objet/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"referenceIds\":[{X, ..., Y}]}"
 									},
 									"response": []
 								}
 							],
-							"description": "Recherche s'effectue à partir d'une sélection et dans une zone géographique précise",
+							"description": "Ces requêtes permettent de lire les sélections présentes sur un projet"
+						},
+						{
+							"name": "Lecture d'un objet touristique",
+							"item": [
+								{
+									"name": "Récupération par Id",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/objet-touristique/get-by-id/5148473?responseFields=id,nom,identifier&locales=fr,en&apiKey={{apiKey}}&projetId={{projetId}}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"objet-touristique",
+												"get-by-id",
+												"5148473"
+											],
+											"query": [
+												{
+													"key": "responseFields",
+													"value": "id,nom,identifier"
+												},
+												{
+													"key": "locales",
+													"value": "fr,en"
+												},
+												{
+													"key": "apiKey",
+													"value": "{{apiKey}}"
+												},
+												{
+													"key": "projetId",
+													"value": "{{projetId}}"
+												}
+											]
+										},
+										"description": "Cette requête permet de récupérer les informations d’un seul objet touristique de manière simple en passant son Id.\r\n\r\n/v002/objet-touristique/get-by-id/{id}?&apiKey={apiKey}&projetId={projetId}\r\n\r\n**ATTENTION** a bien changer l'id de l'exemple car les filtres de votre projet ne contiennent pas forcément l'objet touristique associé."
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération par identifier",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/objet-touristique/get-by-identifier/SITRA2_EVE_5148473?responseFields=id,nom&locales=fr,en&apiKey={{apiKey}}&projetId={{projetId}}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"objet-touristique",
+												"get-by-identifier",
+												"SITRA2_EVE_5148473"
+											],
+											"query": [
+												{
+													"key": "responseFields",
+													"value": "id,nom"
+												},
+												{
+													"key": "locales",
+													"value": "fr,en"
+												},
+												{
+													"key": "apiKey",
+													"value": "{{apiKey}}"
+												},
+												{
+													"key": "projetId",
+													"value": "{{projetId}}"
+												}
+											]
+										},
+										"description": "Cette requête permet de récupérer un objet touristique à partir de son identifier.\r\n\r\n/v002/objet-touristique/get-by-identifier/{identifier}?&apiKey={apiKey}&projetId={projetId}\r\n\r\n**ATTENTION** a bien changer l'identifier (disponnible avec la requête ci-avant) de l'exemple car les filtres de votre projet ne contiennent pas forcément l'objet touristique associé."
+									},
+									"response": []
+								}
+							],
+							"description": "Ces services permettent de récupérer les informations d’un seul objet touristique de manière simple.",
 							"event": [
 								{
 									"listen": "prerequest",
@@ -392,15 +752,734 @@
 							]
 						},
 						{
-							"name": "Avec ces termes",
+							"name": "Recherche d'objets touristiques",
 							"item": [
 								{
-									"name": "Récupération en fonction de termes (ids)",
+									"name": "Dans une zone géographique",
+									"item": [
+										{
+											"name": "Récupération dans un rayon (ids)",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"center\":{\"type\":\"Point\",\"coordinates\":[4.833,45.767]},\"radius\":\"3000\"}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"recherche",
+														"list-identifiants",
+														""
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"center\":{\"type\":\"Point\",\"coordinates\":[4.833,45.767]},\"radius\":\"3000\"}"
+														}
+													]
+												},
+												"description": "Cette requête permet d'effectuer une recherche restreinte à une zone géographique, il faut déterminer le centre du cercle à utiliser ainsi que le rayon du cercle(en mètre).\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"center\":{\"type\":\"Point\",\"coordinates\":[{longitude},{latitude}]},\"radius\":\"{rayon}\"}"
+											},
+											"response": []
+										},
+										{
+											"name": "Récupération dans un rayon (objets)",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"center\":{\"type\":\"Point\",\"coordinates\":[4.833,45.767]},\"radius\":\"3000\"}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"recherche",
+														"list-objets-touristiques"
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"center\":{\"type\":\"Point\",\"coordinates\":[4.833,45.767]},\"radius\":\"3000\"}"
+														}
+													]
+												},
+												"description": "Cette requête permet d'effectuer une recherche restreinte à une zone géographique, il faut déterminer le centre du cercle à utiliser ainsi que le rayon du cercle (en mètres).\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"responseFields\":{responseFields},\"center\":{\"type\":\"Point\",\"coordinates\":[{longitude},{latitude}]},\"radius\":\"{rayon}\"}"
+											},
+											"response": []
+										},
+										{
+											"name": "Récupération sur un territoire (ids)",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"territoireIds\":[95938,156922]}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"recherche",
+														"list-identifiants",
+														""
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"territoireIds\":[95938,156922]}"
+														}
+													]
+												},
+												"description": "Cette requête permet d'effectuer une recherche à partir d'un ou plusieur identifiants des territoires sur lesquels se trouvent les objets à retourner.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"territoireIds\":[\"XXX\", ..., \"XXX\"]}"
+											},
+											"response": []
+										},
+										{
+											"name": "Récupération sur un territoire (objets)",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"territoireIds\":[95938,156922]}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"recherche",
+														"list-objets-touristiques"
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"territoireIds\":[95938,156922]}"
+														}
+													]
+												},
+												"description": "Cette requête permet d'effectuer une recherche à partir d'un ou plusieur identifiants des territoires sur lesquels se trouvent les objets à retourner.\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"responseFields\":{responseFields},\"territoireIds\":[\"XXX\", ..., \"XXX\"]}"
+											},
+											"response": []
+										},
+										{
+											"name": "Récupération à partir d'une commune (ids)",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"communeCodesInsee\":[\"69275\",\"69388\"]}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"recherche",
+														"list-identifiants",
+														""
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"communeCodesInsee\":[\"69275\",\"69388\"]}"
+														}
+													]
+												},
+												"description": "Cette requête permet d'effectuer une recherche à partir d'un ou plusieur code INSEE des communes sur lesquels se trouvent les objets à retourner.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"communeCodesInsee\":[\"XXX\", ..., \"XXX\"]}"
+											},
+											"response": []
+										},
+										{
+											"name": "Récupération à partir d'une commune (objets)",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"communeCodesInsee\":[\"69275\",\"69388\"]}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"recherche",
+														"list-objets-touristiques"
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"communeCodesInsee\":[\"69275\",\"69388\"]}"
+														}
+													]
+												},
+												"description": "Cette requête permet d'effectuer une recherche à partir d'un ou plusieur code INSEE des communes sur lesquels se trouvent les objets à retourner.\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"responseFields\":{responseFields},\"communeCodesInsee\":[\"XXX\", ..., \"XXX\"]}"
+											},
+											"response": []
+										}
+									],
+									"description": "Recherche s'effectue à partir d'une sélection et dans une zone géographique précise",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													""
+												]
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													""
+												]
+											}
+										}
+									]
+								},
+								{
+									"name": "Avec ces termes",
+									"item": [
+										{
+											"name": "Récupération en fonction de termes (ids)",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"searchQuery\":\"festival\",\"searchFields\":\"NOM\"}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"recherche",
+														"list-identifiants",
+														""
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"searchQuery\":\"festival\",\"searchFields\":\"NOM\"}"
+														}
+													]
+												},
+												"description": "Récupérez une liste d’ids d'objets touristiques à partir d’une ou plusieurs chaîne de caractères séparées par un espace.\r\n\r\nSearchFields :\r\n- NOM pour une recherche sur le nom des objets,\r\n- NOM_DESCRIPTION pour une recherche sur le nom et les descriptions des objets,\r\n- NOM_DESCRIPTION_CRITERES pour une recherche sur le nom, les descriptions et les critères associés aux objets.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id1, ..., idn}],\"searchQuery\":\"{chaine_de_caracteres}\",\"searchFields\":\"{searchFields}\"}"
+											},
+											"response": []
+										},
+										{
+											"name": "Récupération en fonction de termes (objets)",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"searchQuery\":\"festival\",\"searchFields\":\"NOM\"}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"recherche",
+														"list-objets-touristiques"
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"searchQuery\":\"festival\",\"searchFields\":\"NOM\"}"
+														}
+													]
+												},
+												"description": "Récupérez une liste d’objets touristiques à partir d’une ou plusieurs chaîne de caractères séparées par un espace.\r\n\r\nSearchFields :\r\n- NOM pour une recherche sur le nom des objets,\r\n- NOM_DESCRIPTION pour une recherche sur le nom et les descriptions des objets,\r\n- NOM_DESCRIPTION_CRITERES pour une recherche sur le nom, les descriptions et les critères associés aux objets.\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id1, ..., idn}],\"responseFields\":{responseFields},\"searchQuery\":\"{chaine_de_caracteres}\",\"searchFields\":\"{searchFields}\"}"
+											},
+											"response": []
+										}
+									],
+									"description": "Recherche s'effectue à partir d'une sélection et qui renvoit les objets qui continnent certains caractères",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													""
+												]
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													""
+												]
+											}
+										}
+									]
+								},
+								{
+									"name": "En fonction de critères",
+									"item": [
+										{
+											"name": "Récupération en fonction de critères (ids)",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"criteresQuery\":\"type:EQUIPEMENT\"}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"recherche",
+														"list-identifiants",
+														""
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"criteresQuery\":\"type:EQUIPEMENT\"}"
+														}
+													]
+												},
+												"description": "Cette requête permet de récupérer une liste d’identifiants d’objets touristiques à partir d’une recherche.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}]}"
+											},
+											"response": []
+										},
+										{
+											"name": "Récupération en fonction de critères (objets)",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"criteresQuery\":\"type:EQUIPEMENT\"}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"recherche",
+														"list-objets-touristiques"
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"criteresQuery\":\"type:EQUIPEMENT\"}"
+														}
+													]
+												},
+												"description": "Récupérez une liste d’objets touristiques à partir d’une recherche.\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id1, ..., idn}],\"responseFields\":{responseFields}}"
+											},
+											"response": []
+										}
+									],
+									"description": "Recherche s'effectue à partir d'une sélection et qui renvoit les objets qui correspondent aux critères",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													""
+												]
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													""
+												]
+											}
+										}
+									]
+								},
+								{
+									"name": "À partir d'une date",
+									"item": [
+										{
+											"name": "Récupération à partir d'un jour (ids)",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateDebut\":\"2021-01-15\"}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"recherche",
+														"list-identifiants",
+														""
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateDebut\":\"2021-01-15\"}"
+														}
+													]
+												},
+												"description": "Cette requête permet de récupérer une liste d’identifiants d’objets touristiques à partir d’une date de début.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"dateDebut\":\"{YYYY-MM-DD}\"}"
+											},
+											"response": []
+										},
+										{
+											"name": "Récupération à partir d'un jour (objets)",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\",\"ouverture\"],\"dateDebut\":\"2021-01-29\",\"dateFin\":\"2021-01-29\"}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"recherche",
+														"list-objets-touristiques"
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\",\"ouverture\"],\"dateDebut\":\"2021-01-29\",\"dateFin\":\"2021-01-29\"}"
+														}
+													]
+												},
+												"description": "Récupérez une liste d’objets touristiques à partir d’une date de début.\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id1, ..., idn}],\"responseFields\":{responseFields},\"dateDebut\":\"{YYYY-MM-DD}\"}"
+											},
+											"response": []
+										},
+										{
+											"name": "Récupération avant un jour (ids) ",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateFin\":\"2021-01-15\"}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"recherche",
+														"list-identifiants",
+														""
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateFin\":\"2021-01-15\"}"
+														}
+													]
+												},
+												"description": "Cette requête permet de récupérer une liste d’identifiants d’objets touristiques à partir d’une date de fin.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"dateFin\":\"{YYYY-MM-DD}\"}"
+											},
+											"response": []
+										},
+										{
+											"name": "Récupération avant un jour (objets)",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"2021-01-15\"}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"recherche",
+														"list-objets-touristiques"
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"2021-01-15\"}"
+														}
+													]
+												},
+												"description": "Récupérez une liste d’objets touristiques à partir d’une date de fin.\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id1, ..., idn}],\"responseFields\":{responseFields},\"dateFin\":\"{YYYY-MM-DD}\"}"
+											},
+											"response": []
+										},
+										{
+											"name": "Récupération à une date (ids)",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateDebut\":\"2021-01-29\",\"dateFin\":\"2021-01-29\"}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"recherche",
+														"list-identifiants",
+														""
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateDebut\":\"2021-01-29\",\"dateFin\":\"2021-01-29\"}"
+														}
+													]
+												},
+												"description": "Cette requête permet de récupérer une liste d’identifiants d’objets touristiques pour une date donnée.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"dateDebut\":\"{YYYY-MM-DD}\",\"dateFin\":\"{YYYY-MM-DD}\"}"
+											},
+											"response": []
+										},
+										{
+											"name": "Récupération à une date (objets)",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"2021-01-15\",\"dateFin\":\"2021-01-15\"}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"recherche",
+														"list-objets-touristiques"
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"2021-01-15\",\"dateFin\":\"2021-01-15\"}"
+														}
+													]
+												},
+												"description": "Récupérez une liste d’objets touristiques à une date donnée.\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id1, ..., idn}],\"responseFields\":{responseFields},\"dateDebut\":\"{YYYY-MM-DD}\",\"dateFin\":\"{YYYY-MM-DD}\"}"
+											},
+											"response": []
+										}
+									],
+									"description": "Recherche s'effectue à partir d'une sélection et qui renvoit les objets qui correspondent aux dates specifiées",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													""
+												]
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"type": "text/javascript",
+												"exec": [
+													""
+												]
+											}
+										}
+									]
+								},
+								{
+									"name": "Utile",
+									"item": [
+										{
+											"name": "Récupération de certains champs (objets)",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\",\"presentation.descriptifCourt\",\"identifier\"]}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"recherche",
+														"list-objets-touristiques"
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\",\"presentation.descriptifCourt\",\"identifier\"]}"
+														}
+													]
+												},
+												"description": "Récupérez une liste d’objets touristiques à partir d’une recherche en specifiant les champs que l'on veut dans les objets (responseFields).\r\n\r\nLes différent responseFields sont disponnibles de manière graphique ici : http://apidae.sbcd.fr/wordpress/\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id1, ..., idn}],\"responseFields\":{responseFields}}"
+											},
+											"response": []
+										},
+										{
+											"name": "Récupération d'une nombre d'objets (ids)",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"count\":\"10\"}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"recherche",
+														"list-identifiants",
+														""
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"count\":\"10\"}"
+														}
+													]
+												},
+												"description": "Cette requête permet de récupérer une liste de n identifiants d’objets touristiques à partir d’une recherche.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"count\":\"{N}\"}"
+											},
+											"response": []
+										},
+										{
+											"name": "Récupération d'une nombre d'objets (objets)",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"count\":\"10\"}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"recherche",
+														"list-objets-touristiques"
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"count\":\"10\"}"
+														}
+													]
+												},
+												"description": "Cette requête permet de récupérer une liste de n objets touristiques à partir d’une recherche.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"count\":\"{N}\"}"
+											},
+											"response": []
+										},
+										{
+											"name": "Récupération triée (ids)",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"order\":\"NOM\",\"asc\":\"true\"}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"recherche",
+														"list-identifiants",
+														""
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"order\":\"NOM\",\"asc\":\"true\"}"
+														}
+													]
+												},
+												"description": "Cette requête permet de récupérer une liste d'identifiants d’objets touristiques triés à partir d’une recherche.\r\n\r\nValeurs possibles :\r\n- NOM pour trier sur le nom des objets.\r\n- IDENTIFIANT pour trier sur les identifiants des objets.\r\n- PERTINENCE pour trier sur la pertinence de la recherche plein texte. Ce n’est appliqué que si le champ searchQuery est rempli. Non disponible sur l’agenda.\r\n- DISTANCE pour trier sur la distance par rapport au centre de la recherche géolocalisée. Ce n’est appliqué que si les champs centre et rayon sont correctement remplis.\r\n- RANDOM pour trier les résultats de manière pseudo-aléatoire. Voir le champ randomSeed.\r\n- DATE_OUVERTURE pour trier les objets par date d’ouverture. Seuls les résultats FETE_ET_MANIFESTATION et ACTIVITE sont fournis dans le résultat. Il n’est pas possible de faire de tri descendant sur cet élément. Il faut utiliser les services /agenda/simple/* pour obtenir des résultats triés par date (sans répartition par jour)\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"order\":\"{order}\",\"asc\":\"{true OR false}\"}"
+											},
+											"response": []
+										},
+										{
+											"name": "Récupération triée (objets)",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"order\":\"NOM\",\"asc\":\"true\"}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"recherche",
+														"list-objets-touristiques"
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"order\":\"NOM\",\"asc\":\"true\"}"
+														}
+													]
+												},
+												"description": "Cette requête permet de récupérer une liste d'objets touristiques triés à partir d’une recherche.\r\n\r\nValeurs possibles :\r\n- NOM pour trier sur le nom des objets.\r\n- IDENTIFIANT pour trier sur les identifiants des objets.\r\n- PERTINENCE pour trier sur la pertinence de la recherche plein texte. Ce n’est appliqué que si le champ searchQuery est rempli. Non disponible sur l’agenda.\r\n- DISTANCE pour trier sur la distance par rapport au centre de la recherche géolocalisée. Ce n’est appliqué que si les champs centre et rayon sont correctement remplis.\r\n- RANDOM pour trier les résultats de manière pseudo-aléatoire. Voir le champ randomSeed.\r\n- DATE_OUVERTURE pour trier les objets par date d’ouverture. Seuls les résultats FETE_ET_MANIFESTATION et ACTIVITE sont fournis dans le résultat. Il n’est pas possible de faire de tri descendant sur cet élément. Il faut utiliser les services /agenda/simple/* pour obtenir des résultats triés par date (sans répartition par jour)\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"order\":\"{order}\",\"asc\":\"{true OR false}\"}"
+											},
+											"response": []
+										},
+										{
+											"name": "Récupération en fonction de la langue (ids)",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"locales\":[\"en\"]}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"recherche",
+														"list-identifiants",
+														""
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"locales\":[\"en\"]}"
+														}
+													]
+												},
+												"description": "Cette requête permet de récupérer une liste d'identifiants d’objets touristiques dans une langue à partir d’une recherche.\r\n\r\nLocales disponnibles ici : http://dev.apidae-tourisme.com/fr/documentation-technique/v2/api-de-diffusion/filtrage-des-langues\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"locales\":[{\"locale\", ..., \"localeN\"}]}"
+											},
+											"response": []
+										},
+										{
+											"name": "Récupération en fonction de la langue (objets)",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"locales\":[\"en\"]}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"recherche",
+														"list-objets-touristiques"
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"locales\":[\"en\"]}"
+														}
+													]
+												},
+												"description": "Cette requête permet de récupérer une liste d'objets touristiques dans une langue à partir d’une recherche.\r\n\r\nLocales disponnibles ici : http://dev.apidae-tourisme.com/fr/documentation-technique/v2/api-de-diffusion/filtrage-des-langues\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"locales\":[{\"locale\", ..., \"localeN\"}]}"
+											},
+											"response": []
+										}
+									],
+									"description": "Requêtes avec des attributs utiles"
+								},
+								{
+									"name": "Récupération d'une liste d'identifiants",
 									"request": {
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"searchQuery\":\"festival\",\"searchFields\":\"NOM\"}",
+											"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}]}",
 											"host": [
 												"{{API_ENDPOINT}}"
 											],
@@ -413,86 +1492,7 @@
 											"query": [
 												{
 													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"searchQuery\":\"festival\",\"searchFields\":\"NOM\"}"
-												}
-											]
-										},
-										"description": "Récupérez une liste d’ids d'objets touristiques à partir d’une ou plusieurs chaîne de caractères séparées par un espace.\r\n\r\nSearchFields :\r\n- NOM pour une recherche sur le nom des objets,\r\n- NOM_DESCRIPTION pour une recherche sur le nom et les descriptions des objets,\r\n- NOM_DESCRIPTION_CRITERES pour une recherche sur le nom, les descriptions et les critères associés aux objets.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id1, ..., idn}],\"searchQuery\":\"{chaine_de_caracteres}\",\"searchFields\":\"{searchFields}\"}"
-									},
-									"response": []
-								},
-								{
-									"name": "Récupération en fonction de termes (objets)",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"searchQuery\":\"festival\",\"searchFields\":\"NOM\"}",
-											"host": [
-												"{{API_ENDPOINT}}"
-											],
-											"path": [
-												"v002",
-												"recherche",
-												"list-objets-touristiques"
-											],
-											"query": [
-												{
-													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"searchQuery\":\"festival\",\"searchFields\":\"NOM\"}"
-												}
-											]
-										},
-										"description": "Récupérez une liste d’objets touristiques à partir d’une ou plusieurs chaîne de caractères séparées par un espace.\r\n\r\nSearchFields :\r\n- NOM pour une recherche sur le nom des objets,\r\n- NOM_DESCRIPTION pour une recherche sur le nom et les descriptions des objets,\r\n- NOM_DESCRIPTION_CRITERES pour une recherche sur le nom, les descriptions et les critères associés aux objets.\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id1, ..., idn}],\"responseFields\":{responseFields},\"searchQuery\":\"{chaine_de_caracteres}\",\"searchFields\":\"{searchFields}\"}"
-									},
-									"response": []
-								}
-							],
-							"description": "Recherche s'effectue à partir d'une sélection et qui renvoit les objets qui continnent certains caractères",
-							"event": [
-								{
-									"listen": "prerequest",
-									"script": {
-										"type": "text/javascript",
-										"exec": [
-											""
-										]
-									}
-								},
-								{
-									"listen": "test",
-									"script": {
-										"type": "text/javascript",
-										"exec": [
-											""
-										]
-									}
-								}
-							]
-						},
-						{
-							"name": "En fonction de critères",
-							"item": [
-								{
-									"name": "Récupération en fonction de critères (ids)",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"criteresQuery\":\"type:EQUIPEMENT\"}",
-											"host": [
-												"{{API_ENDPOINT}}"
-											],
-											"path": [
-												"v002",
-												"recherche",
-												"list-identifiants",
-												""
-											],
-											"query": [
-												{
-													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"criteresQuery\":\"type:EQUIPEMENT\"}"
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}]}"
 												}
 											]
 										},
@@ -501,12 +1501,12 @@
 									"response": []
 								},
 								{
-									"name": "Récupération en fonction de critères (objets)",
+									"name": "Récupération d'une liste d'objets",
 									"request": {
 										"method": "GET",
 										"header": [],
 										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"criteresQuery\":\"type:EQUIPEMENT\"}",
+											"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"]}",
 											"host": [
 												"{{API_ENDPOINT}}"
 											],
@@ -518,7 +1518,7 @@
 											"query": [
 												{
 													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"criteresQuery\":\"type:EQUIPEMENT\"}"
+													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"]}"
 												}
 											]
 										},
@@ -527,7 +1527,497 @@
 									"response": []
 								}
 							],
-							"description": "Recherche s'effectue à partir d'une sélection et qui renvoit les objets qui correspondent aux critères",
+							"description": "Ces services permettent de récupérer les objets touristiques respectant une requête de recherche. Les deux services utilisent le même format de requête. La sortie propose soit une liste d’identifiants, soit une liste d’objets."
+						},
+						{
+							"name": "Agenda",
+							"item": [
+								{
+									"name": "Mode Simple",
+									"item": [
+										{
+											"name": "Récupération d'une liste d'ids",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/agenda/simple/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateDebut\":\"2021-03-15\",\"dateFin\":\"2021-03-20\"}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"agenda",
+														"simple",
+														"list-identifiants",
+														""
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateDebut\":\"2021-03-15\",\"dateFin\":\"2021-03-20\"}"
+														}
+													]
+												},
+												"description": "Cette requête permet de récupérer une liste d’identifiants d’objets touristiques à partir d’une recherche, triée par date d’ouverture.\r\n\r\n/v002/agenda/simple/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"dateDebut\":\"{YYYY-MM-DD}\",\"dateFin\":\"{YYYY-MM-DD}\"}"
+											},
+											"response": []
+										},
+										{
+											"name": "Récupération d'une liste d'objets",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/agenda/simple/list-objets-touristiques/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"2021-03-15\",\"dateFin\":\"2021-03-20\"}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"agenda",
+														"simple",
+														"list-objets-touristiques",
+														""
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"2021-03-15\",\"dateFin\":\"2021-03-20\"}"
+														}
+													]
+												},
+												"description": "Cette requête permet de récupérer une liste d’objets touristiques à partir d’une recherche, triée par date d’ouverture.\r\n\r\n/v002/agenda/simple/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"{YYYY-MM-DD}\",\"dateFin\":\"{YYYY-MM-DD}\"}"
+											},
+											"response": []
+										}
+									],
+									"description": "En mode simple, les objets touristiques retournés sont automatiquement triés par date de début de l’évènement."
+								},
+								{
+									"name": "Mode Avancé",
+									"item": [
+										{
+											"name": "Récupération d'une liste d'ids",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/agenda/detaille/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateDebut\":\"2021-03-15\",\"dateFin\":\"2021-03-20\"}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"agenda",
+														"detaille",
+														"list-identifiants",
+														""
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateDebut\":\"2021-03-15\",\"dateFin\":\"2021-03-20\"}"
+														}
+													]
+												},
+												"description": "Cette requête permet de récupérer des listes d’identifiants par jour d’ouverture à partir d’une recherche.\r\n\r\n/v002/agenda/detaille/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"dateDebut\":\"{YYYY-MM-DD}\",\"dateFin\":\"{YYYY-MM-DD}\"}"
+											},
+											"response": []
+										},
+										{
+											"name": "Récupération d'une liste d'objets",
+											"request": {
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{API_ENDPOINT}}/v002/agenda/detaille/list-objets-touristiques/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"2021-03-15\",\"dateFin\":\"2021-03-20\"}",
+													"host": [
+														"{{API_ENDPOINT}}"
+													],
+													"path": [
+														"v002",
+														"agenda",
+														"detaille",
+														"list-objets-touristiques",
+														""
+													],
+													"query": [
+														{
+															"key": "query",
+															"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"2021-03-15\",\"dateFin\":\"2021-03-20\"}"
+														}
+													]
+												},
+												"description": "Cette requête permet de récupérer des listes d’objets touristiques par jour d’ouverture à partir d’une recherche.\r\n\r\n/v002/agenda/detaille/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"{YYYY-MM-DD}\",\"dateFin\":\"{YYYY-MM-DD}\"}"
+											},
+											"response": []
+										}
+									],
+									"description": "Les objets sont regroupés par date d’évènement. Un objet touristique qui se déroule sur plusieurs journées est listé plusieurs fois dans le résultat (une fois pour chaque jour d’ouverture)"
+								}
+							],
+							"description": "Ces services fonctionnent de manière similaire aux services de recherche d’objets touristiques précédents. Seuls les objets de type « Fête et manifestation » et « Activité » sont pris en compte par ce type de recherche."
+						},
+						{
+							"name": "Consultation du référentiel",
+							"item": [
+								{
+									"name": "Récupération de communes (avec ids)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/referentiel/communes/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"communeIds\":[14762,28713]}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"referentiel",
+												"communes",
+												""
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"communeIds\":[14762,28713]}"
+												}
+											]
+										},
+										"description": "Requête qui permet de récupérer des communes à partir d'identifiants \r\n\r\n/v002/referentiel/communes/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"communeIds\":[XXX, ..., YYY]}"
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération de communes (avec codeINSEE)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/referentiel/communes/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"codesInsee\":[\"69275\",\"69388\"]}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"referentiel",
+												"communes",
+												""
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"codesInsee\":[\"69275\",\"69388\"]}"
+												}
+											]
+										},
+										"description": "Requête qui permet de récupérer des communes à partir de code INSEE (disponnible ici : http://www.insee.fr/fr/methodes/nomenclatures/cog/) ou dans les fichiers d’export.\r\n\r\n/v002/referentiel/communes/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"codesInsee\":[{\"XXX\", ..., \"YYY\"}]}"
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération d'éléments de référence",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/referentiel/elements-reference/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"elementReferenceIds\":[2,118,2338]}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"referentiel",
+												"elements-reference",
+												""
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"elementReferenceIds\":[2,118,2338]}"
+												}
+											]
+										},
+										"description": "Cette requête permet de récupérer des éléments de référence en fonction de leur id.\r\n\r\n/v002/referentiel/elements-reference/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"elementReferenceIds\":[{X, ..., Y}]}"
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération de critères internes",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/referentiel/criteres-internes/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"critereInterneIds\":[3401,5387]}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"referentiel",
+												"criteres-internes",
+												""
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"critereInterneIds\":[3401,5387]}"
+												}
+											]
+										},
+										"description": "Cette requête permet de récupérer des critères internes en fonction de leur id.\r\n\r\nOù trouver l’information sur l'id : dans le menu [Diffuser > Outils développeur > Référentiel > Critères internes](https://base.apidae-tourisme.com/diffuser/dev-tools/referentiel/criteres-internes/) ou dans les fichiers d’export.\r\n\r\n/v002/referentiel/criteres-internes/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"critereInterneIds\":[{X, ..., Y}]}"
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération de sélections",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/referentiel/selections/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"selectionIds\":[{{selectionIds}}]}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"referentiel",
+												"selections",
+												""
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"selectionIds\":[{{selectionIds}}]}"
+												}
+											]
+										},
+										"description": "Cette requête permet de récupérer une ou plusieurs selections à partir de leurs id\r\n\r\n/v002/referentiel/selections/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"selectionIds\":[{selectionIds}]}"
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération de sélection par objet touristique",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/referentiel/selections-par-objet/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"referenceIds\":[5148473]}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"referentiel",
+												"selections-par-objet",
+												""
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"referenceIds\":[5148473]}"
+												}
+											]
+										},
+										"description": "Cette requête permet de récupérer des sélections en fonction des id des objets qu'elles contiennent.\r\n\r\n/v002/referentiel/selections-par-objet/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"referenceIds\":[{X, ..., Y}]}"
+									},
+									"response": []
+								}
+							],
+							"description": "Ces services sont à votre disposition pour récupérer les éléments du référentiel."
+						},
+						{
+							"name": "Consultation des membres",
+							"item": [
+								{
+									"name": "Récupération d'un membre à partir de son id",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/membre/get-by-id/1157?apiKey={{apiKey}}&projetId={{projetId}}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"membre",
+												"get-by-id",
+												"1157"
+											],
+											"query": [
+												{
+													"key": "apiKey",
+													"value": "{{apiKey}}"
+												},
+												{
+													"key": "projetId",
+													"value": "{{projetId}}"
+												}
+											]
+										},
+										"description": "Cette requête permet de récupérer un membre à partir de son id.\n\n**Attention** : la consultation des membres nécessite des droits très spécifiques sur la plateforme, cette fonction n'est pas ouverte à tous."
+									},
+									"response": []
+								},
+								{
+									"name": "Recherche d'un membre",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/membre/get-membres?query={\"projetId\":{{projetId}},\"apiKey\":\"{{apiKey}}\",\"filter\":{\"idProjet\":\"{{projetId}}\"}}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"membre",
+												"get-membres"
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"projetId\":{{projetId}},\"apiKey\":\"{{apiKey}}\",\"filter\":{\"idProjet\":\"{{projetId}}\"}}"
+												}
+											]
+										},
+										"description": "Cette requête permet de rechercher un membre en fonction de filtres.\n\n**Attention** : la consultation des membres nécessite des droits très spécifiques sur la plateforme, cette fonction n'est pas ouverte à tous."
+									},
+									"response": []
+								}
+							],
+							"description": "Ces services ne sont accessibles qu’avec des niveaux de droits élevés. Merci de nous consulter pour tout besoin.\r\nCes services sont à votre disposition pour récupérer les membres."
+						},
+						{
+							"name": "Consultation des utilisateurs",
+							"item": [
+								{
+									"name": "Récupération d'un utilisateur (id)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/utilisateur/get-by-id/123?projetId={{projetId}}&apiKey={{apiKey}}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"utilisateur",
+												"get-by-id",
+												"123"
+											],
+											"query": [
+												{
+													"key": "projetId",
+													"value": "{{projetId}}"
+												},
+												{
+													"key": "apiKey",
+													"value": "{{apiKey}}"
+												}
+											]
+										},
+										"description": "Cette requête permet de récupérer un utilisateur à partir de son id.\r\n\r\n/v002/utilisateur/get-by-id/{id}?&apiKey={apiKey}&projetId={projetId}\r\n\r\n\r\n**Attention** : la consultation des membres nécessite des droits très spécifiques sur la plateforme, cette fonction n'est pas ouverte à tous."
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération d'un utilisateur (adresse email)",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/utilisateur/get-by-mail/maxime.berger@apidae-tourisme.com?projetId={{projetId}}&apiKey={{apiKey}}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"utilisateur",
+												"get-by-mail",
+												"maxime.berger@apidae-tourisme.com"
+											],
+											"query": [
+												{
+													"key": "projetId",
+													"value": "{{projetId}}"
+												},
+												{
+													"key": "apiKey",
+													"value": "{{apiKey}}"
+												}
+											]
+										},
+										"description": "Cette requête permet de récupérer un utilisateur à partir de son adresse email.\r\n\r\n/v002/utilisateur/get-by-mail/{eMail}?&apiKey={apiKey}&projetId={projetId}\r\n\r\n\r\n**Attention** : la consultation des membres nécessite des droits très spécifiques sur la plateforme, cette fonction n'est pas ouverte à tous."
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération des utilisateurs d'un membre",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/utilisateur/get-by-membre/1157?projetId={{projetId}}&apiKey={{apiKey}}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"utilisateur",
+												"get-by-membre",
+												"1157"
+											],
+											"query": [
+												{
+													"key": "projetId",
+													"value": "{{projetId}}"
+												},
+												{
+													"key": "apiKey",
+													"value": "{{apiKey}}"
+												}
+											]
+										},
+										"description": "Cette requête permet de récupérer la liste des utilisateurs d’un membre.\r\n\r\n/v002/utilisateur/get-by-membre/{membre_id}?&apiKey={apiKey}&projetId={projetId}\r\n\r\n\r\n**Attention** : la consultation des membres nécessite des droits très spécifiques sur la plateforme, cette fonction n'est pas ouverte à tous."
+									},
+									"response": []
+								},
+								{
+									"name": "Récupération de la liste complète des utilisateurs",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/utilisateur/get-all-utilisateurs?projetId={{projetId}}&apiKey={{apiKey}}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"utilisateur",
+												"get-all-utilisateurs"
+											],
+											"query": [
+												{
+													"key": "projetId",
+													"value": "{{projetId}}"
+												},
+												{
+													"key": "apiKey",
+													"value": "{{apiKey}}"
+												}
+											]
+										},
+										"description": "Cette requête permet de récupérer la liste complète des utilisateurs.\r\n\r\n/v002/utilisateur/get-all-utilisateurs?projetId={projetId}&apiKey={apiKey}\r\n\r\n\r\n**Attention** : la consultation des membres nécessite des droits très spécifiques sur la plateforme, cette fonction n'est pas ouverte à tous."
+									},
+									"response": []
+								}
+							],
+							"description": "Ces services ne sont accessibles qu’avec des niveaux de droits élevés. Merci de nous consulter pour tout besoin.\r\nCes services sont à votre disposition pour récupérer les utilisateurs.",
 							"event": [
 								{
 									"listen": "prerequest",
@@ -548,946 +2038,6 @@
 									}
 								}
 							]
-						},
-						{
-							"name": "À partir d'une date",
-							"item": [
-								{
-									"name": "Récupération à partir d'un jour (ids)",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateDebut\":\"2021-01-15\"}",
-											"host": [
-												"{{API_ENDPOINT}}"
-											],
-											"path": [
-												"v002",
-												"recherche",
-												"list-identifiants",
-												""
-											],
-											"query": [
-												{
-													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateDebut\":\"2021-01-15\"}"
-												}
-											]
-										},
-										"description": "Cette requête permet de récupérer une liste d’identifiants d’objets touristiques à partir d’une date de début.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"dateDebut\":\"{YYYY-MM-DD}\"}"
-									},
-									"response": []
-								},
-								{
-									"name": "Récupération à partir d'un jour (objets)",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\",\"ouverture\"],\"dateDebut\":\"2021-01-29\",\"dateFin\":\"2021-01-29\"}",
-											"host": [
-												"{{API_ENDPOINT}}"
-											],
-											"path": [
-												"v002",
-												"recherche",
-												"list-objets-touristiques"
-											],
-											"query": [
-												{
-													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\",\"ouverture\"],\"dateDebut\":\"2021-01-29\",\"dateFin\":\"2021-01-29\"}"
-												}
-											]
-										},
-										"description": "Récupérez une liste d’objets touristiques à partir d’une date de début.\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id1, ..., idn}],\"responseFields\":{responseFields},\"dateDebut\":\"{YYYY-MM-DD}\"}"
-									},
-									"response": []
-								},
-								{
-									"name": "Récupération avant un jour (ids) ",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateFin\":\"2021-01-15\"}",
-											"host": [
-												"{{API_ENDPOINT}}"
-											],
-											"path": [
-												"v002",
-												"recherche",
-												"list-identifiants",
-												""
-											],
-											"query": [
-												{
-													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateFin\":\"2021-01-15\"}"
-												}
-											]
-										},
-										"description": "Cette requête permet de récupérer une liste d’identifiants d’objets touristiques à partir d’une date de fin.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"dateFin\":\"{YYYY-MM-DD}\"}"
-									},
-									"response": []
-								},
-								{
-									"name": "Récupération avant un jour (objets)",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"2021-01-15\"}",
-											"host": [
-												"{{API_ENDPOINT}}"
-											],
-											"path": [
-												"v002",
-												"recherche",
-												"list-objets-touristiques"
-											],
-											"query": [
-												{
-													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"2021-01-15\"}"
-												}
-											]
-										},
-										"description": "Récupérez une liste d’objets touristiques à partir d’une date de fin.\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id1, ..., idn}],\"responseFields\":{responseFields},\"dateFin\":\"{YYYY-MM-DD}\"}"
-									},
-									"response": []
-								},
-								{
-									"name": "Récupération à une date (ids)",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateDebut\":\"2021-01-29\",\"dateFin\":\"2021-01-29\"}",
-											"host": [
-												"{{API_ENDPOINT}}"
-											],
-											"path": [
-												"v002",
-												"recherche",
-												"list-identifiants",
-												""
-											],
-											"query": [
-												{
-													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateDebut\":\"2021-01-29\",\"dateFin\":\"2021-01-29\"}"
-												}
-											]
-										},
-										"description": "Cette requête permet de récupérer une liste d’identifiants d’objets touristiques pour une date donnée.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"dateDebut\":\"{YYYY-MM-DD}\",\"dateFin\":\"{YYYY-MM-DD}\"}"
-									},
-									"response": []
-								},
-								{
-									"name": "Récupération à une date (objets)",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"2021-01-15\",\"dateFin\":\"2021-01-15\"}",
-											"host": [
-												"{{API_ENDPOINT}}"
-											],
-											"path": [
-												"v002",
-												"recherche",
-												"list-objets-touristiques"
-											],
-											"query": [
-												{
-													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"2021-01-15\",\"dateFin\":\"2021-01-15\"}"
-												}
-											]
-										},
-										"description": "Récupérez une liste d’objets touristiques à une date donnée.\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id1, ..., idn}],\"responseFields\":{responseFields},\"dateDebut\":\"{YYYY-MM-DD}\",\"dateFin\":\"{YYYY-MM-DD}\"}"
-									},
-									"response": []
-								}
-							],
-							"description": "Recherche s'effectue à partir d'une sélection et qui renvoit les objets qui correspondent aux dates specifiées",
-							"event": [
-								{
-									"listen": "prerequest",
-									"script": {
-										"type": "text/javascript",
-										"exec": [
-											""
-										]
-									}
-								},
-								{
-									"listen": "test",
-									"script": {
-										"type": "text/javascript",
-										"exec": [
-											""
-										]
-									}
-								}
-							]
-						},
-						{
-							"name": "Utile",
-							"item": [
-								{
-									"name": "Récupération de certains champs (objets)",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\",\"presentation.descriptifCourt\",\"identifier\"]}",
-											"host": [
-												"{{API_ENDPOINT}}"
-											],
-											"path": [
-												"v002",
-												"recherche",
-												"list-objets-touristiques"
-											],
-											"query": [
-												{
-													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\",\"presentation.descriptifCourt\",\"identifier\"]}"
-												}
-											]
-										},
-										"description": "Récupérez une liste d’objets touristiques à partir d’une recherche en specifiant les champs que l'on veut dans les objets (responseFields).\r\n\r\nLes différent responseFields sont disponnibles de manière graphique ici : http://apidae.sbcd.fr/wordpress/\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id1, ..., idn}],\"responseFields\":{responseFields}}"
-									},
-									"response": []
-								},
-								{
-									"name": "Récupération d'une nombre d'objets (ids)",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"count\":\"10\"}",
-											"host": [
-												"{{API_ENDPOINT}}"
-											],
-											"path": [
-												"v002",
-												"recherche",
-												"list-identifiants",
-												""
-											],
-											"query": [
-												{
-													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"count\":\"10\"}"
-												}
-											]
-										},
-										"description": "Cette requête permet de récupérer une liste de n identifiants d’objets touristiques à partir d’une recherche.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"count\":\"{N}\"}"
-									},
-									"response": []
-								},
-								{
-									"name": "Récupération d'une nombre d'objets (objets)",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"count\":\"10\"}",
-											"host": [
-												"{{API_ENDPOINT}}"
-											],
-											"path": [
-												"v002",
-												"recherche",
-												"list-objets-touristiques"
-											],
-											"query": [
-												{
-													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"count\":\"10\"}"
-												}
-											]
-										},
-										"description": "Cette requête permet de récupérer une liste de n objets touristiques à partir d’une recherche.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"count\":\"{N}\"}"
-									},
-									"response": []
-								},
-								{
-									"name": "Récupération triée (ids)",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"order\":\"NOM\",\"asc\":\"true\"}",
-											"host": [
-												"{{API_ENDPOINT}}"
-											],
-											"path": [
-												"v002",
-												"recherche",
-												"list-identifiants",
-												""
-											],
-											"query": [
-												{
-													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"order\":\"NOM\",\"asc\":\"true\"}"
-												}
-											]
-										},
-										"description": "Cette requête permet de récupérer une liste d'identifiants d’objets touristiques triés à partir d’une recherche.\r\n\r\nValeurs possibles :\r\n- NOM pour trier sur le nom des objets.\r\n- IDENTIFIANT pour trier sur les identifiants des objets.\r\n- PERTINENCE pour trier sur la pertinence de la recherche plein texte. Ce n’est appliqué que si le champ searchQuery est rempli. Non disponible sur l’agenda.\r\n- DISTANCE pour trier sur la distance par rapport au centre de la recherche géolocalisée. Ce n’est appliqué que si les champs centre et rayon sont correctement remplis.\r\n- RANDOM pour trier les résultats de manière pseudo-aléatoire. Voir le champ randomSeed.\r\n- DATE_OUVERTURE pour trier les objets par date d’ouverture. Seuls les résultats FETE_ET_MANIFESTATION et ACTIVITE sont fournis dans le résultat. Il n’est pas possible de faire de tri descendant sur cet élément. Il faut utiliser les services /agenda/simple/* pour obtenir des résultats triés par date (sans répartition par jour)\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"order\":\"{order}\",\"asc\":\"{true OR false}\"}"
-									},
-									"response": []
-								},
-								{
-									"name": "Récupération triée (objets)",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"order\":\"NOM\",\"asc\":\"true\"}",
-											"host": [
-												"{{API_ENDPOINT}}"
-											],
-											"path": [
-												"v002",
-												"recherche",
-												"list-objets-touristiques"
-											],
-											"query": [
-												{
-													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"order\":\"NOM\",\"asc\":\"true\"}"
-												}
-											]
-										},
-										"description": "Cette requête permet de récupérer une liste d'objets touristiques triés à partir d’une recherche.\r\n\r\nValeurs possibles :\r\n- NOM pour trier sur le nom des objets.\r\n- IDENTIFIANT pour trier sur les identifiants des objets.\r\n- PERTINENCE pour trier sur la pertinence de la recherche plein texte. Ce n’est appliqué que si le champ searchQuery est rempli. Non disponible sur l’agenda.\r\n- DISTANCE pour trier sur la distance par rapport au centre de la recherche géolocalisée. Ce n’est appliqué que si les champs centre et rayon sont correctement remplis.\r\n- RANDOM pour trier les résultats de manière pseudo-aléatoire. Voir le champ randomSeed.\r\n- DATE_OUVERTURE pour trier les objets par date d’ouverture. Seuls les résultats FETE_ET_MANIFESTATION et ACTIVITE sont fournis dans le résultat. Il n’est pas possible de faire de tri descendant sur cet élément. Il faut utiliser les services /agenda/simple/* pour obtenir des résultats triés par date (sans répartition par jour)\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"order\":\"{order}\",\"asc\":\"{true OR false}\"}"
-									},
-									"response": []
-								},
-								{
-									"name": "Récupération en fonction de la langue (ids)",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"locales\":[\"en\"]}",
-											"host": [
-												"{{API_ENDPOINT}}"
-											],
-											"path": [
-												"v002",
-												"recherche",
-												"list-identifiants",
-												""
-											],
-											"query": [
-												{
-													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"locales\":[\"en\"]}"
-												}
-											]
-										},
-										"description": "Cette requête permet de récupérer une liste d'identifiants d’objets touristiques dans une langue à partir d’une recherche.\r\n\r\nLocales disponnibles ici : http://dev.apidae-tourisme.com/fr/documentation-technique/v2/api-de-diffusion/filtrage-des-langues\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"locales\":[{\"locale\", ..., \"localeN\"}]}"
-									},
-									"response": []
-								},
-								{
-									"name": "Récupération en fonction de la langue (objets)",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"locales\":[\"en\"]}",
-											"host": [
-												"{{API_ENDPOINT}}"
-											],
-											"path": [
-												"v002",
-												"recherche",
-												"list-objets-touristiques"
-											],
-											"query": [
-												{
-													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"locales\":[\"en\"]}"
-												}
-											]
-										},
-										"description": "Cette requête permet de récupérer une liste d'objets touristiques dans une langue à partir d’une recherche.\r\n\r\nLocales disponnibles ici : http://dev.apidae-tourisme.com/fr/documentation-technique/v2/api-de-diffusion/filtrage-des-langues\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"locales\":[{\"locale\", ..., \"localeN\"}]}"
-									},
-									"response": []
-								}
-							],
-							"description": "Requêtes avec des attributs utiles"
-						},
-						{
-							"name": "Récupération d'une liste d'identifiants",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{API_ENDPOINT}}/v002/recherche/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}]}",
-									"host": [
-										"{{API_ENDPOINT}}"
-									],
-									"path": [
-										"v002",
-										"recherche",
-										"list-identifiants",
-										""
-									],
-									"query": [
-										{
-											"key": "query",
-											"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}]}"
-										}
-									]
-								},
-								"description": "Cette requête permet de récupérer une liste d’identifiants d’objets touristiques à partir d’une recherche.\r\n\r\nv002/recherche/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}]}"
-							},
-							"response": []
-						},
-						{
-							"name": "Récupération d'une liste d'objets",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{API_ENDPOINT}}/v002/recherche/list-objets-touristiques?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"]}",
-									"host": [
-										"{{API_ENDPOINT}}"
-									],
-									"path": [
-										"v002",
-										"recherche",
-										"list-objets-touristiques"
-									],
-									"query": [
-										{
-											"key": "query",
-											"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"]}"
-										}
-									]
-								},
-								"description": "Récupérez une liste d’objets touristiques à partir d’une recherche.\r\n\r\nv002/recherche/list-objets-touristiques?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id1, ..., idn}],\"responseFields\":{responseFields}}"
-							},
-							"response": []
-						}
-					],
-					"description": "Ces services permettent de récupérer les objets touristiques respectant une requête de recherche. Les deux services utilisent le même format de requête. La sortie propose soit une liste d’identifiants, soit une liste d’objets."
-				},
-				{
-					"name": "Agenda",
-					"item": [
-						{
-							"name": "Mode Simple",
-							"item": [
-								{
-									"name": "Récupération d'une liste d'ids",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/agenda/simple/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateDebut\":\"2021-03-15\",\"dateFin\":\"2021-03-20\"}",
-											"host": [
-												"{{API_ENDPOINT}}"
-											],
-											"path": [
-												"v002",
-												"agenda",
-												"simple",
-												"list-identifiants",
-												""
-											],
-											"query": [
-												{
-													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateDebut\":\"2021-03-15\",\"dateFin\":\"2021-03-20\"}"
-												}
-											]
-										},
-										"description": "Cette requête permet de récupérer une liste d’identifiants d’objets touristiques à partir d’une recherche, triée par date d’ouverture.\r\n\r\n/v002/agenda/simple/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"dateDebut\":\"{YYYY-MM-DD}\",\"dateFin\":\"{YYYY-MM-DD}\"}"
-									},
-									"response": []
-								},
-								{
-									"name": "Récupération d'une liste d'objets",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/agenda/simple/list-objets-touristiques/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"2021-03-15\",\"dateFin\":\"2021-03-20\"}",
-											"host": [
-												"{{API_ENDPOINT}}"
-											],
-											"path": [
-												"v002",
-												"agenda",
-												"simple",
-												"list-objets-touristiques",
-												""
-											],
-											"query": [
-												{
-													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"2021-03-15\",\"dateFin\":\"2021-03-20\"}"
-												}
-											]
-										},
-										"description": "Cette requête permet de récupérer une liste d’objets touristiques à partir d’une recherche, triée par date d’ouverture.\r\n\r\n/v002/agenda/simple/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"{YYYY-MM-DD}\",\"dateFin\":\"{YYYY-MM-DD}\"}"
-									},
-									"response": []
-								}
-							],
-							"description": "En mode simple, les objets touristiques retournés sont automatiquement triés par date de début de l’évènement."
-						},
-						{
-							"name": "Mode Avancé",
-							"item": [
-								{
-									"name": "Récupération d'une liste d'ids",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/agenda/detaille/list-identifiants/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateDebut\":\"2021-03-15\",\"dateFin\":\"2021-03-20\"}",
-											"host": [
-												"{{API_ENDPOINT}}"
-											],
-											"path": [
-												"v002",
-												"agenda",
-												"detaille",
-												"list-identifiants",
-												""
-											],
-											"query": [
-												{
-													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"dateDebut\":\"2021-03-15\",\"dateFin\":\"2021-03-20\"}"
-												}
-											]
-										},
-										"description": "Cette requête permet de récupérer des listes d’identifiants par jour d’ouverture à partir d’une recherche.\r\n\r\n/v002/agenda/detaille/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"dateDebut\":\"{YYYY-MM-DD}\",\"dateFin\":\"{YYYY-MM-DD}\"}"
-									},
-									"response": []
-								},
-								{
-									"name": "Récupération d'une liste d'objets",
-									"request": {
-										"method": "GET",
-										"header": [],
-										"url": {
-											"raw": "{{API_ENDPOINT}}/v002/agenda/detaille/list-objets-touristiques/?query={\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"2021-03-15\",\"dateFin\":\"2021-03-20\"}",
-											"host": [
-												"{{API_ENDPOINT}}"
-											],
-											"path": [
-												"v002",
-												"agenda",
-												"detaille",
-												"list-objets-touristiques",
-												""
-											],
-											"query": [
-												{
-													"key": "query",
-													"value": "{\"projetId\":\"{{projetId}}\",\"apiKey\":\"{{apiKey}}\",\"selectionIds\":[{{selectionIds}}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"2021-03-15\",\"dateFin\":\"2021-03-20\"}"
-												}
-											]
-										},
-										"description": "Cette requête permet de récupérer des listes d’objets touristiques par jour d’ouverture à partir d’une recherche.\r\n\r\n/v002/agenda/detaille/list-identifiants/?query={\"projetId\":\"{projetId}\",\"apiKey\":\"{apiKey}\",\"selectionIds\":[{id, id2, ..., idn}],\"responseFields\":[\"id\",\"nom\"],\"dateDebut\":\"{YYYY-MM-DD}\",\"dateFin\":\"{YYYY-MM-DD}\"}"
-									},
-									"response": []
-								}
-							],
-							"description": "Les objets sont regroupés par date d’évènement. Un objet touristique qui se déroule sur plusieurs journées est listé plusieurs fois dans le résultat (une fois pour chaque jour d’ouverture)"
-						}
-					],
-					"description": "Ces services fonctionnent de manière similaire aux services de recherche d’objets touristiques précédents. Seuls les objets de type « Fête et manifestation » et « Activité » sont pris en compte par ce type de recherche."
-				},
-				{
-					"name": "Consultation du référentiel",
-					"item": [
-						{
-							"name": "Récupération de communes (avec ids)",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{API_ENDPOINT}}/v002/referentiel/communes/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"communeIds\":[14762,28713]}",
-									"host": [
-										"{{API_ENDPOINT}}"
-									],
-									"path": [
-										"v002",
-										"referentiel",
-										"communes",
-										""
-									],
-									"query": [
-										{
-											"key": "query",
-											"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"communeIds\":[14762,28713]}"
-										}
-									]
-								},
-								"description": "Requête qui permet de récupérer des communes à partir d'identifiants \r\n\r\n/v002/referentiel/communes/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"communeIds\":[XXX, ..., YYY]}"
-							},
-							"response": []
-						},
-						{
-							"name": "Récupération de communes (avec codeINSEE)",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{API_ENDPOINT}}/v002/referentiel/communes/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"codesInsee\":[\"69275\",\"69388\"]}",
-									"host": [
-										"{{API_ENDPOINT}}"
-									],
-									"path": [
-										"v002",
-										"referentiel",
-										"communes",
-										""
-									],
-									"query": [
-										{
-											"key": "query",
-											"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"codesInsee\":[\"69275\",\"69388\"]}"
-										}
-									]
-								},
-								"description": "Requête qui permet de récupérer des communes à partir de code INSEE (disponnible ici : http://www.insee.fr/fr/methodes/nomenclatures/cog/) ou dans les fichiers d’export.\r\n\r\n/v002/referentiel/communes/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"codesInsee\":[{\"XXX\", ..., \"YYY\"}]}"
-							},
-							"response": []
-						},
-						{
-							"name": "Récupération d'éléments de référence",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{API_ENDPOINT}}/v002/referentiel/elements-reference/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"elementReferenceIds\":[2,118,2338]}",
-									"host": [
-										"{{API_ENDPOINT}}"
-									],
-									"path": [
-										"v002",
-										"referentiel",
-										"elements-reference",
-										""
-									],
-									"query": [
-										{
-											"key": "query",
-											"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"elementReferenceIds\":[2,118,2338]}"
-										}
-									]
-								},
-								"description": "Cette requête permet de récupérer des éléments de référence en fonction de leur id.\r\n\r\n/v002/referentiel/elements-reference/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"elementReferenceIds\":[{X, ..., Y}]}"
-							},
-							"response": []
-						},
-						{
-							"name": "Récupération de critères internes",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{API_ENDPOINT}}/v002/referentiel/criteres-internes/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"critereInterneIds\":[3401,5387]}",
-									"host": [
-										"{{API_ENDPOINT}}"
-									],
-									"path": [
-										"v002",
-										"referentiel",
-										"criteres-internes",
-										""
-									],
-									"query": [
-										{
-											"key": "query",
-											"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"critereInterneIds\":[3401,5387]}"
-										}
-									]
-								},
-								"description": "Cette requête permet de récupérer des critères internes en fonction de leur id.\r\n\r\nOù trouver l’information sur l'id : dans le menu [Diffuser > Outils développeur > Référentiel > Critères internes](https://base.apidae-tourisme.com/diffuser/dev-tools/referentiel/criteres-internes/) ou dans les fichiers d’export.\r\n\r\n/v002/referentiel/criteres-internes/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"critereInterneIds\":[{X, ..., Y}]}"
-							},
-							"response": []
-						},
-						{
-							"name": "Récupération de sélections",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{API_ENDPOINT}}/v002/referentiel/selections/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"selectionIds\":[{{selectionIds}}]}",
-									"host": [
-										"{{API_ENDPOINT}}"
-									],
-									"path": [
-										"v002",
-										"referentiel",
-										"selections",
-										""
-									],
-									"query": [
-										{
-											"key": "query",
-											"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"selectionIds\":[{{selectionIds}}]}"
-										}
-									]
-								},
-								"description": "Cette requête permet de récupérer une ou plusieurs selections à partir de leurs id\r\n\r\n/v002/referentiel/selections/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"selectionIds\":[{selectionIds}]}"
-							},
-							"response": []
-						},
-						{
-							"name": "Récupération de sélection par objet touristique",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{API_ENDPOINT}}/v002/referentiel/selections-par-objet/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"referenceIds\":[5148473]}",
-									"host": [
-										"{{API_ENDPOINT}}"
-									],
-									"path": [
-										"v002",
-										"referentiel",
-										"selections-par-objet",
-										""
-									],
-									"query": [
-										{
-											"key": "query",
-											"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":\"{{projetId}}\",\"referenceIds\":[5148473]}"
-										}
-									]
-								},
-								"description": "Cette requête permet de récupérer des sélections en fonction des id des objets qu'elles contiennent.\r\n\r\n/v002/referentiel/selections-par-objet/?query={\"apiKey\":\"{apiKey}\",\"projetId\":\"{projetId}\",\"referenceIds\":[{X, ..., Y}]}"
-							},
-							"response": []
-						}
-					],
-					"description": "Ces services sont à votre disposition pour récupérer les éléments du référentiel."
-				},
-				{
-					"name": "Consultation des membres",
-					"item": [
-						{
-							"name": "Récupération d'un membre à partir de son id",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{API_ENDPOINT}}/v002/membre/get-by-id/1157?apiKey={{apiKey}}&projetId={{projetId}}",
-									"host": [
-										"{{API_ENDPOINT}}"
-									],
-									"path": [
-										"v002",
-										"membre",
-										"get-by-id",
-										"1157"
-									],
-									"query": [
-										{
-											"key": "apiKey",
-											"value": "{{apiKey}}"
-										},
-										{
-											"key": "projetId",
-											"value": "{{projetId}}"
-										}
-									]
-								},
-								"description": "Cette requête permet de récupérer un membre à partir de son id.\n\n**Attention** : la consultation des membres nécessite des droits très spécifiques sur la plateforme, cette fonction n'est pas ouverte à tous."
-							},
-							"response": []
-						},
-						{
-							"name": "Recherche d'un membre",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{API_ENDPOINT}}/v002/membre/get-membres?query={\"projetId\":{{projetId}},\"apiKey\":\"{{apiKey}}\",\"filter\":{\"idProjet\":\"{{projetId}}\"}}",
-									"host": [
-										"{{API_ENDPOINT}}"
-									],
-									"path": [
-										"v002",
-										"membre",
-										"get-membres"
-									],
-									"query": [
-										{
-											"key": "query",
-											"value": "{\"projetId\":{{projetId}},\"apiKey\":\"{{apiKey}}\",\"filter\":{\"idProjet\":\"{{projetId}}\"}}"
-										}
-									]
-								},
-								"description": "Cette requête permet de rechercher un membre en fonction de filtres.\n\n**Attention** : la consultation des membres nécessite des droits très spécifiques sur la plateforme, cette fonction n'est pas ouverte à tous."
-							},
-							"response": []
-						}
-					],
-					"description": "Ces services ne sont accessibles qu’avec des niveaux de droits élevés. Merci de nous consulter pour tout besoin.\r\nCes services sont à votre disposition pour récupérer les membres."
-				},
-				{
-					"name": "Consultation des utilisateurs",
-					"item": [
-						{
-							"name": "Récupération d'un utilisateur (id)",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{API_ENDPOINT}}/v002/utilisateur/get-by-id/123?projetId={{projetId}}&apiKey={{apiKey}}",
-									"host": [
-										"{{API_ENDPOINT}}"
-									],
-									"path": [
-										"v002",
-										"utilisateur",
-										"get-by-id",
-										"123"
-									],
-									"query": [
-										{
-											"key": "projetId",
-											"value": "{{projetId}}"
-										},
-										{
-											"key": "apiKey",
-											"value": "{{apiKey}}"
-										}
-									]
-								},
-								"description": "Cette requête permet de récupérer un utilisateur à partir de son id.\r\n\r\n/v002/utilisateur/get-by-id/{id}?&apiKey={apiKey}&projetId={projetId}\r\n\r\n\r\n**Attention** : la consultation des membres nécessite des droits très spécifiques sur la plateforme, cette fonction n'est pas ouverte à tous."
-							},
-							"response": []
-						},
-						{
-							"name": "Récupération d'un utilisateur (adresse email)",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{API_ENDPOINT}}/v002/utilisateur/get-by-mail/maxime.berger@apidae-tourisme.com?projetId={{projetId}}&apiKey={{apiKey}}",
-									"host": [
-										"{{API_ENDPOINT}}"
-									],
-									"path": [
-										"v002",
-										"utilisateur",
-										"get-by-mail",
-										"maxime.berger@apidae-tourisme.com"
-									],
-									"query": [
-										{
-											"key": "projetId",
-											"value": "{{projetId}}"
-										},
-										{
-											"key": "apiKey",
-											"value": "{{apiKey}}"
-										}
-									]
-								},
-								"description": "Cette requête permet de récupérer un utilisateur à partir de son adresse email.\r\n\r\n/v002/utilisateur/get-by-mail/{eMail}?&apiKey={apiKey}&projetId={projetId}\r\n\r\n\r\n**Attention** : la consultation des membres nécessite des droits très spécifiques sur la plateforme, cette fonction n'est pas ouverte à tous."
-							},
-							"response": []
-						},
-						{
-							"name": "Récupération des utilisateurs d'un membre",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{API_ENDPOINT}}/v002/utilisateur/get-by-membre/1157?projetId={{projetId}}&apiKey={{apiKey}}",
-									"host": [
-										"{{API_ENDPOINT}}"
-									],
-									"path": [
-										"v002",
-										"utilisateur",
-										"get-by-membre",
-										"1157"
-									],
-									"query": [
-										{
-											"key": "projetId",
-											"value": "{{projetId}}"
-										},
-										{
-											"key": "apiKey",
-											"value": "{{apiKey}}"
-										}
-									]
-								},
-								"description": "Cette requête permet de récupérer la liste des utilisateurs d’un membre.\r\n\r\n/v002/utilisateur/get-by-membre/{membre_id}?&apiKey={apiKey}&projetId={projetId}\r\n\r\n\r\n**Attention** : la consultation des membres nécessite des droits très spécifiques sur la plateforme, cette fonction n'est pas ouverte à tous."
-							},
-							"response": []
-						},
-						{
-							"name": "Récupération de la liste complète des utilisateurs",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{API_ENDPOINT}}/v002/utilisateur/get-all-utilisateurs?projetId={{projetId}}&apiKey={{apiKey}}",
-									"host": [
-										"{{API_ENDPOINT}}"
-									],
-									"path": [
-										"v002",
-										"utilisateur",
-										"get-all-utilisateurs"
-									],
-									"query": [
-										{
-											"key": "projetId",
-											"value": "{{projetId}}"
-										},
-										{
-											"key": "apiKey",
-											"value": "{{apiKey}}"
-										}
-									]
-								},
-								"description": "Cette requête permet de récupérer la liste complète des utilisateurs.\r\n\r\n/v002/utilisateur/get-all-utilisateurs?projetId={projetId}&apiKey={apiKey}\r\n\r\n\r\n**Attention** : la consultation des membres nécessite des droits très spécifiques sur la plateforme, cette fonction n'est pas ouverte à tous."
-							},
-							"response": []
-						}
-					],
-					"description": "Ces services ne sont accessibles qu’avec des niveaux de droits élevés. Merci de nous consulter pour tout besoin.\r\nCes services sont à votre disposition pour récupérer les utilisateurs.",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
 						}
 					]
 				},
@@ -1540,6 +2090,96 @@
 					"description": "Le multi-horaires est un bloc métier permettant de détailler plus précisément les périodes d’ouvertures d’une offre touristique en spécifiant des tranches horaires."
 				},
 				{
+					"name": "Apidae Photo",
+					"item": [
+						{
+							"name": "Liste de notes",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{APIDAE-PHOTO_ENDPOINT}}/images.json?membreId=171&selectionIds=[97832]&projetId=5007",
+									"host": [
+										"{{APIDAE-PHOTO_ENDPOINT}}"
+									],
+									"path": [
+										"images.json"
+									],
+									"query": [
+										{
+											"key": "membreId",
+											"value": "171",
+											"description": "Obligatoire. Identifiant de membre Apidae"
+										},
+										{
+											"key": "selectionIds",
+											"value": "[97832]",
+											"description": "Facultatif. Liste d’identifiants de sélections séparés par des virgules"
+										},
+										{
+											"key": "projetId",
+											"value": "5007",
+											"description": "Facultatif. Identifiant de projet Apidae"
+										},
+										{
+											"key": "objetId",
+											"value": "12345",
+											"description": "Facultatif. Identifiant d’objet Apidae",
+											"disabled": true
+										},
+										{
+											"key": "illustrationId",
+											"value": "13570041",
+											"description": "Facultatif. Identifiant d’illustration Apidae",
+											"disabled": true
+										},
+										{
+											"key": "first",
+											"value": "20",
+											"description": "Facultatif. Index du premier élément à retourner (0 par défaut)",
+											"disabled": true
+										},
+										{
+											"key": "count",
+											"value": "500",
+											"description": "Facultatif. Nombre d’éléments à retourner (50 par défaut, maximum 500)",
+											"disabled": true
+										}
+									]
+								},
+								"description": "Cette méthode renvoie une liste de notes pour les photos d'un membre (`membreId`).\n\n`https://photo.apidae-tourisme.com/api/images.json?membreId={1234}&selectionIds=[{88358}]&projetId={4567}&objetId={12345}&illustrationId={1357}&first={20}&count={50}`\n\n**Apidae Photo peut aussi être utilisé via les** [**méthodes d'API Enrichies**](https://desktop.postman.com/?desktopVersion=9.31.0&userId=5494910&teamId=279703)**.**\n\nLe paramètre `membreId` est obligatoire. Il est préconisé de fournir au moins un identifiant de sélection ou de projet Apidae pour limiter le nombre de résultats."
+							},
+							"response": []
+						},
+						{
+							"name": "Notes d'une photo",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{APIDAE-PHOTO_ENDPOINT}}/images/210795.json?membreId=171",
+									"host": [
+										"{{APIDAE-PHOTO_ENDPOINT}}"
+									],
+									"path": [
+										"images",
+										"210795.json"
+									],
+									"query": [
+										{
+											"key": "membreId",
+											"value": "171",
+											"description": "Obligatoire. Identifiant de membre Apidae"
+										}
+									]
+								},
+								"description": "Cette méthode retourne, pour une photo donnée (`apidaePhotoId`), la note du membre (`membreId`) courant ainsi que les notes de tous les autres membres s’il y en a.\n\n`https://photo.apidae-tourisme.com/api/images/{apidaePhotoId}.json?membreId={1234}`\n\n**apidaePhotoId** est l'identifiant de l’image dans Apidae Photo, cet identifiant est fourni lors de l'appel de la liste de notes.\n\n**Le résultat de cet appel peut être interrogé directement au travers des** [**méthodes d'API Enrichies**](https://dev.apidae-tourisme.com/documentation-technique/v2/api-de-diffusion/appels-enrichis/)**.**"
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Appels enrichis",
 					"item": [
 						{
@@ -1548,7 +2188,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{API_PLATEFORME_ENDPOINT}}/apidae/objetenrich/?id=5924591&apiKey={{apiKey}}&projetId={{projetId}}&enrichments=multihoraire&locales=[\"fr\", \"en\"]",
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/apidae/objetenrich/?id=5924591&apiKey={{apiKey}}&projetId={{projetId}}&enrichments=multihoraire,apidae-photo&locales=[\"fr\", \"en\"]",
 									"host": [
 										"{{API_PLATEFORME_ENDPOINT}}"
 									],
@@ -1560,27 +2200,32 @@
 									"query": [
 										{
 											"key": "id",
-											"value": "5924591"
+											"value": "5924591",
+											"description": "Identifiant numérique de l’objet à récupérer"
 										},
 										{
 											"key": "apiKey",
-											"value": "{{apiKey}}"
+											"value": "{{apiKey}}",
+											"description": "Clef API"
 										},
 										{
 											"key": "projetId",
-											"value": "{{projetId}}"
+											"value": "{{projetId}}",
+											"description": "Identifiant du projet Apidae"
 										},
 										{
 											"key": "enrichments",
-											"value": "multihoraire"
+											"value": "multihoraire,apidae-photo",
+											"description": "Liste des enrichissements souhaités, séparés par une virgule"
 										},
 										{
 											"key": "locales",
-											"value": "[\"fr\", \"en\"]"
+											"value": "[\"fr\", \"en\"]",
+											"description": "Liste des locales souhaitées sous forme de  tableau"
 										}
 									]
 								},
-								"description": "**Attention** <br/>\nCes fonctionnalités sont actuellement en version Beta\n\nCette requête permet de récupérer sur un objet touristique enrichi des informations fournies par des partenaires d’Apidae.\n\nhttps://api.plateforme.apidae-tourisme.com/apidae/objetenrich/?id={id}&apiKey={apiKey}&projetId={projetId}&enrichments={multihoraire}\n\n- id est l’identifiant numérique de l’objet à récupérer\n- locales : cf. [Filtrage des langues](http://localhost/fr/documentation-technique/v2/api-de-diffusion/filtrage-des-langues)\n- apiKey : clé d’API\n- projetId : identifiant du projet\n- enrichments : liste des enrichissements souhaités, séparés par une virgule"
+								"description": "**Attention**  \n  \nCes fonctionnalités sont actuellement en version Beta\n\nCette requête permet de récupérer sur un objet touristique enrichi des informations fournies par des partenaires d’Apidae.\n\n[https://api.plateforme.apidae-tourisme.com/apidae/objetenrich/?id={id}&apiKey={apiKey}&projetId={projetId}&enrichments={multihoraire}](https://api.plateforme.apidae-tourisme.com/apidae/objetenrich/?id={id}&apiKey={apiKey}&projetId={projetId}&enrichments={multihoraire})\n\nL'utilisation des locales est détaillé dans le [filtrage des langues](https://dev.apidae-tourisme.com/documentation-technique/v2/api-de-diffusion/filtrage-des-langues/)."
 							},
 							"response": []
 						},
@@ -1590,7 +2235,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "https://api.plateforme.apidae-tourisme.com/apidae/objetenrich/?id=5924591&responseFields=[\"id\", \"nom\", \"presentation\"]&locales=[ \"fr\", \"en\" ]&apiKey={{apiKey}}&projetId={{projetId}}&enrichments=multihoraire",
+									"raw": "https://api.plateforme.apidae-tourisme.com/apidae/objetenrich/?id=5924591&apiKey={{apiKey}}&projetId={{projetId}}&enrichments=multihoraire,apidae-photo&locales=[\"fr\", \"en\"]&responseFields=[\"id\", \"nom\", \"presentation\"]",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -1606,36 +2251,43 @@
 									"query": [
 										{
 											"key": "id",
-											"value": "5924591"
+											"value": "5924591",
+											"description": "Identifiant numérique de l’objet à récupérer"
+										},
+										{
+											"key": "apiKey",
+											"value": "{{apiKey}}",
+											"description": "Clef API"
+										},
+										{
+											"key": "projetId",
+											"value": "{{projetId}}",
+											"description": "Identifiant du projet Apidae"
+										},
+										{
+											"key": "enrichments",
+											"value": "multihoraire,apidae-photo",
+											"description": "Liste des enrichissements souhaités, séparés par une virgule"
+										},
+										{
+											"key": "locales",
+											"value": "[\"fr\", \"en\"]",
+											"description": "Liste des locales souhaitées sous forme de  tableau"
+										},
+										{
+											"key": "responseFields",
+											"value": "[\"id\", \"nom\", \"presentation\"]",
+											"description": "Liste des noeuds JSON souhaités"
 										},
 										{
 											"key": "callback",
 											"value": "{callback}",
+											"description": "Facultatif : fonction callback pour un retour en JS.",
 											"disabled": true
-										},
-										{
-											"key": "responseFields",
-											"value": "[\"id\", \"nom\", \"presentation\"]"
-										},
-										{
-											"key": "locales",
-											"value": "[ \"fr\", \"en\" ]"
-										},
-										{
-											"key": "apiKey",
-											"value": "{{apiKey}}"
-										},
-										{
-											"key": "projetId",
-											"value": "{{projetId}}"
-										},
-										{
-											"key": "enrichments",
-											"value": "multihoraire"
 										}
 									]
 								},
-								"description": "**Attention** <br/>\n- Ces fonctionnalités sont actuellement en version Beta.\n- Le domaine api.plateforme.apidae-tourisme.com est différent du domaine utilisé pour les autres appels\n- Seul l’enrichissement du multi-horaire est disponible aujourd’hui\n\nCette requête permet de récupérer sur un objet touristique enrichi des informations fournies par des partenaires d’Apidae.\n\nhttps://api.plateforme.apidae-tourisme.com/apidae/objetenrich/?id={id}&callback={callback}&responseFields={responseFields}&locales={locales}&apiKey={apiKey}&projetId={projetId}&enrichments={enrichissements}\n\n- id est l’identifiant numérique de l’objet à récupérer\n- callback (optionnel) : nom de la fonction de callback (pour JSONP)\n- responseFields (optionnel) : cf. [Filtrage des données](http://localhost/fr/documentation-technique/v2/api-de-diffusion/filtrage-des-donnees)\n- locales : cf. [Filtrage des langues](http://localhost/fr/documentation-technique/v2/api-de-diffusion/filtrage-des-langues)\n- apiKey : clé d’API\n- projetId : identifiant du projet\n- enrichments : liste des enrichissements souhaités, séparés par une virgule"
+								"description": "**Attention**\n\n\\* Ces fonctionnalités sont actuellement en version Beta.  \n\\* Le domaine api.plateforme.apidae-tourisme.com est différent du domaine utilisé pour les autres appels  \n\\* Seul l’enrichissement du multi-horaire est disponible aujourd’hui\n\nCette requête permet de récupérer sur un objet touristique enrichi des informations fournies par des partenaires d’Apidae.\n\nLa gestion des responseFileds (optionnel) est détaillée dans le [filtrage des données](https://dev.apidae-tourisme.com/documentation-technique/v2/api-de-diffusion/filtrage-des-donnees/).\n\nL'utilisation des locales est détaillé dans le [filtrage des langues](https://desktop.postman.com/?desktopVersion=9.31.0&userId=5494910&teamId=279703)."
 							},
 							"response": []
 						}
@@ -4135,6 +4787,21 @@
 		{
 			"key": "access_token_meta",
 			"value": "XXX"
+		},
+		{
+			"key": "Channel_projectId",
+			"value": "XXX",
+			"type": "string"
+		},
+		{
+			"key": "Channel_apiKey",
+			"value": "XXX",
+			"type": "string"
+		},
+		{
+			"key": "Channel_searchId",
+			"value": "XXX",
+			"type": "string"
 		}
 	]
 }
