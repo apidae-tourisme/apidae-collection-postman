@@ -6,13 +6,27 @@ Pour les APIs de consultation ainsi que le SSO vous pouvez utiliser l'environnem
 ### La liste des exemples disponibles
 
 - **APIs de consultation** - [documentation](http://dev.apidae-tourisme.com/fr/documentation-technique/v2/api-de-diffusion)
-  * Lecture des sélections d'un projet
-  * Lecture d'un objet touristique
-  * Recherche d'objets touristiques
-  * Agenda
-  * Consultation du référentiel
-  * Consultation des membres
-  * Consultation des utilisateurs
+  * Service de consentement
+    * Récupération des ensembles d'offres
+    * Recherche - list-identifiants
+    * Recherche - list-objets-touristiques
+    * Récupération d'un objet touristiques - get-by-id
+    * Récupération d'un objet touristique enrichi - enrich
+    * Agenda Simple - list-identifiants
+    * Agenda Simple - list-objets-touristiques
+    * Agenda Détaillé - list-identifiants
+    * Agenda Détaillé - list-objets-touristiques
+    * Recherche - list-objets-touristiques - Query
+  * Projets numériques
+    * Lecture des sélections d'un projet
+    * Lecture d'un objet touristique
+    * Recherche d'objets touristiques
+    * Agenda
+    * Consultation du référentiel
+    * Consultation des membres
+    * Consultation des utilisateurs
+  * Multi-horaire
+  * Apidae Photo
   * Appel enrichi
 * Multi-horaires
   
@@ -39,29 +53,33 @@ Avant toute utilisation de la collection, il est important de renseigner les var
 
    <img src="screenshot/variables_2.png" style="zoom: 33%;" />
 
-**apiKey**: La clé d'API
+**projetId** : L'identifiant du projet numérique Apidae
 
-**projetId**: L'identifiant du projet
+**selectionIds** : Les identifiants des sélections d’objets, propre aux projets numériques Apidae, à récupérer (les identifiants doivent être séparés par des virgules : XXX,YYY)
 
-**selectionIds**: Les identifiants des sélections d’objets à récupérer (les identifiants doivent être séparés par des virgules : XXX,YYY)
+**projectId** : L'identifiant du projet, propre au service de consentement.
 
-**client_id**: L'identifiant du client utilisé pour un projet de type `SSO`
+**searchId** : Identifiant d'un ensemble d'offres (propre au service de consentement)
 
-**secret**: Le secret associé au client précédemment renseigné
+**apiKey** : La clé d'API
 
-**access_token**: Le token utilisé pour configurer l'`Authorization` ([voir documentation sur la configuration des tokens](./Documentation_Token_Postman.md))
+**client_id** : L'identifiant du client utilisé pour un projet de type `SSO`
 
-**client_id_ecriture**: L'identifiant du client utilisé pour un projet de type `API d'écriture`
+**secret** : Le secret associé au client précédemment renseigné
 
-**secret_ecriture**: Le secret associé au client précédemment renseigné
+**access_token** : Le token utilisé pour configurer l'`Authorization` ([voir documentation sur la configuration des tokens](./Documentation_Token_Postman.md))
 
-**access_token_ecriture**: Le token utilisé pour configurer l'`Authorization` ([voir documentation sur la configuration des tokens](./Documentation_Token_Postman.md))
+**client_id_ecriture **: L'identifiant du client utilisé pour un projet de type `API d'écriture`
 
-**client_id_meta**: L'identifiant du client utilisé pour un projet de type `API de métadonnées`
+**secret_ecriture** : Le secret associé au client précédemment renseigné
 
-**secret_meta**: Le secret associé au client précédemment renseigné
+**access_token_ecriture **: Le token utilisé pour configurer l'`Authorization` ([voir documentation sur la configuration des tokens](./Documentation_Token_Postman.md))
 
-**access_token_meta**: Le token utilisé pour configurer l'`Authorization` ([voir documentation sur la configuration des tokens](./Documentation_Token_Postman.md))
+**client_id_meta** : L'identifiant du client utilisé pour un projet de type `API de métadonnées`
+
+**secret_meta **: Le secret associé au client précédemment renseigné
+
+**access_token_meta** : Le token utilisé pour configurer l'`Authorization` ([voir documentation sur la configuration des tokens](./Documentation_Token_Postman.md))
 
 
 
