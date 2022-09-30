@@ -160,7 +160,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/objets-touristiques/get-by-id/6238693?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}",
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/objets-touristiques/get-by-id/5868124?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}&responseFields=id,nom&locales=fr,en",
 									"host": [
 										"{{API_PLATEFORME_ENDPOINT}}"
 									],
@@ -170,7 +170,7 @@
 										"channel",
 										"objets-touristiques",
 										"get-by-id",
-										"6238693"
+										"5868124"
 									],
 									"query": [
 										{
@@ -190,15 +190,13 @@
 										},
 										{
 											"key": "responseFields",
-											"value": "[\"id\",\"nom\"]",
-											"description": "Facultatif. Liste des noeuds JSON souhaités, sous forme de tableau de chaînes.",
-											"disabled": true
+											"value": "id,nom",
+											"description": "Facultatif. Liste des noeuds JSON souhaités, sous forme de liste séparée par une virgule."
 										},
 										{
 											"key": "locales",
 											"value": "fr,en",
-											"description": "Facultatif. Liste des locales séparées par des virgules.",
-											"disabled": true
+											"description": "Facultatif. Liste des locales séparées par des virgules."
 										}
 									]
 								},
@@ -212,7 +210,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/objets-touristiques/enrich/6238693?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}&enrichments=multihoraire,apidae-photo",
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/objets-touristiques/enrich/5868124?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}&enrichments=multihoraire,apidae-photo&locales=fr,en&responseFields=id,nom",
 									"host": [
 										"{{API_PLATEFORME_ENDPOINT}}"
 									],
@@ -222,7 +220,7 @@
 										"channel",
 										"objets-touristiques",
 										"enrich",
-										"6238693"
+										"5868124"
 									],
 									"query": [
 										{
@@ -248,14 +246,12 @@
 										{
 											"key": "locales",
 											"value": "fr,en",
-											"description": "Facultatif. Liste des locales séparées par des virgules.",
-											"disabled": true
+											"description": "Facultatif. Liste des locales séparées par des virgules."
 										},
 										{
 											"key": "responseFields",
-											"value": "[\"id\",\"nom\"]",
-											"description": "Facultatif. Liste des noeuds JSON souhaités, sous forme de tableau de chaînes.",
-											"disabled": true
+											"value": "id,nom",
+											"description": "Facultatif. Liste des noeuds JSON souhaités, séparés par des virgules."
 										}
 									]
 								},
@@ -2188,7 +2184,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{API_PLATEFORME_ENDPOINT}}/apidae/objetenrich/?id=5924591&apiKey={{apiKey}}&projetId={{projetId}}&enrichments=multihoraire,apidae-photo&locales=[\"fr\", \"en\"]",
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/apidae/objetenrich/?id=5924591&apiKey={{apiKey}}&projetId={{projetId}}&enrichments=multihoraire,apidae-photo&locales=fr,en",
 									"host": [
 										"{{API_PLATEFORME_ENDPOINT}}"
 									],
@@ -2220,8 +2216,8 @@
 										},
 										{
 											"key": "locales",
-											"value": "[\"fr\", \"en\"]",
-											"description": "Liste des locales souhaitées sous forme de  tableau"
+											"value": "fr,en",
+											"description": "Liste des locales souhaitées, séparée par une virgule"
 										}
 									]
 								},
@@ -2235,13 +2231,9 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "https://api.plateforme.apidae-tourisme.com/apidae/objetenrich/?id=5924591&apiKey={{apiKey}}&projetId={{projetId}}&enrichments=multihoraire,apidae-photo&locales=[\"fr\", \"en\"]&responseFields=[\"id\", \"nom\", \"presentation\"]",
-									"protocol": "https",
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/apidae/objetenrich/?apiKey={{apiKey}}&projetId={{projetId}}&enrichments=multihoraire,apidae-photo&locales=fr,en&responseFields=id,nom,identifier&id=5924591",
 									"host": [
-										"api",
-										"plateforme",
-										"apidae-tourisme",
-										"com"
+										"{{API_PLATEFORME_ENDPOINT}}"
 									],
 									"path": [
 										"apidae",
@@ -2249,11 +2241,6 @@
 										""
 									],
 									"query": [
-										{
-											"key": "id",
-											"value": "5924591",
-											"description": "Identifiant numérique de l’objet à récupérer"
-										},
 										{
 											"key": "apiKey",
 											"value": "{{apiKey}}",
@@ -2271,13 +2258,17 @@
 										},
 										{
 											"key": "locales",
-											"value": "[\"fr\", \"en\"]",
-											"description": "Liste des locales souhaitées sous forme de  tableau"
+											"value": "fr,en",
+											"description": "Liste des locales souhaitées, séparées par une virgules"
 										},
 										{
 											"key": "responseFields",
-											"value": "[\"id\", \"nom\", \"presentation\"]",
+											"value": "id,nom,identifier",
 											"description": "Liste des noeuds JSON souhaités"
+										},
+										{
+											"key": "id",
+											"value": "5924591"
 										},
 										{
 											"key": "callback",
