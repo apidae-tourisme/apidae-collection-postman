@@ -300,7 +300,7 @@
 											"description": "Obligatoire : date de début des évènements."
 										},
 										{
-											"key": "dateFinF",
+											"key": "dateFin",
 											"value": "2022-09-30",
 											"description": "Facultatif : date de fin des évènements.",
 											"disabled": true
@@ -1824,6 +1824,37 @@
 							"description": "Ces services sont à votre disposition pour récupérer les éléments du référentiel."
 						},
 						{
+							"name": "Consultation des collaborateurs",
+							"item": [
+								{
+									"name": "Récupération du propriétaire et des collaborateurs",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{API_ENDPOINT}}/v002/collaborateurs/?query={\"apiKey\":\"{{apiKey}}\",\"projetId\":{{projetId}},\"referenceIds\":[5163353,4659645]}",
+											"host": [
+												"{{API_ENDPOINT}}"
+											],
+											"path": [
+												"v002",
+												"collaborateurs",
+												""
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "{\"apiKey\":\"{{apiKey}}\",\"projetId\":{{projetId}},\"referenceIds\":[5163353,4659645]}"
+												}
+											]
+										},
+										"description": "Cet appel API sert à lister les membres propriétaires et collaborateurs sur une ou plusieurs offres touristiques."
+									},
+									"response": []
+								}
+							]
+						},
+						{
 							"name": "Consultation des membres",
 							"item": [
 								{
@@ -2184,7 +2215,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{API_PLATEFORME_ENDPOINT}}/apidae/objetenrich/?id=5924591&apiKey={{apiKey}}&projetId={{projetId}}&enrichments=multihoraire,apidae-photo&locales=fr,en",
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/apidae/objetenrich/?id=5776582&apiKey={{apiKey}}&projetId={{projetId}}&enrichments=multihoraire,apidae-photo",
 									"host": [
 										"{{API_PLATEFORME_ENDPOINT}}"
 									],
@@ -2196,7 +2227,7 @@
 									"query": [
 										{
 											"key": "id",
-											"value": "5924591",
+											"value": "5776582",
 											"description": "Identifiant numérique de l’objet à récupérer"
 										},
 										{
@@ -2217,7 +2248,8 @@
 										{
 											"key": "locales",
 											"value": "fr,en",
-											"description": "Liste des locales souhaitées, séparée par une virgule"
+											"description": "Liste des locales souhaitées, séparée par une virgule",
+											"disabled": true
 										}
 									]
 								},
@@ -2231,7 +2263,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{API_PLATEFORME_ENDPOINT}}/apidae/objetenrich/?apiKey={{apiKey}}&projetId={{projetId}}&enrichments=multihoraire,apidae-photo&locales=fr,en&responseFields=id,nom,identifier&id=5924591",
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/apidae/objetenrich/?apiKey={{apiKey}}&projetId={{projetId}}&enrichments=multihoraire,apidae-photo&locales=fr,en&responseFields=id,nom,identifier&id=5776582",
 									"host": [
 										"{{API_PLATEFORME_ENDPOINT}}"
 									],
@@ -2268,7 +2300,7 @@
 										},
 										{
 											"key": "id",
-											"value": "5924591"
+											"value": "5776582"
 										},
 										{
 											"key": "callback",
@@ -4358,6 +4390,228 @@
 							]
 						},
 						"description": "Cette requête permet d'utiliser l’API de gestion des descriptifs privés pour supprimer une liste de descriptifs affectée à une liste d’objets touristiques. Ces descriptifs sont des libellés multilingues rattachés à des champs privés. La liste des champs disponibles pour un membre est gérée par les administrateurs de ce membre.\r\n\r\nv002/donnees-privees/"
+					},
+					"response": []
+				},
+				{
+					"name": "Ajout de membres collaborateurs",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "accessTokenUrl",
+									"value": "{{AUTH_ACCESS_TOKEN_URL}}",
+									"type": "string"
+								},
+								{
+									"key": "tokenType",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "accessToken",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "Token_Ecriture",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "{{secret_ecriture}}",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{client_id_ecriture}}",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "api_ecriture",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "useBrowser",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https://oauth.pstmn.io/v1/callback",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "http://base.apidae-tourisme.com/oauth/authorize",
+									"type": "string"
+								},
+								{
+									"key": "client_authentication",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "collaborateurs",
+									"value": "{\n   \"id\": 5163353,\n   \"membresCollaborateurs\" : [1,171]\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{API_ENDPOINT}}/v002/collaborateurs/",
+							"host": [
+								"{{API_ENDPOINT}}"
+							],
+							"path": [
+								"v002",
+								"collaborateurs",
+								""
+							]
+						},
+						"description": "Cette requête permet d'utiliser l’API de gestion des membres collaborateurs pour ajouter un ou plusieurs membres collaborateurs à un objets touristiques."
+					},
+					"response": []
+				},
+				{
+					"name": "Suppression de membres collaborateurs",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "accessTokenUrl",
+									"value": "{{AUTH_ACCESS_TOKEN_URL}}",
+									"type": "string"
+								},
+								{
+									"key": "tokenType",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "accessToken",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "Token_Ecriture",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "{{secret_ecriture}}",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{client_id_ecriture}}",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "api_ecriture",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "useBrowser",
+									"value": true,
+									"type": "boolean"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https://oauth.pstmn.io/v1/callback",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "http://base.apidae-tourisme.com/oauth/authorize",
+									"type": "string"
+								},
+								{
+									"key": "client_authentication",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "collaborateurs",
+									"value": "{\n   \"id\": 5163353,\n   \"membresCollaborateurs\" : [1,171]\n}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{API_ENDPOINT}}/v002/collaborateurs/",
+							"host": [
+								"{{API_ENDPOINT}}"
+							],
+							"path": [
+								"v002",
+								"collaborateurs",
+								""
+							]
+						},
+						"description": "Cette requête permet d'utiliser l’API de gestion des membres collaborateurs pour supprimer un ou plusieurs membres collaborateurs à un objets touristiques."
 					},
 					"response": []
 				}
