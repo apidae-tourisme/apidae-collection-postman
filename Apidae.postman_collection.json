@@ -2969,11 +2969,12 @@
 									]
 								},
 								"url": {
-									"raw": "{{API_ENDPOINT}}v002/ecriture/",
+									"raw": "{{API_ENDPOINT}}/v002/ecriture/",
 									"host": [
-										"{{API_ENDPOINT}}v002"
+										"{{API_ENDPOINT}}"
 									],
 									"path": [
+										"v002",
 										"ecriture",
 										""
 									]
@@ -3088,11 +3089,12 @@
 									]
 								},
 								"url": {
-									"raw": "{{API_ENDPOINT}}v002/ecriture/",
+									"raw": "{{API_ENDPOINT}}/v002/ecriture/",
 									"host": [
-										"{{API_ENDPOINT}}v002"
+										"{{API_ENDPOINT}}"
 									],
 									"path": [
+										"v002",
 										"ecriture",
 										""
 									]
@@ -3207,11 +3209,12 @@
 									]
 								},
 								"url": {
-									"raw": "{{API_ENDPOINT}}v002/ecriture/",
+									"raw": "{{API_ENDPOINT}}/v002/ecriture/",
 									"host": [
-										"{{API_ENDPOINT}}v002"
+										"{{API_ENDPOINT}}"
 									],
 									"path": [
+										"v002",
 										"ecriture",
 										""
 									]
@@ -3331,11 +3334,12 @@
 									]
 								},
 								"url": {
-									"raw": "{{API_ENDPOINT}}v002/ecriture/",
+									"raw": "{{API_ENDPOINT}}/v002/ecriture/",
 									"host": [
-										"{{API_ENDPOINT}}v002"
+										"{{API_ENDPOINT}}"
 									],
 									"path": [
+										"v002",
 										"ecriture",
 										""
 									]
@@ -3456,11 +3460,12 @@
 									]
 								},
 								"url": {
-									"raw": "{{API_ENDPOINT}}v002/ecriture/",
+									"raw": "{{API_ENDPOINT}}/v002/ecriture/",
 									"host": [
-										"{{API_ENDPOINT}}v002"
+										"{{API_ENDPOINT}}"
 									],
 									"path": [
+										"v002",
 										"ecriture",
 										""
 									]
@@ -3580,11 +3585,12 @@
 									]
 								},
 								"url": {
-									"raw": "{{API_ENDPOINT}}v002/ecriture/",
+									"raw": "{{API_ENDPOINT}}/v002/ecriture/",
 									"host": [
-										"{{API_ENDPOINT}}v002"
+										"{{API_ENDPOINT}}"
 									],
 									"path": [
+										"v002",
 										"ecriture",
 										""
 									]
@@ -3709,11 +3715,12 @@
 									]
 								},
 								"url": {
-									"raw": "{{API_ENDPOINT}}v002/ecriture/",
+									"raw": "{{API_ENDPOINT}}/v002/ecriture/",
 									"host": [
-										"{{API_ENDPOINT}}v002"
+										"{{API_ENDPOINT}}"
 									],
 									"path": [
+										"v002",
 										"ecriture",
 										""
 									]
@@ -3814,11 +3821,12 @@
 									]
 								},
 								"url": {
-									"raw": "{{API_ENDPOINT}}v002/ecriture/",
+									"raw": "{{API_ENDPOINT}}/v002/ecriture/",
 									"host": [
-										"{{API_ENDPOINT}}v002"
+										"{{API_ENDPOINT}}"
 									],
 									"path": [
+										"v002",
 										"ecriture",
 										""
 									]
@@ -4112,11 +4120,12 @@
 							]
 						},
 						"url": {
-							"raw": "{{API_ENDPOINT}}v002/criteres-internes/",
+							"raw": "{{API_ENDPOINT}}/v002/criteres-internes/",
 							"host": [
-								"{{API_ENDPOINT}}v002"
+								"{{API_ENDPOINT}}"
 							],
 							"path": [
+								"v002",
 								"criteres-internes",
 								""
 							]
@@ -4291,11 +4300,12 @@
 							]
 						},
 						"url": {
-							"raw": "{{API_ENDPOINT}}v002/donnees-privees/",
+							"raw": "{{API_ENDPOINT}}/v002/donnees-privees/",
 							"host": [
-								"{{API_ENDPOINT}}v002"
+								"{{API_ENDPOINT}}"
 							],
 							"path": [
+								"v002",
 								"donnees-privees",
 								""
 							]
@@ -4380,11 +4390,12 @@
 							]
 						},
 						"url": {
-							"raw": "{{API_ENDPOINT}}v002/donnees-privees/",
+							"raw": "{{API_ENDPOINT}}/v002/donnees-privees/",
 							"host": [
-								"{{API_ENDPOINT}}v002"
+								"{{API_ENDPOINT}}"
 							],
 							"path": [
+								"v002",
 								"donnees-privees",
 								""
 							]
