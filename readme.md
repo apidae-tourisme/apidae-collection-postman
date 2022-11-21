@@ -6,6 +6,15 @@ Pour les APIs de consultation ainsi que le SSO vous pouvez utiliser l'environnem
 ### La liste des exemples disponibles
 
 - **APIs de consultation** - [documentation](http://dev.apidae-tourisme.com/fr/documentation-technique/v2/api-de-diffusion)
+  * Projets numériques
+    * Lecture des sélections d'un projet
+    * Lecture d'un objet touristique
+    * Recherche d'objets touristiques
+    * Agenda
+    * Consultation du référentiel
+    * Consultation des collaborateurs
+    * Consultation des membres
+    * Consultation des utilisateurs
   * Service de consentement
     * Récupération des ensembles d'offres
     * Recherche - list-identifiants
@@ -17,14 +26,6 @@ Pour les APIs de consultation ainsi que le SSO vous pouvez utiliser l'environnem
     * Agenda Détaillé - list-identifiants
     * Agenda Détaillé - list-objets-touristiques
     * Recherche - list-objets-touristiques - Query
-  * Projets numériques
-    * Lecture des sélections d'un projet
-    * Lecture d'un objet touristique
-    * Recherche d'objets touristiques
-    * Agenda
-    * Consultation du référentiel
-    * Consultation des membres
-    * Consultation des utilisateurs
   * Multi-horaire
   * Apidae Photo
   * Appel enrichi
