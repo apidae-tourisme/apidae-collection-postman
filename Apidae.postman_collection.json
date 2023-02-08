@@ -11,546 +11,6 @@
 			"name": "API de consultation",
 			"item": [
 				{
-					"name": "Service de consentement",
-					"item": [
-						{
-							"name": "Récupération des ensembles d'offres",
-							"protocolProfileBehavior": {
-								"disabledSystemHeaders": {}
-							},
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/searchs/?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}",
-									"host": [
-										"{{API_PLATEFORME_ENDPOINT}}"
-									],
-									"path": [
-										"api",
-										"v002",
-										"channel",
-										"searchs",
-										""
-									],
-									"query": [
-										{
-											"key": "projectId",
-											"value": "{{Channel_projectId}}",
-											"description": "Identifiant du Channel dans le service de consentement."
-										},
-										{
-											"key": "apiKey",
-											"value": "{{Channel_apiKey}}",
-											"description": "Clef API du Channel dans le service de consentement."
-										}
-									]
-								},
-								"description": "Cette requête liste les ensembles d'offres disponibles au sein d'un channel.\n\nLes identifiants des recherches seront ensuite utilisés en tant que searchId sur les requêtes suivantes."
-							},
-							"response": []
-						},
-						{
-							"name": "Recherche - list-identifiants",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/recherche/list-identifiants/?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}",
-									"host": [
-										"{{API_PLATEFORME_ENDPOINT}}"
-									],
-									"path": [
-										"api",
-										"v002",
-										"channel",
-										"recherche",
-										"list-identifiants",
-										""
-									],
-									"query": [
-										{
-											"key": "projectId",
-											"value": "{{Channel_projectId}}",
-											"description": "Identifiant du Channel dans le service de consentement."
-										},
-										{
-											"key": "apiKey",
-											"value": "{{Channel_apiKey}}",
-											"description": "Clef API du Channel dans le service de consentement."
-										},
-										{
-											"key": "searchId",
-											"value": "{{Channel_searchId}}",
-											"description": "Identifiant d'un ensemble d'offre"
-										},
-										{
-											"key": "count",
-											"value": "200",
-											"description": "Nombre d'offres maximum retourné par le web service (20 par défaut)",
-											"disabled": true
-										}
-									]
-								},
-								"description": "Cette méthode permet de récupérer la liste des identifiants d'offres d'un ensemble d'offres.\n\nLa valeur de Channel_searchId se récupère sur la requête \"Récupération des ensembles d'offres\" (/api/v002/channel/searchs/)."
-							},
-							"response": []
-						},
-						{
-							"name": "Recherche - list-objets-touristiques",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/recherche/list-objets-touristiques/?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}",
-									"host": [
-										"{{API_PLATEFORME_ENDPOINT}}"
-									],
-									"path": [
-										"api",
-										"v002",
-										"channel",
-										"recherche",
-										"list-objets-touristiques",
-										""
-									],
-									"query": [
-										{
-											"key": "projectId",
-											"value": "{{Channel_projectId}}",
-											"description": "Identifiant du Channel dans le service de consentement."
-										},
-										{
-											"key": "apiKey",
-											"value": "{{Channel_apiKey}}",
-											"description": "Clef API du Channel dans le service de consentement."
-										},
-										{
-											"key": "searchId",
-											"value": "{{Channel_searchId}}",
-											"description": "Identifiant d'un ensemble d'offre"
-										},
-										{
-											"key": "responseFields",
-											"value": "[\"id\",\"nom\"]",
-											"description": "Facultatif. Liste des noeuds JSON souhaités, sous forme de tableau de chaînes.",
-											"disabled": true
-										},
-										{
-											"key": "locales",
-											"value": "fr,en",
-											"description": "Facultatif. Liste des locales séparées par des virgules.",
-											"disabled": true
-										},
-										{
-											"key": "count",
-											"value": "200",
-											"description": "Nombre d'offres maximum retourné par le web service (20 par défaut)",
-											"disabled": true
-										}
-									]
-								},
-								"description": "Cette méthode permet de récupérer le contenu d'une liste d'offres.\n\nLa valeur de Channel_searchId se récupère sur la requête \"Récupération des ensembles d'offres\" (/api/v002/channel/searchs/).\n\nLa gestion des responseFileds (optionnel) est détaillée dans le [filtrage des données](https://desktop.postman.com/?desktopVersion=9.31.0&userId=5494910&teamId=279703).\n\nL'utilisation des locales est détaillé dans le [filtrage des langues](https://desktop.postman.com/?desktopVersion=9.31.0&userId=5494910&teamId=279703)."
-							},
-							"response": []
-						},
-						{
-							"name": "Récupération d'un objet touristiques - get-by-id",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/objets-touristiques/get-by-id/5868124?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}&responseFields=id,nom&locales=fr,en",
-									"host": [
-										"{{API_PLATEFORME_ENDPOINT}}"
-									],
-									"path": [
-										"api",
-										"v002",
-										"channel",
-										"objets-touristiques",
-										"get-by-id",
-										"5868124"
-									],
-									"query": [
-										{
-											"key": "projectId",
-											"value": "{{Channel_projectId}}",
-											"description": "Identifiant du Channel dans le service de consentement."
-										},
-										{
-											"key": "apiKey",
-											"value": "{{Channel_apiKey}}",
-											"description": "Clef API du Channel dans le service de consentement."
-										},
-										{
-											"key": "searchId",
-											"value": "{{Channel_searchId}}",
-											"description": "Identifiant d'un ensemble d'offre"
-										},
-										{
-											"key": "responseFields",
-											"value": "id,nom",
-											"description": "Facultatif. Liste des noeuds JSON souhaités, sous forme de liste séparée par une virgule."
-										},
-										{
-											"key": "locales",
-											"value": "fr,en",
-											"description": "Facultatif. Liste des locales séparées par des virgules."
-										}
-									]
-								},
-								"description": "Cette méthode permet de récupérer le contenu d'un objet touristique.\n\nL'identifiant de l'objet est récupéré lors d'une recherche classique ou d'une rechercher agenda."
-							},
-							"response": []
-						},
-						{
-							"name": "Récupération d'un objet touristique enrichi - enrich",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/objets-touristiques/enrich/5868124?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}&enrichments=multihoraire,apidae-photo&locales=fr,en&responseFields=id,nom",
-									"host": [
-										"{{API_PLATEFORME_ENDPOINT}}"
-									],
-									"path": [
-										"api",
-										"v002",
-										"channel",
-										"objets-touristiques",
-										"enrich",
-										"5868124"
-									],
-									"query": [
-										{
-											"key": "projectId",
-											"value": "{{Channel_projectId}}",
-											"description": "Identifiant du Channel dans le service de consentement."
-										},
-										{
-											"key": "apiKey",
-											"value": "{{Channel_apiKey}}",
-											"description": "Clef API du Channel dans le service de consentement."
-										},
-										{
-											"key": "searchId",
-											"value": "{{Channel_searchId}}",
-											"description": "Identifiant d'un ensemble d'offre"
-										},
-										{
-											"key": "enrichments",
-											"value": "multihoraire,apidae-photo",
-											"description": "Liste des enrichissements souhaités, séparés par une virgule"
-										},
-										{
-											"key": "locales",
-											"value": "fr,en",
-											"description": "Facultatif. Liste des locales séparées par des virgules."
-										},
-										{
-											"key": "responseFields",
-											"value": "id,nom",
-											"description": "Facultatif. Liste des noeuds JSON souhaités, séparés par des virgules."
-										}
-									]
-								},
-								"description": "Cette méthode permet de récupérer le contenu d'un objet touristique enrichi.\n\nL'identifiant de l'objet est récupéré lors d'une recherche classique ou d'une rechercher agenda.\n\nLes différents enrichissements possibles sont disponibles sur le site d'aide aux développeurs à l'adresse suivante : [https://dev.apidae-tourisme.com/documentation-technique/v2/api-de-diffusion/appels-enrichis/](https://dev.apidae-tourisme.com/documentation-technique/v2/api-de-diffusion/appels-enrichis/)"
-							},
-							"response": []
-						},
-						{
-							"name": "Agenda Simple - list-identifiants",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/agenda/simple/list-identifiants/?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}&dateDebut=2022-09-23",
-									"host": [
-										"{{API_PLATEFORME_ENDPOINT}}"
-									],
-									"path": [
-										"api",
-										"v002",
-										"channel",
-										"agenda",
-										"simple",
-										"list-identifiants",
-										""
-									],
-									"query": [
-										{
-											"key": "projectId",
-											"value": "{{Channel_projectId}}",
-											"description": "Identifiant du Channel dans le service de consentement."
-										},
-										{
-											"key": "apiKey",
-											"value": "{{Channel_apiKey}}",
-											"description": "Clef API du Channel dans le service de consentement."
-										},
-										{
-											"key": "searchId",
-											"value": "{{Channel_searchId}}",
-											"description": "Identifiant d'un ensemble d'offre"
-										},
-										{
-											"key": "dateDebut",
-											"value": "2022-09-23",
-											"description": "Obligatoire : date de début des évènements."
-										},
-										{
-											"key": "dateFin",
-											"value": "2022-09-30",
-											"description": "Facultatif : date de fin des évènements.",
-											"disabled": true
-										},
-										{
-											"key": "count",
-											"value": "200",
-											"description": "Nombre d'offres maximum retourné par le web service (20 par défaut)",
-											"disabled": true
-										}
-									]
-								},
-								"description": "Cette méthode permet de récupérer la liste des identifiants d'offres d'un ensemble d'offres triés par la date de début des évènements\n\nLa valeur de Channel_searchId se récupère sur la requête \"Récupération des ensembles d'offres\" (/api/v002/channel/searchs/)."
-							},
-							"response": []
-						},
-						{
-							"name": "Agenda Simple - list-objets-touristiques",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/agenda/simple/list-objets-touristiques/?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}&dateDebut=2022-09-23",
-									"host": [
-										"{{API_PLATEFORME_ENDPOINT}}"
-									],
-									"path": [
-										"api",
-										"v002",
-										"channel",
-										"agenda",
-										"simple",
-										"list-objets-touristiques",
-										""
-									],
-									"query": [
-										{
-											"key": "projectId",
-											"value": "{{Channel_projectId}}",
-											"description": "Identifiant du Channel dans le service de consentement."
-										},
-										{
-											"key": "apiKey",
-											"value": "{{Channel_apiKey}}",
-											"description": "Clef API du Channel dans le service de consentement."
-										},
-										{
-											"key": "searchId",
-											"value": "{{Channel_searchId}}",
-											"description": "Identifiant d'un ensemble d'offre"
-										},
-										{
-											"key": "dateDebut",
-											"value": "2022-09-23",
-											"description": "Obligatoire : date de début des évènements."
-										},
-										{
-											"key": "dateFin",
-											"value": "2022-09-30",
-											"description": "Facultatif : date de fin des évènements.",
-											"disabled": true
-										},
-										{
-											"key": "responseFields",
-											"value": "[\"id\",\"nom\"]",
-											"description": "Facultatif. Liste des noeuds JSON souhaités, sous forme de tableau de chaînes.",
-											"disabled": true
-										},
-										{
-											"key": "locales",
-											"value": "fr,en",
-											"description": "Facultatif. Liste des locales séparées par des virgules.",
-											"disabled": true
-										},
-										{
-											"key": "count",
-											"value": "200",
-											"description": "Nombre d'offres maximum retourné par le web service (20 par défaut)",
-											"disabled": true
-										}
-									]
-								},
-								"description": "Cette méthode permet de récupérer le contenu d'une liste d'offres triée par la date de début des évènements\n\nLa valeur de Channel_searchId se récupère sur la requête \"Récupération des ensembles d'offres\" (/api/v002/channel/searchs/)."
-							},
-							"response": []
-						},
-						{
-							"name": "Agenda Détaillé - list-identifiants",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/agenda/detaille/list-identifiants/?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}&dateDebut=2022-09-22",
-									"host": [
-										"{{API_PLATEFORME_ENDPOINT}}"
-									],
-									"path": [
-										"api",
-										"v002",
-										"channel",
-										"agenda",
-										"detaille",
-										"list-identifiants",
-										""
-									],
-									"query": [
-										{
-											"key": "projectId",
-											"value": "{{Channel_projectId}}",
-											"description": "Identifiant du Channel dans le service de consentement."
-										},
-										{
-											"key": "apiKey",
-											"value": "{{Channel_apiKey}}",
-											"description": "Clef API du Channel dans le service de consentement."
-										},
-										{
-											"key": "searchId",
-											"value": "{{Channel_searchId}}",
-											"description": "Identifiant d'un ensemble d'offre"
-										},
-										{
-											"key": "dateDebut",
-											"value": "2022-09-22",
-											"description": "Obligatoire : date de début des évènements."
-										},
-										{
-											"key": "dateFin",
-											"value": "2022-09-30",
-											"description": "Facultatif : date de fin des évènements.",
-											"disabled": true
-										},
-										{
-											"key": "count",
-											"value": "200",
-											"description": "Nombre d'offres maximum retourné par le web service (20 par défaut)",
-											"disabled": true
-										}
-									]
-								},
-								"description": "Cette méthode permet de récupérer la liste des identifiants d'offres d'un ensemble d'offres. Les objets sont regroupés par date d’évènement. Un objet touristique qui se déroule sur plusieurs journées est listé plusieurs fois dans le résultat (une fois pour chaque jour d’ouverture).\n\nLa valeur de Channel_searchId se récupère sur la requête \"Récupération des ensembles d'offres\" (/api/v002/channel/searchs/)."
-							},
-							"response": []
-						},
-						{
-							"name": "Agenda Détaillé - list-objets-touristiques",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/agenda/detaille/list-objets-touristiques/?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}&dateDebut=2022-09-23",
-									"host": [
-										"{{API_PLATEFORME_ENDPOINT}}"
-									],
-									"path": [
-										"api",
-										"v002",
-										"channel",
-										"agenda",
-										"detaille",
-										"list-objets-touristiques",
-										""
-									],
-									"query": [
-										{
-											"key": "projectId",
-											"value": "{{Channel_projectId}}",
-											"description": "Identifiant du Channel dans le service de consentement."
-										},
-										{
-											"key": "apiKey",
-											"value": "{{Channel_apiKey}}",
-											"description": "Clef API du Channel dans le service de consentement."
-										},
-										{
-											"key": "searchId",
-											"value": "{{Channel_searchId}}",
-											"description": "Identifiant d'un ensemble d'offre"
-										},
-										{
-											"key": "dateDebut",
-											"value": "2022-09-23",
-											"description": "Obligatoire : date de début des évènements."
-										},
-										{
-											"key": "dateFin",
-											"value": "2022-09-30",
-											"description": "Facultatif : date de fin des évènements.",
-											"disabled": true
-										},
-										{
-											"key": "locales",
-											"value": "fr,en",
-											"description": "Facultatif. Liste des locales séparées par des virgules.",
-											"disabled": true
-										},
-										{
-											"key": "responseFields",
-											"value": "[\"id\",\"nom\"]",
-											"description": "Facultatif. Liste des noeuds JSON souhaités, sous forme de tableau de chaînes.",
-											"disabled": true
-										},
-										{
-											"key": "count",
-											"value": "200",
-											"description": "Nombre d'offres maximum retourné par le web service (20 par défaut)",
-											"disabled": true
-										}
-									]
-								},
-								"description": "Cette méthode permet de récupérer le contenu d'une liste d'offres. Les objets sont regroupés par date d’évènement. Un objet touristique qui se déroule sur plusieurs journées est listé plusieurs fois dans le résultat (une fois pour chaque jour d’ouverture).\n\nLa valeur de Channel_searchId se récupère sur la requête \"Récupération des ensembles d'offres\" (/api/v002/channel/searchs/)."
-							},
-							"response": []
-						},
-						{
-							"name": "Recherche - list-objets-touristiques - Query",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "query",
-											"value": "{ \n    \"projectId\": \"{{Channel_projectId}}\",\n    \"apiKey\": \"{{Channel_apiKey}}\",\n    \"searchId\": \"{{Channel_searchId}}\",\n    \"responseFields\":[\"id\",\"nom\"],\n     \"locales\":[\"fr\",\"en\",\"ja\"]\n}",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/recherche/list-objets-touristiques/",
-									"host": [
-										"{{API_PLATEFORME_ENDPOINT}}"
-									],
-									"path": [
-										"api",
-										"v002",
-										"channel",
-										"recherche",
-										"list-objets-touristiques",
-										""
-									]
-								},
-								"description": "Exemple complémentaire utilisant le service en méthode POST avec l'utilisation du paramètre Query.\n\nL'ensemble des requêtes du Service de consentement sont utilisables avec la méthode POST.\n\nCette méthode permet de récupérer le contenu d'une liste d'offres.\n\nLa valeur de Channel_searchId se récupère sur la requête \"Récupération des ensembles d'offres\" (/api/v002/channel/searchs/).\n\nLe détail de la construction du paramètre Query est détaillée dans [le format des recherches](https://dev.apidae-tourisme.com/documentation-technique/v2/api-de-diffusion/format-des-recherches/)."
-							},
-							"response": []
-						}
-					]
-				},
-				{
 					"name": "Projets numériques",
 					"item": [
 						{
@@ -2069,6 +1529,546 @@
 					]
 				},
 				{
+					"name": "Service de consentement",
+					"item": [
+						{
+							"name": "Récupération des ensembles d'offres",
+							"protocolProfileBehavior": {
+								"disabledSystemHeaders": {}
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/searchs/?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}",
+									"host": [
+										"{{API_PLATEFORME_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"v002",
+										"channel",
+										"searchs",
+										""
+									],
+									"query": [
+										{
+											"key": "projectId",
+											"value": "{{Channel_projectId}}",
+											"description": "Identifiant du Channel dans le service de consentement."
+										},
+										{
+											"key": "apiKey",
+											"value": "{{Channel_apiKey}}",
+											"description": "Clef API du Channel dans le service de consentement."
+										}
+									]
+								},
+								"description": "Cette requête liste les ensembles d'offres disponibles au sein d'un channel.\n\nLes identifiants des recherches seront ensuite utilisés en tant que searchId sur les requêtes suivantes."
+							},
+							"response": []
+						},
+						{
+							"name": "Recherche - list-identifiants",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/recherche/list-identifiants/?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}",
+									"host": [
+										"{{API_PLATEFORME_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"v002",
+										"channel",
+										"recherche",
+										"list-identifiants",
+										""
+									],
+									"query": [
+										{
+											"key": "projectId",
+											"value": "{{Channel_projectId}}",
+											"description": "Identifiant du Channel dans le service de consentement."
+										},
+										{
+											"key": "apiKey",
+											"value": "{{Channel_apiKey}}",
+											"description": "Clef API du Channel dans le service de consentement."
+										},
+										{
+											"key": "searchId",
+											"value": "{{Channel_searchId}}",
+											"description": "Identifiant d'un ensemble d'offre"
+										},
+										{
+											"key": "count",
+											"value": "200",
+											"description": "Nombre d'offres maximum retourné par le web service (20 par défaut)",
+											"disabled": true
+										}
+									]
+								},
+								"description": "Cette méthode permet de récupérer la liste des identifiants d'offres d'un ensemble d'offres.\n\nLa valeur de Channel_searchId se récupère sur la requête \"Récupération des ensembles d'offres\" (/api/v002/channel/searchs/)."
+							},
+							"response": []
+						},
+						{
+							"name": "Recherche - list-objets-touristiques",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/recherche/list-objets-touristiques/?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}",
+									"host": [
+										"{{API_PLATEFORME_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"v002",
+										"channel",
+										"recherche",
+										"list-objets-touristiques",
+										""
+									],
+									"query": [
+										{
+											"key": "projectId",
+											"value": "{{Channel_projectId}}",
+											"description": "Identifiant du Channel dans le service de consentement."
+										},
+										{
+											"key": "apiKey",
+											"value": "{{Channel_apiKey}}",
+											"description": "Clef API du Channel dans le service de consentement."
+										},
+										{
+											"key": "searchId",
+											"value": "{{Channel_searchId}}",
+											"description": "Identifiant d'un ensemble d'offre"
+										},
+										{
+											"key": "responseFields",
+											"value": "[\"id\",\"nom\"]",
+											"description": "Facultatif. Liste des noeuds JSON souhaités, sous forme de tableau de chaînes.",
+											"disabled": true
+										},
+										{
+											"key": "locales",
+											"value": "fr,en",
+											"description": "Facultatif. Liste des locales séparées par des virgules.",
+											"disabled": true
+										},
+										{
+											"key": "count",
+											"value": "200",
+											"description": "Nombre d'offres maximum retourné par le web service (20 par défaut)",
+											"disabled": true
+										}
+									]
+								},
+								"description": "Cette méthode permet de récupérer le contenu d'une liste d'offres.\n\nLa valeur de Channel_searchId se récupère sur la requête \"Récupération des ensembles d'offres\" (/api/v002/channel/searchs/).\n\nLa gestion des responseFileds (optionnel) est détaillée dans le [filtrage des données](https://desktop.postman.com/?desktopVersion=9.31.0&userId=5494910&teamId=279703).\n\nL'utilisation des locales est détaillé dans le [filtrage des langues](https://desktop.postman.com/?desktopVersion=9.31.0&userId=5494910&teamId=279703)."
+							},
+							"response": []
+						},
+						{
+							"name": "Récupération d'un objet touristiques - get-by-id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/objets-touristiques/get-by-id/5868124?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}&responseFields=id,nom&locales=fr,en",
+									"host": [
+										"{{API_PLATEFORME_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"v002",
+										"channel",
+										"objets-touristiques",
+										"get-by-id",
+										"5868124"
+									],
+									"query": [
+										{
+											"key": "projectId",
+											"value": "{{Channel_projectId}}",
+											"description": "Identifiant du Channel dans le service de consentement."
+										},
+										{
+											"key": "apiKey",
+											"value": "{{Channel_apiKey}}",
+											"description": "Clef API du Channel dans le service de consentement."
+										},
+										{
+											"key": "searchId",
+											"value": "{{Channel_searchId}}",
+											"description": "Identifiant d'un ensemble d'offre"
+										},
+										{
+											"key": "responseFields",
+											"value": "id,nom",
+											"description": "Facultatif. Liste des noeuds JSON souhaités, sous forme de liste séparée par une virgule."
+										},
+										{
+											"key": "locales",
+											"value": "fr,en",
+											"description": "Facultatif. Liste des locales séparées par des virgules."
+										}
+									]
+								},
+								"description": "Cette méthode permet de récupérer le contenu d'un objet touristique.\n\nL'identifiant de l'objet est récupéré lors d'une recherche classique ou d'une rechercher agenda."
+							},
+							"response": []
+						},
+						{
+							"name": "Récupération d'un objet touristique enrichi - enrich",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/objets-touristiques/enrich/5868124?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}&enrichments=multihoraire,apidae-photo&locales=fr,en&responseFields=id,nom",
+									"host": [
+										"{{API_PLATEFORME_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"v002",
+										"channel",
+										"objets-touristiques",
+										"enrich",
+										"5868124"
+									],
+									"query": [
+										{
+											"key": "projectId",
+											"value": "{{Channel_projectId}}",
+											"description": "Identifiant du Channel dans le service de consentement."
+										},
+										{
+											"key": "apiKey",
+											"value": "{{Channel_apiKey}}",
+											"description": "Clef API du Channel dans le service de consentement."
+										},
+										{
+											"key": "searchId",
+											"value": "{{Channel_searchId}}",
+											"description": "Identifiant d'un ensemble d'offre"
+										},
+										{
+											"key": "enrichments",
+											"value": "multihoraire,apidae-photo",
+											"description": "Liste des enrichissements souhaités, séparés par une virgule"
+										},
+										{
+											"key": "locales",
+											"value": "fr,en",
+											"description": "Facultatif. Liste des locales séparées par des virgules."
+										},
+										{
+											"key": "responseFields",
+											"value": "id,nom",
+											"description": "Facultatif. Liste des noeuds JSON souhaités, séparés par des virgules."
+										}
+									]
+								},
+								"description": "Cette méthode permet de récupérer le contenu d'un objet touristique enrichi.\n\nL'identifiant de l'objet est récupéré lors d'une recherche classique ou d'une rechercher agenda.\n\nLes différents enrichissements possibles sont disponibles sur le site d'aide aux développeurs à l'adresse suivante : [https://dev.apidae-tourisme.com/documentation-technique/v2/api-de-diffusion/appels-enrichis/](https://dev.apidae-tourisme.com/documentation-technique/v2/api-de-diffusion/appels-enrichis/)"
+							},
+							"response": []
+						},
+						{
+							"name": "Agenda Simple - list-identifiants",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/agenda/simple/list-identifiants/?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}&dateDebut=2022-09-23",
+									"host": [
+										"{{API_PLATEFORME_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"v002",
+										"channel",
+										"agenda",
+										"simple",
+										"list-identifiants",
+										""
+									],
+									"query": [
+										{
+											"key": "projectId",
+											"value": "{{Channel_projectId}}",
+											"description": "Identifiant du Channel dans le service de consentement."
+										},
+										{
+											"key": "apiKey",
+											"value": "{{Channel_apiKey}}",
+											"description": "Clef API du Channel dans le service de consentement."
+										},
+										{
+											"key": "searchId",
+											"value": "{{Channel_searchId}}",
+											"description": "Identifiant d'un ensemble d'offre"
+										},
+										{
+											"key": "dateDebut",
+											"value": "2022-09-23",
+											"description": "Obligatoire : date de début des évènements."
+										},
+										{
+											"key": "dateFin",
+											"value": "2022-09-30",
+											"description": "Facultatif : date de fin des évènements.",
+											"disabled": true
+										},
+										{
+											"key": "count",
+											"value": "200",
+											"description": "Nombre d'offres maximum retourné par le web service (20 par défaut)",
+											"disabled": true
+										}
+									]
+								},
+								"description": "Cette méthode permet de récupérer la liste des identifiants d'offres d'un ensemble d'offres triés par la date de début des évènements\n\nLa valeur de Channel_searchId se récupère sur la requête \"Récupération des ensembles d'offres\" (/api/v002/channel/searchs/)."
+							},
+							"response": []
+						},
+						{
+							"name": "Agenda Simple - list-objets-touristiques",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/agenda/simple/list-objets-touristiques/?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}&dateDebut=2022-09-23",
+									"host": [
+										"{{API_PLATEFORME_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"v002",
+										"channel",
+										"agenda",
+										"simple",
+										"list-objets-touristiques",
+										""
+									],
+									"query": [
+										{
+											"key": "projectId",
+											"value": "{{Channel_projectId}}",
+											"description": "Identifiant du Channel dans le service de consentement."
+										},
+										{
+											"key": "apiKey",
+											"value": "{{Channel_apiKey}}",
+											"description": "Clef API du Channel dans le service de consentement."
+										},
+										{
+											"key": "searchId",
+											"value": "{{Channel_searchId}}",
+											"description": "Identifiant d'un ensemble d'offre"
+										},
+										{
+											"key": "dateDebut",
+											"value": "2022-09-23",
+											"description": "Obligatoire : date de début des évènements."
+										},
+										{
+											"key": "dateFin",
+											"value": "2022-09-30",
+											"description": "Facultatif : date de fin des évènements.",
+											"disabled": true
+										},
+										{
+											"key": "responseFields",
+											"value": "[\"id\",\"nom\"]",
+											"description": "Facultatif. Liste des noeuds JSON souhaités, sous forme de tableau de chaînes.",
+											"disabled": true
+										},
+										{
+											"key": "locales",
+											"value": "fr,en",
+											"description": "Facultatif. Liste des locales séparées par des virgules.",
+											"disabled": true
+										},
+										{
+											"key": "count",
+											"value": "200",
+											"description": "Nombre d'offres maximum retourné par le web service (20 par défaut)",
+											"disabled": true
+										}
+									]
+								},
+								"description": "Cette méthode permet de récupérer le contenu d'une liste d'offres triée par la date de début des évènements\n\nLa valeur de Channel_searchId se récupère sur la requête \"Récupération des ensembles d'offres\" (/api/v002/channel/searchs/)."
+							},
+							"response": []
+						},
+						{
+							"name": "Agenda Détaillé - list-identifiants",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/agenda/detaille/list-identifiants/?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}&dateDebut=2022-09-22",
+									"host": [
+										"{{API_PLATEFORME_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"v002",
+										"channel",
+										"agenda",
+										"detaille",
+										"list-identifiants",
+										""
+									],
+									"query": [
+										{
+											"key": "projectId",
+											"value": "{{Channel_projectId}}",
+											"description": "Identifiant du Channel dans le service de consentement."
+										},
+										{
+											"key": "apiKey",
+											"value": "{{Channel_apiKey}}",
+											"description": "Clef API du Channel dans le service de consentement."
+										},
+										{
+											"key": "searchId",
+											"value": "{{Channel_searchId}}",
+											"description": "Identifiant d'un ensemble d'offre"
+										},
+										{
+											"key": "dateDebut",
+											"value": "2022-09-22",
+											"description": "Obligatoire : date de début des évènements."
+										},
+										{
+											"key": "dateFin",
+											"value": "2022-09-30",
+											"description": "Facultatif : date de fin des évènements.",
+											"disabled": true
+										},
+										{
+											"key": "count",
+											"value": "200",
+											"description": "Nombre d'offres maximum retourné par le web service (20 par défaut)",
+											"disabled": true
+										}
+									]
+								},
+								"description": "Cette méthode permet de récupérer la liste des identifiants d'offres d'un ensemble d'offres. Les objets sont regroupés par date d’évènement. Un objet touristique qui se déroule sur plusieurs journées est listé plusieurs fois dans le résultat (une fois pour chaque jour d’ouverture).\n\nLa valeur de Channel_searchId se récupère sur la requête \"Récupération des ensembles d'offres\" (/api/v002/channel/searchs/)."
+							},
+							"response": []
+						},
+						{
+							"name": "Agenda Détaillé - list-objets-touristiques",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/agenda/detaille/list-objets-touristiques/?projectId={{Channel_projectId}}&apiKey={{Channel_apiKey}}&searchId={{Channel_searchId}}&dateDebut=2022-09-23",
+									"host": [
+										"{{API_PLATEFORME_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"v002",
+										"channel",
+										"agenda",
+										"detaille",
+										"list-objets-touristiques",
+										""
+									],
+									"query": [
+										{
+											"key": "projectId",
+											"value": "{{Channel_projectId}}",
+											"description": "Identifiant du Channel dans le service de consentement."
+										},
+										{
+											"key": "apiKey",
+											"value": "{{Channel_apiKey}}",
+											"description": "Clef API du Channel dans le service de consentement."
+										},
+										{
+											"key": "searchId",
+											"value": "{{Channel_searchId}}",
+											"description": "Identifiant d'un ensemble d'offre"
+										},
+										{
+											"key": "dateDebut",
+											"value": "2022-09-23",
+											"description": "Obligatoire : date de début des évènements."
+										},
+										{
+											"key": "dateFin",
+											"value": "2022-09-30",
+											"description": "Facultatif : date de fin des évènements.",
+											"disabled": true
+										},
+										{
+											"key": "locales",
+											"value": "fr,en",
+											"description": "Facultatif. Liste des locales séparées par des virgules.",
+											"disabled": true
+										},
+										{
+											"key": "responseFields",
+											"value": "[\"id\",\"nom\"]",
+											"description": "Facultatif. Liste des noeuds JSON souhaités, sous forme de tableau de chaînes.",
+											"disabled": true
+										},
+										{
+											"key": "count",
+											"value": "200",
+											"description": "Nombre d'offres maximum retourné par le web service (20 par défaut)",
+											"disabled": true
+										}
+									]
+								},
+								"description": "Cette méthode permet de récupérer le contenu d'une liste d'offres. Les objets sont regroupés par date d’évènement. Un objet touristique qui se déroule sur plusieurs journées est listé plusieurs fois dans le résultat (une fois pour chaque jour d’ouverture).\n\nLa valeur de Channel_searchId se récupère sur la requête \"Récupération des ensembles d'offres\" (/api/v002/channel/searchs/)."
+							},
+							"response": []
+						},
+						{
+							"name": "Recherche - list-objets-touristiques - Query",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "query",
+											"value": "{ \n    \"projectId\": \"{{Channel_projectId}}\",\n    \"apiKey\": \"{{Channel_apiKey}}\",\n    \"searchId\": \"{{Channel_searchId}}\",\n    \"responseFields\":[\"id\",\"nom\"],\n     \"locales\":[\"fr\",\"en\",\"ja\"]\n}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API_PLATEFORME_ENDPOINT}}/api/v002/channel/recherche/list-objets-touristiques/",
+									"host": [
+										"{{API_PLATEFORME_ENDPOINT}}"
+									],
+									"path": [
+										"api",
+										"v002",
+										"channel",
+										"recherche",
+										"list-objets-touristiques",
+										""
+									]
+								},
+								"description": "Exemple complémentaire utilisant le service en méthode POST avec l'utilisation du paramètre Query.\n\nL'ensemble des requêtes du Service de consentement sont utilisables avec la méthode POST.\n\nCette méthode permet de récupérer le contenu d'une liste d'offres.\n\nLa valeur de Channel_searchId se récupère sur la requête \"Récupération des ensembles d'offres\" (/api/v002/channel/searchs/).\n\nLe détail de la construction du paramètre Query est détaillée dans [le format des recherches](https://dev.apidae-tourisme.com/documentation-technique/v2/api-de-diffusion/format-des-recherches/)."
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Multi-horaires",
 					"item": [
 						{
@@ -2963,7 +2963,7 @@
 										},
 										{
 											"key": "root.fieldList",
-											"value": "[\"nom\", \"localisation\"]",
+											"value": "[\"nom\", \"localisation.adresse.commune\"]",
 											"type": "text"
 										}
 									]
@@ -3078,7 +3078,7 @@
 										},
 										{
 											"key": "root.fieldList",
-											"value": "[\"nom\",\"localisation\",\"illustrations\"]",
+											"value": "[\"nom\",\"localisation.adresse.commune\",\"illustrations\"]",
 											"type": "text"
 										},
 										{
@@ -3318,7 +3318,7 @@
 										},
 										{
 											"key": "root.fieldList",
-											"value": "[\"nom\",\"localisation\"]",
+											"value": "[\"nom\",\"localisation.adresse.commune\"]",
 											"type": "text"
 										},
 										{
@@ -4511,7 +4511,7 @@
 								""
 							]
 						},
-						"description": "Cette requête permet d'utiliser l’API de gestion des membres collaborateurs pour ajouter un ou plusieurs membres collaborateurs à un objets touristiques."
+						"description": "Cette requête permet d'utiliser l’API de gestion des membres collaborateurs pour ajouter un ou plusieurs membres collaborateurs à un objets touristique."
 					},
 					"response": []
 				},
@@ -4622,7 +4622,7 @@
 								""
 							]
 						},
-						"description": "Cette requête permet d'utiliser l’API de gestion des membres collaborateurs pour supprimer un ou plusieurs membres collaborateurs à un objets touristiques."
+						"description": "Cette requête permet d'utiliser l’API de gestion des membres collaborateurs pour supprimer un ou plusieurs membres collaborateurs à un objets touristique."
 					},
 					"response": []
 				}
